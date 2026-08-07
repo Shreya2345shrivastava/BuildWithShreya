@@ -1,0 +1,1 @@
+export { BotanicalDecoration } from "@/components/ui/decorations/botanical-decoration";
