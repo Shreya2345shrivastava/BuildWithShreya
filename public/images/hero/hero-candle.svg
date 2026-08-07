@@ -1,0 +1,18 @@
+<svg width="260" height="340" viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(130 82) rotate(90) scale(72 62)">
+      <stop stop-color="#FFD9AF" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#FFD9AF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="130" cy="170" rx="70" ry="90" fill="url(#glow)"/>
+  <path d="M88 108C88 84.804 106.804 66 130 66C153.196 66 172 84.804 172 108V220H88V108Z" fill="#F3E5D5"/>
+  <path d="M96 112C96 95.4315 109.432 82 126 82H134C150.569 82 164 95.4315 164 112V219H96V112Z" fill="#FFF9F2"/>
+  <path d="M116 52C124 69 125 83 126 94C129 103 135 105 141 101C150 94 151 79 140 59C133 48 126 41 124 30C117 38 112 44 116 52Z" fill="#D9A48F"/>
+  <path d="M130 30C125 43 129 54 132 61C134 65 133 70 128 74C139 73 145 65 145 56C145 47 138 37 130 30Z" fill="#F0C7B5"/>
+  <path d="M96 219H164V245C164 256.046 155.046 265 144 265H116C104.954 265 96 256.046 96 245V219Z" fill="#E7D5C2"/>
+  <rect x="88" y="248" width="84" height="18" rx="9" fill="#D7C0AC"/>
+  <rect x="78" y="266" width="104" height="22" rx="11" fill="#CBB5A2"/>
+  <rect x="70" y="284" width="120" height="24" rx="12" fill="#BFA690"/>
+  <ellipse cx="130" cy="312" rx="76" ry="12" fill="#A98E79" fill-opacity="0.18"/>
+</svg>

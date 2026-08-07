@@ -1,0 +1,31 @@
+<svg width="800" height="980" viewBox="0 0 800 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paper" x1="134" y1="66" x2="660" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F2"/>
+      <stop offset="0.46" stop-color="#F4E7D5"/>
+      <stop offset="1" stop-color="#E7D5BF"/>
+    </linearGradient>
+    <linearGradient id="peach" x1="346" y1="89" x2="661" y2="389" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1C5B2"/>
+      <stop offset="1" stop-color="#D9A48F"/>
+    </linearGradient>
+  </defs>
+  <path d="M109 44C109 24.1178 125.118 8 145 8H625C644.882 8 661 24.1178 661 44V936C661 955.882 644.882 972 625 972H145C125.118 972 109 955.882 109 936V44Z" fill="#FBF6EF" stroke="#DCCDBD" stroke-width="6"/>
+  <path d="M133 62C133 44.3269 147.327 30 165 30H607C624.673 30 639 44.3269 639 62V914C639 931.673 624.673 946 607 946H165C147.327 946 133 931.673 133 914V62Z" fill="url(#paper)"/>
+  <path d="M401 30C333 143 320 248 347 358C375 474 318 569 260 629C218 671 176 726 165 774V62C165 44.3269 179.327 30 197 30H401Z" fill="#F7E9DB" opacity="0.8"/>
+  <path d="M639 62C625 141 590 196 529 244C454 302 417 361 410 431C404 485 425 556 479 645C522 716 570 793 607 914C624.673 914 639 899.673 639 882V62Z" fill="#E6EDDE" opacity="0.92"/>
+  <path d="M426 86C473 132 516 153 579 150C611 148 636 138 639 131V64C639 47.4315 625.569 34 609 34H437C415 34 405 60 426 86Z" fill="url(#peach)" opacity="0.9"/>
+  <path d="M237 185C249 223 262 251 286 281" stroke="#A8B69D" stroke-width="7" stroke-linecap="round"/>
+  <path d="M291 164C298 198 305 224 323 258" stroke="#8FA07E" stroke-width="7" stroke-linecap="round"/>
+  <path d="M523 660C548 614 570 560 573 500" stroke="#8FA07E" stroke-width="7" stroke-linecap="round"/>
+  <path d="M574 626C596 585 612 546 614 507" stroke="#A8B69D" stroke-width="7" stroke-linecap="round"/>
+  <text x="208" y="265" fill="#D88969" font-family="Cormorant Garamond, serif" font-size="66" font-style="italic" font-weight="500">Build it.</text>
+  <text x="256" y="353" fill="#201913" font-family="Cormorant Garamond, serif" font-size="52" font-weight="500">Then make it</text>
+  <text x="247" y="432" fill="#D9A48F" font-family="Cormorant Garamond, serif" font-size="86" font-style="italic" font-weight="500">Beautiful.</text>
+  <text x="253" y="521" fill="#7A6E62" font-family="Inter, sans-serif" font-size="24" letter-spacing="2">A PREMIUM GUIDE FOR CREATORS</text>
+  <path d="M208 556H580" stroke="#E7D9CA" stroke-width="4" stroke-linecap="round"/>
+  <text x="224" y="615" fill="#6F665D" font-family="Inter, sans-serif" font-size="22">Gentle books, practical tools,</text>
+  <text x="224" y="650" fill="#6F665D" font-family="Inter, sans-serif" font-size="22">and thoughtful resources.</text>
+  <path d="M258 742C291 717 332 702 391 702C451 702 505 721 551 759" stroke="#A8B69D" stroke-width="9" stroke-linecap="round" opacity="0.55"/>
+  <path d="M223 839C279 796 343 776 420 776C496 776 560 797 615 840" stroke="#D9A48F" stroke-width="9" stroke-linecap="round" opacity="0.4"/>
+</svg>

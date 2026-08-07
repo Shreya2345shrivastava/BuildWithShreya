@@ -43,6 +43,10 @@
 	.scale-in {
 		animation: scale-in 320ms ease-out both;
 	}
+
+	.float-gentle {
+		animation: float-gentle 7.5s ease-in-out infinite;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -87,5 +91,16 @@
 	to {
 		opacity: 1;
 		transform: scale(1);
+	}
+}
+
+@keyframes float-gentle {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-6px);
 	}
 }
