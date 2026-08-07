@@ -1,0 +1,113 @@
+@layer base {
+	:root {
+		--font-display: "Cormorant Garamond", serif;
+		--font-body: "Inter", sans-serif;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-display);
+		font-weight: 500;
+		letter-spacing: -0.02em;
+		color: var(--color-text-primary);
+	}
+
+	body {
+		font-family: var(--font-body);
+		color: var(--color-text-primary);
+		background: var(--color-bg-ivory);
+		line-height: 1.7;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+@layer utilities {
+	.text-display {
+		font-family: var(--font-display);
+		font-size: clamp(3rem, 6vw, 5.5rem);
+		line-height: 0.95;
+		letter-spacing: -0.04em;
+		font-weight: 500;
+	}
+
+	.text-editorial-h1 {
+		font-family: var(--font-display);
+		font-size: clamp(2.5rem, 4.8vw, 4.25rem);
+		line-height: 1.02;
+		letter-spacing: -0.035em;
+		font-weight: 500;
+	}
+
+	.text-editorial-h2 {
+		font-family: var(--font-display);
+		font-size: clamp(2rem, 3.5vw, 3.25rem);
+		line-height: 1.08;
+		letter-spacing: -0.03em;
+		font-weight: 500;
+	}
+
+	.text-editorial-h3 {
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 2.4vw, 2rem);
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		font-weight: 500;
+	}
+
+	.text-editorial-h4 {
+		font-family: var(--font-display);
+		font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+		line-height: 1.2;
+		letter-spacing: -0.015em;
+		font-weight: 500;
+	}
+
+	.text-body-large {
+		font-family: var(--font-body);
+		font-size: 1.125rem;
+		line-height: 1.75;
+		letter-spacing: -0.01em;
+	}
+
+	.text-body {
+		font-family: var(--font-body);
+		font-size: 1rem;
+		line-height: 1.7;
+		letter-spacing: -0.005em;
+	}
+
+	.text-caption {
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: 0.02em;
+	}
+
+	.text-label {
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		line-height: 1.3;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	.text-button {
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		line-height: 1.2;
+		letter-spacing: -0.01em;
+		font-weight: 600;
+	}
+
+	.text-form {
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		line-height: 1.5;
+		letter-spacing: -0.005em;
+	}
+}
