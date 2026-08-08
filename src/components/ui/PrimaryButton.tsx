@@ -32,8 +32,15 @@ export function PrimaryButton({
 	const resolvedIcon = rightIcon ?? (showIcon ? icon ?? <BookIcon /> : undefined);
 
 	return (
-		<Button variant={variant} size={size} rounded={rounded} rightIcon={resolvedIcon} {...props}>
-			{children}
-		</Button>
-	);
+  <Button
+    variant={variant}
+    size={size}
+    rounded={rounded}
+    rightIcon={resolvedIcon}
+    className="transition-all duration-300 hover:scale-105"
+    {...props}
+  >
+    {children}
+  </Button>
+);
 }

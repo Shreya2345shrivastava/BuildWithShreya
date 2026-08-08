@@ -16,8 +16,8 @@ export const theme = {
     mobile: "100%",
     tablet: "46rem",
     laptop: "64rem",
-    desktop: "78rem",
-    wide: "88rem",
+    desktop: "80rem",
+    wide: "90rem",
     ultraWide: "96rem",
   },
   motion: {

@@ -10,28 +10,68 @@ function DecorativeHeart() {
 
 export function HeroContent() {
 	return (
-		<div className="flex flex-col items-center text-center slide-up lg:items-start lg:text-left">
-			<div className="max-w-[520px]">
-				<h1 id="hero-title" className="text-editorial-h1 text-[var(--color-text-primary)] leading-[1.06] sm:text-[clamp(3.6rem,5vw,5.55rem)]">
-					<span className="block">Build your dream.</span>
-					<span className="block -mt-2">Then make it</span>
-					<span className="mt-1 block font-normal italic leading-[0.9] tracking-tight text-[var(--color-accent-peach)] antialiased [text-rendering:geometricPrecision] [-webkit-font-smoothing:antialiased] sm:text-[clamp(3.25rem,5vw,4.85rem)]">
-						beautiful.
-					</span>
-				</h1>
+		<div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+  <span
+    className="
+      inline-flex items-center gap-2
+      rounded-full
+      border border-[var(--color-border-soft)]
+      bg-white/70
+      px-4 py-2
+      text-sm
+      text-[var(--color-accent-peach)]
+      shadow-sm
+      backdrop-blur-sm
+      transition-all duration-300
+      hover:-translate-y-0.5
+    "
+  >
+    ✨ BuildWithShreya
+  </span>
 
-				<div className="mt-11 flex items-center justify-center gap-2 lg:justify-start">
-					<span className="h-px w-16 bg-[var(--color-border-soft)]/75 sm:w-20" />
-					<DecorativeHeart />
-					<span className="h-px w-16 bg-[var(--color-border-soft)]/75 sm:w-20" />
-				</div>
+  <h1
+    id="hero-title"
+    className="
+      mt-8
+      font-serif
+      text-5xl
+      leading-[0.92]
+      tracking-[-0.05em]
+      text-[var(--color-text-primary)]
+      sm:text-6xl
+      lg:text-7xl
+      xl:text-8xl
+    "
+  >
+    Build your dream.
+    <br />
+    Then make it
+    <br />
+    beautiful.
+  </h1>
 
-				<p className="mt-8 max-w-[420px] text-body-large leading-[1.82] text-[var(--color-text-secondary)]">
-					Gentle books, practical tools, and thoughtful resources to help you build a meaningful life—one step at a time.
-				</p>
+  <div className="mt-11 flex items-center justify-center gap-2 lg:justify-start">
+    <span className="h-px w-16 bg-[var(--color-border-soft)]/75 sm:w-20" />
+    <DecorativeHeart />
+    <span className="h-px w-16 bg-[var(--color-border-soft)]/75 sm:w-20" />
+  </div>
 
-				<HeroButtons />
-			</div>
-		</div>
+  <p
+    className="
+      mt-8
+      max-w-[520px]
+      text-lg
+      leading-[1.9]
+      text-[var(--color-text-secondary)]
+    "
+  >
+    Gentle books, practical tools, and thoughtful resources to help
+    you build a meaningful life—one step at a time.
+  </p>
+
+  <div className="mt-10">
+    <HeroButtons />
+  </div>
+</div>
 	);
 }

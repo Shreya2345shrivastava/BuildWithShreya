@@ -23,14 +23,6 @@
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
   --shadow-floating: var(--shadow-floating);
-  --spacing-xs: var(--space-xs);
-  --spacing-sm: var(--space-sm);
-  --spacing-md: var(--space-md);
-  --spacing-lg: var(--space-lg);
-  --spacing-xl: var(--space-xl);
-  --spacing-2xl: var(--space-2xl);
-  --spacing-3xl: var(--space-3xl);
-  --spacing-4xl: var(--space-4xl);
   --container-mobile: var(--container-mobile);
   --container-tablet: var(--container-tablet);
   --container-laptop: var(--container-laptop);
@@ -47,6 +39,7 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-body);
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 ::selection {
