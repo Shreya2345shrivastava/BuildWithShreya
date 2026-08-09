@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { SITE } from "@/constants/site";
 import "./globals.css";
-import { AuthProvider } from "@/components/auth/SessionProvider";
-
+import AuthProvider from "@/components/auth/SessionProvider";
 const displayFont = Cormorant_Garamond({
   variable: "--font-display",
   weight: ["400", "500", "600"],
