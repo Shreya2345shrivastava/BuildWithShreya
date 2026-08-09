@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { SITE } from "@/constants/site";
 import "./globals.css";
+import { AuthProvider } from "@/components/auth/SessionProvider";
 
 const displayFont = Cormorant_Garamond({
   variable: "--font-display",
@@ -96,7 +97,9 @@ export default function RootLayout({
       className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="min-h-screen bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)]">
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
