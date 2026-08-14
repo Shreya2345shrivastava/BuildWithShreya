@@ -48,26 +48,15 @@ function NavLink({
         aria-current={active ? "page" : undefined}
         onClick={onNavigate}
         className={cn(
-          "group relative inline-flex items-center py-2 text-[0.95rem] font-medium tracking-[-0.01em]",
+          "group relative inline-flex items-center px-4 py-2 text-[0.95rem] font-medium tracking-[-0.01em] rounded-full",
           "transition-all duration-300 ease-out",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-2",
-          "focus-visible:ring-offset-[var(--color-bg-ivory)]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D8895B] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-ivory)]",
           active
-            ? "text-[var(--color-text-primary)]"
-            : "text-[var(--color-text-secondary)] hover:text-[var(--color-accent-peach)]"
+            ? "text-[#3A332D] bg-[#FBF8F5] shadow-sm ring-1 ring-[#E8DED5]/50"
+            : "text-[#5E544C] hover:text-[#3A332D] hover:bg-[#FBF8F5]/50"
         )}
       >
         {label}
-
-        <span
-          className={cn(
-            "absolute -bottom-1 left-0 h-[2px] w-full origin-left rounded-full",
-            "bg-[var(--color-accent-peach)]",
-            "scale-x-0 transition-transform duration-300 ease-out",
-            "group-hover:scale-x-100",
-            active && "scale-x-100"
-          )}
-        />
       </Link>
     </li>
   );

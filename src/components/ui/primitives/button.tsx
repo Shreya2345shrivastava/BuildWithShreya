@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 import { theme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
@@ -91,7 +93,7 @@ export function Button(props: ButtonProps) {
 	} = props;
 
 	const baseClassName = cn(
-		"inline-flex items-center justify-center gap-2 border font-semibold tracking-tight transition-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-ivory)] disabled:cursor-not-allowed disabled:opacity-60 hover:[background-color:var(--hover-background)] hover:[color:var(--hover-foreground)]",
+		"inline-flex items-center justify-center gap-2 border font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-ivory)] disabled:cursor-not-allowed disabled:opacity-60 hover:[background-color:var(--hover-background)] hover:[color:var(--hover-foreground)] transition-all duration-200 hover:-translate-y-[1px] hover:shadow-md active:translate-y-0 active:shadow-sm shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]",
 		sizeStyles[size],
 		fullWidth && "w-full",
 		rounded && "rounded-full",
@@ -119,17 +121,18 @@ export function Button(props: ButtonProps) {
 		};
 
 		return (
-			<a
+			<Link
+				href={href}
 				aria-disabled={disabled || loading}
 				aria-busy={loading || undefined}
 				tabIndex={disabled || loading ? -1 : anchorProps.tabIndex}
 				className={baseClassName}
 				style={style}
-				onClick={handleClick}
-				{...anchorProps}
+				onClick={handleClick as any}
+				{...(anchorProps as any)}
 			>
 				{renderContent({ children, leftIcon, rightIcon, loading }, size)}
-			</a>
+			</Link>
 		);
 	}
 

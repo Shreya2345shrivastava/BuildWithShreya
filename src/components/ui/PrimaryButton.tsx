@@ -37,7 +37,7 @@ export function PrimaryButton({
     size={size}
     rounded={rounded}
     rightIcon={resolvedIcon}
-    className="transition-all duration-300 hover:scale-105"
+    className={props.className}
     {...props}
   >
     {children}

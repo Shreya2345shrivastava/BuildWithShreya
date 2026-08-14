@@ -10,11 +10,11 @@ export function BookBenefits({
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center">
           <span className="text-sm uppercase tracking-[0.2em] text-[var(--color-accent-peach)]">
-            WHAT'S INSIDE
+            WHAT&apos;S INSIDE
           </span>
 
           <h2 className="mt-4 font-serif text-5xl">
-            What You'll Learn
+            What You&apos;ll Learn
           </h2>
         </div>
 

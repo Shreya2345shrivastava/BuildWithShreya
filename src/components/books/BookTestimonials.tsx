@@ -34,7 +34,7 @@ export function BookTestimonials() {
               className="rounded-[2rem] border border-[var(--color-border-soft)] bg-white p-8"
             >
               <p className="leading-relaxed text-[var(--color-text-secondary)]">
-                "{item.text}"
+                &quot;{item.text}&quot;
               </p>
 
               <p className="mt-6 font-medium text-[var(--color-text-primary)]">

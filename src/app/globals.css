@@ -64,3 +64,60 @@ select,
 button {
   font: inherit;
 }
+
+/* ==============================
+   BUILD WITH SHREYA DASHBOARD
+============================== */
+
+.dashboard-bg {
+  background:
+    radial-gradient(circle at top right,
+      rgba(219, 150, 106, 0.08),
+      transparent 30%),
+    var(--color-bg-ivory);
+}
+
+.dashboard-card {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(219,150,106,0.12);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  transition: all .3s ease;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.08);
+}
+
+.dashboard-title {
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+}
+
+.dashboard-subtitle {
+  color: var(--color-text-secondary);
+}
+
+.dashboard-accent {
+  color: var(--color-accent-peach);
+}
+
+.dashboard-button {
+  background: var(--color-accent-peach);
+  color: white;
+  border-radius: 999px;
+  transition: all .25s ease;
+}
+
+.dashboard-button:hover {
+  transform: translateY(-2px);
+  opacity: .92;
+}
+
+.dashboard-glass {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.3);
+}

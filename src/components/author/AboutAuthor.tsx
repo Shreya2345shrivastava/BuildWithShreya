@@ -22,7 +22,7 @@ export function AboutAuthor() {
         </span>
 
         <h2 className="mt-4 font-serif text-5xl leading-[0.95] tracking-[-0.04em] text-[var(--color-text-primary)]">
-          Hi, I'm Shreya 👋
+          Hi, I&apos;m Shreya 👋
         </h2>
 
         <p className="mt-6 text-lg leading-relaxed text-[var(--color-text-secondary)]">

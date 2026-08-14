@@ -7,12 +7,12 @@ export function ContactHero() {
         </span>
 
         <h1 className="mt-6 font-serif text-7xl text-[var(--color-text-primary)]">
-          Let's Connect
+          Let&apos;s Connect
         </h1>
 
         <p className="mx-auto mt-8 max-w-3xl text-xl text-[var(--color-text-secondary)]">
           Questions, collaborations, feedback or opportunities —
-          I'd love to hear from you.
+          I&apos;d love to hear from you.
         </p>
       </div>
     </section>

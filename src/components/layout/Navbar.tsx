@@ -8,6 +8,7 @@ import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import { Logo } from "@/components/layout/Logo";
 import { NavLinks } from "@/components/layout/NavLinks";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { UserMenu } from "@/components/auth";
 import { cn } from "@/lib/utils";
 
 function MenuIcon() {
@@ -29,13 +30,13 @@ function MenuIcon() {
   );
 }
 
-export function Navbar() {
+export function Navbar({ profile }: { profile?: { name?: string; image?: string; username?: string; email?: string } }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const updateScrolled = () => {
-      setScrolled(window.scrollY > 12);
+      setScrolled(window.scrollY > 20);
     };
 
     updateScrolled();
@@ -50,54 +51,84 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[60] px-3 pt-3 sm:px-4 sm:pt-4">
+    <header className="fixed inset-x-0 top-0 z-[100] px-4 pt-4">
       <Container width="wide" noPadding>
         <nav
           aria-label="Primary"
           className={cn(
-            "flex min-h-[5rem] items-center justify-between gap-5 rounded-[var(--radius-full)] border px-5 py-3.5 backdrop-blur-3xl transition-all duration-500 ease-out sm:px-6 lg:px-7",
+            "flex items-center justify-between rounded-full border transition-all duration-500",
+            "px-6 py-4 lg:px-8",
             scrolled
-              ? "border-[var(--color-border-subtle)] bg-[rgba(255,250,244,0.92)] shadow-[0_16px_40px_rgba(32,25,19,0.10)]"
-              : "border-[color-mix(in_srgb,var(--color-border-soft)_70%,transparent)] bg-[rgba(255,250,244,0.72)] shadow-[0_8px_24px_rgba(32,25,19,0.06)]"
+              ? "border-[#E7DDD4] bg-[rgba(255,251,247,0.95)] backdrop-blur-2xl shadow-[0_20px_60px_rgba(30,25,20,0.10)]"
+              : "border-[#EEE5DD] bg-[rgba(255,251,247,0.78)] backdrop-blur-xl shadow-[0_10px_35px_rgba(30,25,20,0.05)]"
           )}
         >
+          {/* Logo */}
           <Link
             href="/"
-            aria-label="BuildWithShreya home"
-            className="group inline-flex shrink-0 items-center"
+            className="group flex items-center"
+            aria-label="BuildWithShreya Home"
           >
-            <Logo className="transition-all duration-300 group-hover:scale-[1.02] group-hover:opacity-85" />
+            <Logo className="transition duration-300 group-hover:scale-[1.02]" />
           </Link>
 
-          <div className="hidden flex-1 justify-center lg:flex">
+          {/* Center Navigation */}
+          <div className="hidden lg:flex">
             <NavLinks />
           </div>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <Link
-              href="/sign-in"
-              className="text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
-            >
-              Sign In
-            </Link>
+          {/* Right Side */}
+          <div className="hidden lg:flex items-center gap-4">
+            <div className="rounded-full border border-[#ECE2D8] bg-white/70 px-2 py-1 backdrop-blur-sm">
+              <UserMenu profile={profile} />
+            </div>
 
+            {/* CTA */}
             <PrimaryButton
-              href="/books"
+              href="/books/first-build-it-then-make-it-beautiful"
               size="md"
               rounded={false}
-              className="rounded-[var(--radius-xl)] px-5 py-3.5 shadow-[0_10px_22px_rgba(201,123,99,0.20)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(201,123,99,0.28)]"
+              className="
+                rounded-full
+                px-7
+                py-2.5
+                text-[0.95rem]
+                font-medium
+                shadow-sm
+                transition-all
+                duration-300
+                hover:-translate-y-0.5
+                hover:shadow-md
+              "
             >
               Get the Book
             </PrimaryButton>
           </div>
 
+          {/* Mobile Menu */}
           <button
             type="button"
-            aria-label="Open navigation menu"
+            aria-label="Open menu"
             aria-expanded={open}
             aria-controls="mobile-navigation"
             onClick={() => setOpen(true)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] text-[var(--color-text-primary)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.05] hover:shadow-[0_10px_20px_rgba(32,25,19,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-ivory)] lg:hidden"
+            className="
+              lg:hidden
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-[#E8DED5]
+              bg-white/90
+              backdrop-blur-sm
+              transition-all
+              duration-300
+              hover:scale-105
+              hover:shadow-lg
+            "
           >
             <MenuIcon />
           </button>

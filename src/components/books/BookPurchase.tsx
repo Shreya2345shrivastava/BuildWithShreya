@@ -26,7 +26,7 @@ export function BookPurchase({
               </span>
 
               <h2 className="mt-6 font-serif text-5xl text-[var(--color-text-primary)]">
-                What's Included
+                What&apos;s Included
               </h2>
 
               <p className="mt-4 max-w-xl text-lg text-[var(--color-text-secondary)]">

@@ -8,7 +8,7 @@ export function NewsletterPreview() {
           </span>
 
           <h2 className="mt-5 font-serif text-4xl text-[var(--color-text-primary)]">
-            This Week's Newsletter
+            This Week&apos;s Newsletter
           </h2>
 
           <ul className="mt-8 space-y-4 text-[var(--color-text-secondary)]">

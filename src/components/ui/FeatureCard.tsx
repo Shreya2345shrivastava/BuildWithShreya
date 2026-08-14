@@ -22,13 +22,13 @@ export function FeatureCard({
       tabIndex={0}
       data-visible={visible}
       className={cn(
-        "group flex h-full flex-col items-center justify-center rounded-[26px] border border-[var(--color-border-soft)] bg-[rgba(255,250,244,0.94)] px-5 py-7 text-center backdrop-blur-[6px]",
-        "shadow-[0_12px_30px_rgba(32,25,19,0.045)]",
-        "transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-        "hover:-translate-y-[10px] hover:scale-[1.02]",
-        "hover:border-[var(--color-accent-peach)]",
-        "hover:shadow-[0_24px_50px_rgba(32,25,19,0.10)]",
-        "focus-visible:-translate-y-[10px]",
+        "group flex h-full flex-col items-center justify-center rounded-2xl border border-[var(--color-border-soft)] bg-white px-5 py-8 text-center",
+        "shadow-sm",
+        "transition-all duration-500 ease-out",
+        "hover:-translate-y-1",
+        "hover:border-[var(--color-accent-peach)]/40",
+        "hover:shadow-md",
+        "focus-visible:-translate-y-1",
         "focus-visible:border-[var(--color-accent-peach)]",
         "focus-visible:outline-none",
         "focus-visible:ring-2",
@@ -47,8 +47,8 @@ export function FeatureCard({
         {icon}
       </div>
 
-      <div className="mt-5 space-y-2.5">
-        <h3 className="text-editorial-h4 font-semibold text-[var(--color-text-primary)]">
+      <div className="mt-6 space-y-3">
+        <h3 className="font-serif text-xl font-medium text-[var(--color-text-primary)]">
           {title}
         </h3>
 

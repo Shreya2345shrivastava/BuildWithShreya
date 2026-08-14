@@ -4,7 +4,7 @@ export function HeroButtons() {
   return (
     <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-center sm:gap-6">
       <Button
-        href="/books"
+        href="#featured-book"
         size="lg"
         rounded={false}
         className="
@@ -22,7 +22,7 @@ export function HeroButtons() {
       </Button>
 
       <Button
-        href="/newsletter"
+        href="/resources"
         variant="secondary"
         size="lg"
         className="

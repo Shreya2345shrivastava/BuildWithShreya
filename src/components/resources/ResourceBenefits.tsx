@@ -9,7 +9,7 @@ export function ResourceBenefits({
     <section className="py-20">
       <div className="mx-auto max-w-5xl px-6">
         <h2 className="text-center font-serif text-5xl text-[var(--color-text-primary)]">
-          What's Included
+          What&apos;s Included
         </h2>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">

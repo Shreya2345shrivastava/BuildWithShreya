@@ -3,6 +3,10 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import { SITE } from "@/constants/site";
 import "./globals.css";
 import AuthProvider from "@/components/auth/SessionProvider";
+import { Navbar } from "@/components/layout/Navbar";
+import { BrandProvider } from "@/components/layout/BrandProvider";
+import { getGlobalBrandSettings, getAuthUserProfileSafe } from "@/lib/actions/settings.actions";
+
 const displayFont = Cormorant_Garamond({
   variable: "--font-display",
   weight: ["400", "500", "600"],
@@ -17,79 +21,70 @@ const bodyFont = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+export async function generateMetadata(): Promise<Metadata> {
+  const brand = await getGlobalBrandSettings();
+  const siteTitle = brand?.brandName || SITE.title;
+  const siteDesc = brand?.brandDescription || SITE.description;
 
-  title: {
-    default: SITE.title,
-    template: `%s | BuildWithShreya`,
-  },
-
-  description: SITE.description,
-
-  keywords: [
-    "BuildWithShreya",
-    "Workbook",
-    "Productivity",
-    "Self Improvement",
-    "Goal Setting",
-    "Creators",
-    "Students",
-    "Personal Growth",
-    "Digital Book",
-    "Planning Workbook",
-  ],
-
-  authors: [
-    {
-      name: "Shreya",
+  return {
+    metadataBase: new URL(SITE.url),
+    title: {
+      default: siteTitle,
+      template: `%s | ${siteTitle}`,
     },
-  ],
-
-  creator: "Shreya",
-
-  openGraph: {
-    title: SITE.title,
-    description: SITE.description,
-    url: SITE.url,
-    siteName: "BuildWithShreya",
-    locale: "en_US",
-    type: "website",
-
-    images: [
-      {
-        url: "/images/og-cover.jpg",
-        width: 1200,
-        height: 630,
-        alt: "BuildWithShreya",
-      },
+    description: siteDesc,
+    keywords: [
+      siteTitle,
+      "Workbook",
+      "Productivity",
+      "Self Improvement",
+      "Goal Setting",
+      "Creators",
+      "Students",
+      "Personal Growth",
     ],
-  },
+    authors: [{ name: "Shreya" }],
+    creator: "Shreya",
+    openGraph: {
+      title: siteTitle,
+      description: siteDesc,
+      url: SITE.url,
+      siteName: siteTitle,
+      locale: "en_US",
+      type: "website",
+      images: [
+        {
+          url: "/images/og-cover.jpg",
+          width: 1200,
+          height: 630,
+          alt: siteTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteTitle,
+      description: siteDesc,
+      images: ["/images/og-cover.jpg"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
+  };
+}
 
-  twitter: {
-    card: "summary_large_image",
-    title: SITE.title,
-    description: SITE.description,
-    images: ["/images/og-cover.jpg"],
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
-
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const profile = await getAuthUserProfileSafe();
   return (
     <html
       lang="en"
@@ -97,7 +92,10 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)]">
         <AuthProvider>
-          {children}
+          <BrandProvider>
+            <Navbar profile={profile} />
+            {children}
+          </BrandProvider>
         </AuthProvider>
       </body>
     </html>

@@ -10,39 +10,31 @@ export function TestimonialCard({
   return (
     <div
       className="
-        h-full rounded-[28px]
-        border border-[var(--color-border-soft)]
-        bg-white/90
+        flex h-full flex-col items-center text-center
+        rounded-2xl border border-[var(--color-border-soft)]
+        bg-[#FCF8F2]/40
         p-8
-        shadow-[0_12px_30px_rgba(32,25,19,0.05)]
-        backdrop-blur-sm
-        transition-all
+        transition-colors
         duration-300
-        hover:-translate-y-2
-        hover:scale-[1.02]
-        hover:shadow-[0_24px_50px_rgba(32,25,19,0.10)]
+        hover:bg-[#FCF8F2]
       "
     >
       <div className="mb-5 text-4xl leading-none text-[var(--color-accent-peach)] opacity-60">
         “
       </div>
 
-      <div className="mb-4 flex gap-1 text-[var(--color-accent-peach)] text-lg">
+      <div className="mb-4 flex gap-1 text-[var(--color-accent-peach)] text-sm tracking-widest">
         ★★★★★
       </div>
 
-      <p className="mb-8 text-lg leading-relaxed text-[var(--color-text-secondary)]">
-        "{review}"
+      <p className="mb-8 text-base leading-relaxed text-[var(--color-text-secondary)] italic">
+        &quot;{review}&quot;
       </p>
 
-      <div className="border-t border-[var(--color-border-soft)] pt-5">
-        <h4 className="font-semibold text-[var(--color-text-primary)]">
-          {name}
+      <div className="mt-auto">
+        <h4 className="text-sm font-semibold tracking-widest text-[var(--color-text-primary)] uppercase">
+          — {name}
         </h4>
-
-        <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
-          Verified Reader
-        </p>
       </div>
     </div>
   );
