@@ -15,6 +15,7 @@ const NAV_ITEMS: NavLinkItem[] = [
   { label: "Home", href: ROUTES.home },
   { label: "Books", href: ROUTES.books },
   { label: "Resources", href: ROUTES.resources },
+  { label: "Newsletter", href: ROUTES.newsletter },
   { label: "About", href: ROUTES.about },
   { label: "Contact", href: ROUTES.contact },
 ];

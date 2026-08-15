@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import FileUpload from "@/components/ui/FileUpload";
 
 export default function AddBookForm() {
   const [form, setForm] = useState({
@@ -8,7 +9,7 @@ export default function AddBookForm() {
     slug: "",
     description: "",
     coverImage: "",
-    pdfUrl: "",
+    pdfFile: "",
     featured: false,
   });
 
@@ -18,6 +19,17 @@ export default function AddBookForm() {
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
+
+    // Validate files are uploaded
+    if (!form.coverImage) {
+      alert("Please upload a cover image.");
+      return;
+    }
+
+    if (!form.pdfFile) {
+      alert("Please upload a PDF file.");
+      return;
+    }
 
     try {
       setLoading(true);
@@ -40,7 +52,7 @@ export default function AddBookForm() {
           slug: "",
           description: "",
           coverImage: "",
-          pdfUrl: "",
+          pdfFile: "",
           featured: false,
         });
       } else {
@@ -92,30 +104,22 @@ export default function AddBookForm() {
         rows={4}
       />
 
-      <input
-        type="text"
-        placeholder="Cover Image URL"
-        value={form.coverImage}
-        onChange={(e) =>
-          setForm({
-            ...form,
-            coverImage: e.target.value,
-          })
+      <FileUpload
+        name="coverImage"
+        type="coverImage"
+        defaultValue={form.coverImage}
+        onChange={(url) =>
+          setForm((prev) => ({ ...prev, coverImage: url }))
         }
-        className="w-full border p-3 rounded"
       />
 
-      <input
-        type="text"
-        placeholder="PDF URL"
-        value={form.pdfUrl}
-        onChange={(e) =>
-          setForm({
-            ...form,
-            pdfUrl: e.target.value,
-          })
+      <FileUpload
+        name="pdfFile"
+        type="pdf"
+        defaultValue={form.pdfFile}
+        onChange={(url) =>
+          setForm((prev) => ({ ...prev, pdfFile: url }))
         }
-        className="w-full border p-3 rounded"
       />
 
       <label className="flex items-center gap-2">
@@ -135,7 +139,7 @@ export default function AddBookForm() {
       <button
         type="submit"
         disabled={loading}
-        className="bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600"
+        className="bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600 disabled:opacity-50"
       >
         {loading ? "Adding..." : "Add Book"}
       </button>

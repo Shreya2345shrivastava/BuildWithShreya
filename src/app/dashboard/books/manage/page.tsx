@@ -9,7 +9,7 @@ interface IBook {
   featured: boolean;
   coverImage: string;
   createdAt: string;
-  pdfUrl: string;
+  pdfFile: string;
 }
 import {
   Search,
@@ -251,7 +251,7 @@ export default async function ManageBooksPage({
 
                   {/* Download */}
                   <a
-                    href={book.pdfUrl}
+                    href={book.pdfFile}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center rounded-2xl border border-green-200 px-4 py-3 text-green-600 transition hover:bg-green-50"

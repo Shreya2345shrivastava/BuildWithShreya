@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-
 import { useState } from "react";
+import FileUpload from "@/components/ui/FileUpload";
 
 export default function AddBookPage() {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ export default function AddBookPage() {
     slug: "",
     description: "",
     coverImage: "",
-    pdfUrl: "",
+    pdfFile: "",
     featured: false,
   });
 
@@ -47,6 +47,17 @@ export default function AddBookPage() {
   ) => {
     e.preventDefault();
 
+    // Validate files are uploaded
+    if (!form.coverImage) {
+      alert("Please upload a cover image.");
+      return;
+    }
+
+    if (!form.pdfFile) {
+      alert("Please upload a PDF file.");
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -68,7 +79,7 @@ export default function AddBookPage() {
           slug: "",
           description: "",
           coverImage: "",
-          pdfUrl: "",
+          pdfFile: "",
           featured: false,
         });
       } else {
@@ -156,37 +167,31 @@ export default function AddBookPage() {
               />
             </div>
 
-            <div>
-              <label className="mb-2 block text-sm font-medium text-[#3A332D]">
-                Cover Image URL
-              </label>
+            {/* Cover Image Upload */}
+            <FileUpload
+              name="coverImage"
+              type="coverImage"
+              defaultValue={form.coverImage}
+              onChange={(url) =>
+                setForm((prev) => ({
+                  ...prev,
+                  coverImage: url,
+                }))
+              }
+            />
 
-              <input
-                type="text"
-                name="coverImage"
-                value={form.coverImage}
-                onChange={handleChange}
-                placeholder="/images/books/book-cover.jpeg"
-                required
-                className="w-full rounded-2xl border border-[#E8DED5] px-5 py-4 outline-none focus:border-[#D9895B]"
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-[#3A332D]">
-                PDF URL
-              </label>
-
-              <input
-                type="text"
-                name="pdfUrl"
-                value={form.pdfUrl}
-                onChange={handleChange}
-                placeholder="/ebooks/book1.pdf"
-                required
-                className="w-full rounded-2xl border border-[#E8DED5] px-5 py-4 outline-none focus:border-[#D9895B]"
-              />
-            </div>
+            {/* PDF Upload */}
+            <FileUpload
+              name="pdfFile"
+              type="pdf"
+              defaultValue={form.pdfFile}
+              onChange={(url) =>
+                setForm((prev) => ({
+                  ...prev,
+                  pdfFile: url,
+                }))
+              }
+            />
 
             <label className="flex items-center gap-3 rounded-2xl border border-[#E8DED5] p-4">
               <input
@@ -208,7 +213,7 @@ export default function AddBookPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-2xl bg-[#D9895B] py-4 font-medium text-white transition hover:bg-[#C97B4C]"
+              className="w-full rounded-2xl bg-[#D9895B] py-4 font-medium text-white transition hover:bg-[#C97B4C] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading
                 ? "Publishing..."
@@ -222,12 +227,11 @@ export default function AddBookPage() {
           <div className="overflow-hidden rounded-[32px] border border-[#E8DED5] bg-white">
             <div className="bg-[#F8F4EF] p-8">
               {form.coverImage ? (
-                <Image
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
                   src={form.coverImage}
                   alt="Preview"
-                  width={300}
-                  height={400}
-                  className="mx-auto h-80 w-auto object-contain"
+                  className="mx-auto h-80 w-auto object-contain rounded-lg"
                 />
               ) : (
                 <div className="flex h-80 items-center justify-center rounded-2xl border border-dashed border-[#E8DED5] text-gray-400">

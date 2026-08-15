@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui";
+import { Container, ParallaxBackground, BotanicalDecoration } from "@/components/ui";
 import { HeroContent } from "@/components/sections/HeroContent";
 import { HeroImage } from "@/components/sections/HeroImage";
 
@@ -7,10 +7,15 @@ export function Hero() {
     <section
       data-section="hero"
       aria-labelledby="hero-title"
-      className="relative flex min-h-[85vh] items-center bg-[var(--color-bg-ivory)] pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 border-b border-black/[0.04]"
+      className="relative flex min-h-[85vh] items-center bg-[var(--color-bg-ivory)] pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 border-b border-black/[0.04] overflow-hidden"
     >
-      <Container width="wide">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8 animate-in fade-in duration-1000">
+      <ParallaxBackground offset={150} className="opacity-60 mix-blend-multiply">
+        <BotanicalDecoration variant="watercolor-blob" className="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] text-[#F9E5D9]" />
+        <BotanicalDecoration variant="watercolor-blob" className="absolute top-[20%] -right-[20%] w-[1000px] h-[1000px] text-[#E8EDEB]" />
+      </ParallaxBackground>
+
+      <Container width="wide" className="relative z-10">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
           <HeroContent />
           <HeroImage />
         </div>

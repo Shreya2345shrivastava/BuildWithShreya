@@ -2,11 +2,11 @@ import Image from "next/image";
 import { Container } from "@/components/ui";
 
 const previewPages = [
-  { title: "Let's Begin", subtitle: "Introduction", src: "/images/previews/page-1.jpg" },
-  { title: "Reflection Questions", subtitle: "Workbook", src: "/images/previews/page-2.jpg" },
-  { title: "30-Day Challenge", subtitle: "Habit Tracker", src: "/images/previews/page-3.jpg" },
-  { title: "Final Letter", subtitle: "Conclusion", src: "/images/previews/page-4.jpg" },
-  { title: "Thank You", subtitle: "Acknowledgments", src: "/images/previews/page-5.jpg" },
+  { title: "Personal Note", subtitle: "From Shreya", src: "/images/previews/all/page-3.png" },
+  { title: "Table of Contents", subtitle: "Overview", src: "/images/previews/all/page-4.png" },
+  { title: "Introduction", subtitle: "Getting Started", src: "/images/previews/all/page-5.png" },
+  { title: "Chapter 1", subtitle: "Complete", src: "/images/previews/all/page-6.png" },
+  { title: "Reflection Page", subtitle: "Workbook", src: "/images/previews/all/page-27.png" },
 ];
 
 export function PreviewGallery() {

@@ -79,6 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
+
 export default async function RootLayout({
   children,
 }: {
@@ -88,15 +90,18 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
-      <body className="min-h-screen bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)]">
-        <AuthProvider>
-          <BrandProvider>
-            <Navbar profile={profile} />
-            {children}
-          </BrandProvider>
-        </AuthProvider>
+      <body className="min-h-screen bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)] transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <AuthProvider>
+            <BrandProvider>
+              <Navbar profile={profile} />
+              {children}
+            </BrandProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

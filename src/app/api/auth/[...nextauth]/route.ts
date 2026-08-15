@@ -9,8 +9,8 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async redirect() {
-      return "http://localhost:3000/dashboard";
+    async redirect({ baseUrl }) {
+      return baseUrl + "/portal";
     },
   },
 });

@@ -42,7 +42,7 @@ export async function POST(request: Request) {
       slug: body.slug,
       description: body.description,
       coverImage: body.coverImage,
-      pdfUrl: body.pdfUrl,
+      pdfFile: body.pdfFile,
       featured: body.featured ?? false,
     });
 

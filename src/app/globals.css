@@ -40,6 +40,7 @@ body {
   font-family: var(--font-body);
   min-height: 100vh;
   overflow-x: clip;
+  transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
 
 ::selection {
@@ -91,6 +92,17 @@ button {
   box-shadow: 0 24px 70px rgba(0,0,0,0.08);
 }
 
+@layer base {
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) skewX(-12deg); }
+    100% { transform: translateX(200%) skewX(-12deg); }
+  }
+}
+
 .dashboard-title {
   font-family: var(--font-display);
   color: var(--color-text-primary);
@@ -120,4 +132,24 @@ button {
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,.3);
+}
+
+/* ==============================
+   READER MODES
+============================== */
+
+.midnight {
+  --color-bg-ivory: #0f1211;
+  --color-text-primary: #e8efe9;
+  --color-text-secondary: #799980;
+}
+
+.pdf-midnight {
+  filter: invert(0.92) hue-rotate(180deg) brightness(0.95) contrast(1.1);
+  transition: filter 1s ease-in-out;
+}
+
+.pdf-light {
+  filter: none;
+  transition: filter 1s ease-in-out;
 }

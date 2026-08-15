@@ -8,6 +8,7 @@ import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import { Logo } from "@/components/layout/Logo";
 import { NavLinks } from "@/components/layout/NavLinks";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { UserMenu } from "@/components/auth";
 import { cn } from "@/lib/utils";
 
@@ -59,8 +60,8 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
             "flex items-center justify-between rounded-full border transition-all duration-500",
             "px-6 py-4 lg:px-8",
             scrolled
-              ? "border-[#E7DDD4] bg-[rgba(255,251,247,0.95)] backdrop-blur-2xl shadow-[0_20px_60px_rgba(30,25,20,0.10)]"
-              : "border-[#EEE5DD] bg-[rgba(255,251,247,0.78)] backdrop-blur-xl shadow-[0_10px_35px_rgba(30,25,20,0.05)]"
+              ? "border-[var(--color-border-subtle)] bg-[var(--color-navbar-bg-scrolled)] backdrop-blur-2xl shadow-[0_20px_60px_rgba(30,25,20,0.10)]"
+              : "border-[var(--color-border-soft)] bg-[var(--color-navbar-bg)] backdrop-blur-xl shadow-[0_10px_35px_rgba(30,25,20,0.05)]"
           )}
         >
           {/* Logo */}
@@ -79,7 +80,9 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
 
           {/* Right Side */}
           <div className="hidden lg:flex items-center gap-4">
-            <div className="rounded-full border border-[#ECE2D8] bg-white/70 px-2 py-1 backdrop-blur-sm">
+            <ThemeToggle />
+
+            <div className="rounded-full border border-[var(--color-border-soft)] bg-[var(--color-surface-elevated)]/70 px-2 py-1 backdrop-blur-sm">
               <UserMenu profile={profile} />
             </div>
 

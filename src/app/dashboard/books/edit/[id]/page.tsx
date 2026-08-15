@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { connectDB } from "@/lib/mongodb";
 import { Book } from "@/models/Book";
-
+import FileUpload from "@/components/ui/FileUpload";
 async function getBook(id: string) {
   await connectDB();
 
@@ -41,7 +41,7 @@ export default async function EditBookPage({
     const coverImage = String(
       formData.get("coverImage") || ""
     ).trim();
-    const pdfUrl = String(formData.get("pdfUrl") || "").trim();
+    const pdfFile = String(formData.get("pdfFile") || "").trim();
     const featured = formData.get("featured") === "on";
 
     if (
@@ -49,7 +49,7 @@ export default async function EditBookPage({
       !slug ||
       !description ||
       !coverImage ||
-      !pdfUrl
+      !pdfFile
     ) {
       throw new Error("All book fields are required.");
     }
@@ -72,7 +72,7 @@ export default async function EditBookPage({
         slug,
         description,
         coverImage,
-        pdfUrl,
+        pdfFile,
         featured,
       },
       {
@@ -180,41 +180,19 @@ export default async function EditBookPage({
 
           {/* Cover Image */}
           <div>
-            <label
-              htmlFor="coverImage"
-              className="mb-2 block text-sm font-medium text-[#3A332D]"
-            >
-              Cover Image URL
-            </label>
-
-            <input
-              id="coverImage"
+            <FileUpload
               name="coverImage"
-              type="text"
+              type="coverImage"
               defaultValue={book.coverImage}
-              required
-              className="w-full rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] px-5 py-4 text-[#3A332D] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
-              placeholder="/images/books/book1.jpg"
             />
           </div>
 
           {/* PDF */}
           <div>
-            <label
-              htmlFor="pdfUrl"
-              className="mb-2 block text-sm font-medium text-[#3A332D]"
-            >
-              PDF URL
-            </label>
-
-            <input
-              id="pdfUrl"
-              name="pdfUrl"
-              type="text"
-              defaultValue={book.pdfUrl}
-              required
-              className="w-full rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] px-5 py-4 text-[#3A332D] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D8895B]/10"
-              placeholder="/ebooks/book1.pdf"
+            <FileUpload
+              name="pdfFile"
+              type="pdf"
+              defaultValue={book.pdfFile}
             />
           </div>
 

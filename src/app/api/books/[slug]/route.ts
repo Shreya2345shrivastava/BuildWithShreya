@@ -58,7 +58,7 @@ export async function PUT(
       newSlug,
       description,
       coverImage,
-      pdfUrl,
+      pdfFile,
       featured,
     } = body;
 
@@ -68,7 +68,7 @@ export async function PUT(
       !newSlug ||
       !description ||
       !coverImage ||
-      !pdfUrl
+      !pdfFile
     ) {
       return NextResponse.json(
         {
@@ -121,7 +121,7 @@ export async function PUT(
     book.slug = newSlug;
     book.description = description;
     book.coverImage = coverImage;
-    book.pdfUrl = pdfUrl;
+    book.pdfFile = pdfFile;
     book.featured = Boolean(featured);
 
     await book.save();

@@ -23,7 +23,7 @@ const BookSchema = new Schema(
       required: true,
     },
 
-    pdfUrl: {
+    pdfFile: {
       type: String,
       required: true,
     },

@@ -57,6 +57,8 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
 
   const userName = profile?.name || session.user?.name || "User";
   const userEmail = profile?.email || session.user?.email || "";
+  
+  const isAdmin = userEmail === "shrivastavashreya071@gmail.com";
 
   const firstName = userName.split(" ")[0];
 
@@ -206,7 +208,7 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
         {/* Navigation */}
         <div className="flex flex-col gap-1 p-2">
           <Link
-            href="/dashboard"
+            href={isAdmin ? "/dashboard" : "/portal"}
             onClick={() => setOpen(false)}
             className="
               flex
@@ -223,29 +225,31 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
             "
           >
             <LayoutDashboard className="mr-3 h-4 w-4 text-[#8B7F74]" />
-            Dashboard
+            {isAdmin ? "Author Dashboard" : "Reader Portal"}
           </Link>
 
-          <Link
-            href="/dashboard/settings"
-            onClick={() => setOpen(false)}
-            className="
-              flex
-              items-center
-              rounded-xl
-              px-3
-              py-2.5
-              text-sm
-              font-medium
-              text-[#5E544C]
-              transition-all
-              hover:bg-[#FBF8F5]
-              hover:text-[#3A332D]
-            "
-          >
-            <Settings className="mr-3 h-4 w-4 text-[#8B7F74]" />
-            Settings
-          </Link>
+          {isAdmin && (
+            <Link
+              href="/dashboard/settings"
+              onClick={() => setOpen(false)}
+              className="
+                flex
+                items-center
+                rounded-xl
+                px-3
+                py-2.5
+                text-sm
+                font-medium
+                text-[#5E544C]
+                transition-all
+                hover:bg-[#FBF8F5]
+                hover:text-[#3A332D]
+              "
+            >
+              <Settings className="mr-3 h-4 w-4 text-[#8B7F74]" />
+              Settings
+            </Link>
+          )}
         </div>
 
         {/* Sign Out */}
