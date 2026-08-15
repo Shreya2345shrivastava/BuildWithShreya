@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Maximize2, Minimize2, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { AmbientPlayer } from "@/components/portal/AmbientPlayer";
 
 export default function ReadOnlinePage() {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -99,6 +100,9 @@ export default function ReadOnlinePage() {
            />
         )}
       </div>
+
+      {/* Floating Ambient Audio Player */}
+      <AmbientPlayer />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 @import "../styles/animations.css";
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .midnight, .dark *, .midnight *));
 @theme inline {
   --color-background: var(--color-bg-ivory);
   --color-foreground: var(--color-text-primary);

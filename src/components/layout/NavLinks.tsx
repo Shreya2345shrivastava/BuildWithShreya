@@ -49,15 +49,19 @@ function NavLink({
         aria-current={active ? "page" : undefined}
         onClick={onNavigate}
         className={cn(
-          "group relative inline-flex items-center px-4 py-2 text-[0.95rem] font-medium tracking-[-0.01em] rounded-full",
+          "group relative inline-flex items-center px-4 py-2 text-[0.95rem] tracking-wide",
           "transition-all duration-300 ease-out",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D8895B] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-ivory)]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-peach)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
           active
-            ? "text-[#3A332D] bg-[#FBF8F5] shadow-sm ring-1 ring-[#E8DED5]/50"
-            : "text-[#5E544C] hover:text-[#3A332D] hover:bg-[#FBF8F5]/50"
+            ? "font-semibold text-[var(--color-text-primary)] dark:text-white"
+            : "font-medium text-[var(--color-text-secondary)] dark:text-white/60 hover:text-[var(--color-text-primary)] dark:hover:text-white"
         )}
       >
         {label}
+        {/* Subtle active indicator dot */}
+        {active && (
+          <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[var(--color-accent-peach)]" />
+        )}
       </Link>
     </li>
   );

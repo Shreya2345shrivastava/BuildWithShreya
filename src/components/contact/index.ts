@@ -1,5 +1,3 @@
-export * from "./ContactHero";
-export * from "./ContactMethods";
-export * from "./ContactForm";
+export * from "./ContactSplitSection";
 export * from "./ContactFAQ";
 export * from "./ContactCTA";

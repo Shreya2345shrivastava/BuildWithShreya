@@ -57,11 +57,11 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
         <nav
           aria-label="Primary"
           className={cn(
-            "flex items-center justify-between rounded-full border transition-all duration-500",
+            "flex items-center justify-between rounded-full transition-all duration-500",
             "px-6 py-4 lg:px-8",
             scrolled
-              ? "border-[var(--color-border-subtle)] bg-[var(--color-navbar-bg-scrolled)] backdrop-blur-2xl shadow-[0_20px_60px_rgba(30,25,20,0.10)]"
-              : "border-[var(--color-border-soft)] bg-[var(--color-navbar-bg)] backdrop-blur-xl shadow-[0_10px_35px_rgba(30,25,20,0.05)]"
+              ? "border border-black/5 dark:border-white/10 bg-white/80 dark:bg-[#0F1211]/80 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
+              : "border border-transparent bg-transparent"
           )}
         >
           {/* Logo */}
@@ -79,12 +79,9 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
           </div>
 
           {/* Right Side */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-6">
             <ThemeToggle />
-
-            <div className="rounded-full border border-[var(--color-border-soft)] bg-[var(--color-surface-elevated)]/70 px-2 py-1 backdrop-blur-sm">
-              <UserMenu profile={profile} />
-            </div>
+            <UserMenu profile={profile} />
 
             {/* CTA */}
             <PrimaryButton
@@ -102,6 +99,7 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
                 duration-300
                 hover:-translate-y-0.5
                 hover:shadow-md
+                hover:scale-105
               "
             >
               Get the Book

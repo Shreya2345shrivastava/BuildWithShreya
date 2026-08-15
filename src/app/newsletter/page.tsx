@@ -4,7 +4,6 @@ import {
   NewsletterHero,
   NewsletterBenefits,
   NewsletterPreview,
-  NewsletterSignup,
 } from "@/components/Newsletter";
 
 export const metadata: Metadata = {
@@ -21,8 +20,6 @@ export default function NewsletterPage() {
       <NewsletterBenefits />
 
       <NewsletterPreview />
-
-      <NewsletterSignup />
     </main>
   );
 }

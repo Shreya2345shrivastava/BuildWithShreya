@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 
 import {
-  ContactHero,
-  ContactMethods,
-  ContactForm,
+  ContactSplitSection,
   ContactFAQ,
   ContactCTA,
 } from "@/components/contact";
@@ -17,9 +15,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <ContactHero />
-      <ContactMethods />
-      <ContactForm />
+      <ContactSplitSection />
       <ContactFAQ />
       <ContactCTA />
     </main>
