@@ -7,7 +7,7 @@ const stats = [
 
 export function AboutStats() {
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
+    <section className="py-32 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[300px] bg-[var(--color-accent-peach)]/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="relative z-10 mx-auto max-w-6xl px-6">
@@ -15,7 +15,7 @@ export function AboutStats() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="group relative flex flex-col items-center justify-center rounded-[2.5rem] border border-black/5 bg-white p-12 text-center shadow-lg transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl"
+              className="group relative flex flex-col items-center justify-center rounded-[2.5rem] border border-black/5 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-12 text-center shadow-lg transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl"
             >
               <h3 className="font-serif text-6xl sm:text-7xl bg-clip-text text-transparent bg-gradient-to-br from-[var(--color-accent-peach)] to-[#D9895B] font-medium tracking-tighter">
                 {stat.value}

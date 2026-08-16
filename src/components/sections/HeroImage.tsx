@@ -15,7 +15,7 @@ export function HeroImage() {
             priority
           />
           {/* Extremely subtle overlay to soften the image slightly for the editorial vibe */}
-          <div className="absolute inset-0 bg-[var(--color-bg-ivory)] mix-blend-color opacity-10 transition-opacity duration-700 group-hover:opacity-0" />
+          <div className="absolute inset-0 bg-[var(--color-bg-ivory)] dark:bg-[#131715] mix-blend-color opacity-10 transition-opacity duration-700 group-hover:opacity-0" />
         </div>
       </FadeIn>
     </div>

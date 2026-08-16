@@ -36,11 +36,11 @@ export default function SamplePage() {
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
           {/* Sidebar / Info */}
-          <div className="w-full lg:w-1/3 bg-white/60 backdrop-blur-md rounded-2xl p-8 border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <div className="w-full lg:w-1/3 bg-[var(--color-surface-elevated)]/60 backdrop-blur-md rounded-2xl p-8 border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             <div className="aspect-[3/4] bg-gradient-to-br from-[#e8efe9] to-[#cbe3d3] rounded-xl mb-6 shadow-inner relative overflow-hidden group">
                {/* Book Cover Placeholder */}
                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                 <div className="w-16 h-16 bg-white/40 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm shadow-sm group-hover:scale-110 transition-transform duration-300">
+                 <div className="w-16 h-16 bg-[var(--color-surface-elevated)]/40 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm shadow-sm group-hover:scale-110 transition-transform duration-300">
                     <span className="text-3xl">📖</span>
                  </div>
                  <h3 className="font-serif text-xl font-semibold text-[#2d3a2f]">First Build It, Then Make It Beautiful</h3>
@@ -77,7 +77,7 @@ export default function SamplePage() {
           </div>
 
           {/* PDF Viewer */}
-          <div className="w-full lg:w-2/3 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.07)] border border-gray-100 overflow-hidden flex flex-col h-[800px]">
+          <div className="w-full lg:w-2/3 bg-[var(--color-surface-elevated)] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.07)] border border-gray-100 overflow-hidden flex flex-col h-[800px]">
             <iframe 
               src="/sample.pdf#toolbar=0" 
               className="w-full h-full border-none"

@@ -39,7 +39,7 @@ export function BookFaq() {
           {faqs.map((faq) => (
             <div
               key={faq.question}
-              className="rounded-[1.5rem] border border-[var(--color-border-soft)] bg-white p-6"
+              className="rounded-[1.5rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6"
             >
               <h3 className="font-medium text-[var(--color-text-primary)]">
                 {faq.question}

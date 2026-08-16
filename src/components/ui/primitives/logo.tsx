@@ -21,7 +21,7 @@ export function Logo({ mode = "light", compact = false, className, ...props }: L
 
 	return (
 		<div className={cn("inline-flex items-center gap-2 font-semibold tracking-tight", className)} {...props}>
-			<span className={cn("inline-flex h-9 w-9 items-center justify-center rounded-full border", isDark ? "border-white/20 bg-white/10 text-[var(--color-text-inverse)]" : "border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] text-[var(--color-accent-peach)]")}>
+			<span className={cn("inline-flex h-9 w-9 items-center justify-center rounded-full border", isDark ? "border-white/20 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10 text-[var(--color-text-inverse)]" : "border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-primary)] text-[var(--color-accent-peach)]")}>
 				<Sprig className="h-5 w-5" />
 			</span>
 			<span className={cn("leading-none", isDark ? "text-[var(--color-text-inverse)]" : "text-[var(--color-text-primary)]")}>

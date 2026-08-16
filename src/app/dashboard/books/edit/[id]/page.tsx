@@ -92,13 +92,13 @@ export default async function EditBookPage({
     <div className="space-y-10">
 
       {/* Header */}
-      <div className="rounded-[40px] border border-[#E8DED5] bg-gradient-to-r from-[#FFFDFB] to-[#F7F1EC] p-10 shadow-sm">
+      <div className="rounded-[40px] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-gradient-to-r from-[#FFFDFB] dark:from-[#242b28] to-[#F7F1EC] dark:to-[#1a2421] p-10 shadow-sm">
 
-        <p className="text-sm uppercase tracking-[5px] text-[#D9895B]">
+        <p className="text-sm uppercase tracking-[5px] text-[var(--color-accent-peach)]">
           Library Collection
         </p>
 
-        <h1 className="mt-3 font-serif text-5xl text-[#3A332D]">
+        <h1 className="mt-3 font-serif text-5xl text-[var(--color-text-primary)]">
           Edit Book
         </h1>
 
@@ -110,7 +110,7 @@ export default async function EditBookPage({
       </div>
 
       {/* Edit Form */}
-      <div className="rounded-[40px] border border-[#E8DED5] bg-white p-10 shadow-sm">
+      <div className="rounded-[40px] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-10 shadow-sm">
 
         <form action={updateBook} className="space-y-8">
 
@@ -118,7 +118,7 @@ export default async function EditBookPage({
           <div>
             <label
               htmlFor="title"
-              className="mb-2 block text-sm font-medium text-[#3A332D]"
+              className="mb-2 block text-sm font-medium text-[var(--color-text-primary)]"
             >
               Book Title
             </label>
@@ -129,7 +129,7 @@ export default async function EditBookPage({
               type="text"
               defaultValue={book.title}
               required
-              className="w-full rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] px-5 py-4 text-[#3A332D] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
+              className="w-full rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] px-5 py-4 text-[var(--color-text-primary)] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
               placeholder="Enter book title"
             />
           </div>
@@ -138,7 +138,7 @@ export default async function EditBookPage({
           <div>
             <label
               htmlFor="slug"
-              className="mb-2 block text-sm font-medium text-[#3A332D]"
+              className="mb-2 block text-sm font-medium text-[var(--color-text-primary)]"
             >
               Slug
             </label>
@@ -149,7 +149,7 @@ export default async function EditBookPage({
               type="text"
               defaultValue={book.slug}
               required
-              className="w-full rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] px-5 py-4 text-[#3A332D] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
+              className="w-full rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] px-5 py-4 text-[var(--color-text-primary)] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
               placeholder="book-slug"
             />
 
@@ -162,7 +162,7 @@ export default async function EditBookPage({
           <div>
             <label
               htmlFor="description"
-              className="mb-2 block text-sm font-medium text-[#3A332D]"
+              className="mb-2 block text-sm font-medium text-[var(--color-text-primary)]"
             >
               Description
             </label>
@@ -173,7 +173,7 @@ export default async function EditBookPage({
               rows={6}
               defaultValue={book.description}
               required
-              className="w-full resize-none rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] px-5 py-4 text-[#3A332D] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
+              className="w-full resize-none rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] px-5 py-4 text-[var(--color-text-primary)] outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
               placeholder="Enter book description"
             />
           </div>
@@ -197,7 +197,7 @@ export default async function EditBookPage({
           </div>
 
           {/* Featured */}
-          <div className="rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] p-5">
+          <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] p-5">
 
             <label className="flex cursor-pointer items-center gap-3">
 
@@ -209,7 +209,7 @@ export default async function EditBookPage({
               />
 
               <div>
-                <p className="font-medium text-[#3A332D]">
+                <p className="font-medium text-[var(--color-text-primary)]">
                   Featured Book
                 </p>
 
@@ -227,14 +227,14 @@ export default async function EditBookPage({
 
             <button
               type="submit"
-              className="rounded-2xl bg-[#D9895B] px-8 py-4 font-medium text-white transition hover:bg-[#C97B4C]"
+              className="rounded-2xl bg-[var(--color-accent-peach)] px-8 py-4 font-medium text-white transition hover:bg-[#C97B4C]"
             >
               Save Changes
             </button>
 
             <Link
               href="/dashboard/books/manage"
-              className="rounded-2xl border border-[#D9895B] px-8 py-4 text-[#D9895B] transition hover:bg-[#FFF7F1]"
+              className="rounded-2xl border border-[#D9895B] px-8 py-4 text-[var(--color-accent-peach)] transition hover:bg-[#FFF7F1] dark:hover:bg-[#2b3330]/50"
             >
               Cancel
             </Link>

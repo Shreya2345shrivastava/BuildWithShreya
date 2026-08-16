@@ -27,7 +27,7 @@ export function PreviewCard({
         overflow-hidden
         rounded-[1.75rem]
         border
-        border-[var(--color-border-soft)]
+        border-[var(--color-border-soft)] dark:border-[#2a332d]
         bg-[var(--color-surface-primary)]
         text-left
         shadow-[0_16px_36px_rgba(32,25,19,0.08)]

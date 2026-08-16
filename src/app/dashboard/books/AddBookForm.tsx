@@ -69,7 +69,7 @@ export default function AddBookForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 bg-white p-6 rounded-xl shadow"
+      className="space-y-4 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 rounded-xl shadow"
     >
       <input
         type="text"

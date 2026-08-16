@@ -38,7 +38,7 @@ export function CheckoutButton({ bookId, price }: { bookId: string; price: numbe
       disabled={loading}
       size="lg"
       leftIcon={<ShoppingCart className="h-5 w-5" />}
-      className="w-full sm:w-auto px-8 py-4 text-base bg-[#3A332D] text-white hover:bg-[#D9895B]"
+      className="w-full sm:w-auto px-8 py-4 text-base bg-[#3A332D] text-white hover:bg-[var(--color-accent-peach)]"
     >
       {loading ? "Processing..." : `Buy Now for $${price}`}
     </Button>

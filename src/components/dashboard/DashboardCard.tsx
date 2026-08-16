@@ -8,7 +8,7 @@ export function DashboardCard({
   value,
 }: Props) {
   return (
-    <div className="rounded-3xl border bg-white p-6">
+    <div className="rounded-3xl border bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6">
       <h3 className="text-sm text-gray-500">
         {title}
       </h3>

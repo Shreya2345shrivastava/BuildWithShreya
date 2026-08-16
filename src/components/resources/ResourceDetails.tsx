@@ -13,7 +13,7 @@ export function ResourceDetails({
     <section className="py-20">
       <div className="mx-auto max-w-5xl px-6">
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-3xl border border-[var(--color-border-soft)] p-8 text-center">
+          <div className="rounded-3xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-8 text-center">
             <p className="text-sm text-[var(--color-text-secondary)]">
               Pages
             </p>
@@ -23,7 +23,7 @@ export function ResourceDetails({
             </h3>
           </div>
 
-          <div className="rounded-3xl border border-[var(--color-border-soft)] p-8 text-center">
+          <div className="rounded-3xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-8 text-center">
             <p className="text-sm text-[var(--color-text-secondary)]">
               Format
             </p>
@@ -33,7 +33,7 @@ export function ResourceDetails({
             </h3>
           </div>
 
-          <div className="rounded-3xl border border-[var(--color-border-soft)] p-8 text-center">
+          <div className="rounded-3xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-8 text-center">
             <p className="text-sm text-[var(--color-text-secondary)]">
               Type
             </p>

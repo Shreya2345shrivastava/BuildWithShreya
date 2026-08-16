@@ -8,6 +8,7 @@ import {
   Settings,
   LogOut,
   ChevronDown,
+  Bell,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -113,7 +114,7 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
             bg-[#FBF8F5]
             text-xs
             font-medium
-            text-[#5E544C]
+            text-[#5E544C] dark:text-[#a0aba5]
             shadow-sm
             transition-transform
             duration-300
@@ -136,7 +137,7 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
 
         {/* Name */}
         <div className="hidden lg:flex flex-col items-start leading-none pr-1">
-          <span className="font-medium text-[#3A332D] text-sm">
+          <span className="font-medium text-[var(--color-text-primary)] text-sm">
             {firstName}
           </span>
         </div>
@@ -153,14 +154,14 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
       {/* Dropdown */}
       <div
         className={cn(
-          "absolute right-0 top-[calc(100%+0.5rem)] w-64 overflow-hidden rounded-2xl border border-[#E8DED5] bg-white/95 backdrop-blur-xl shadow-lg transition-all duration-200 ease-out origin-top-right",
+          "absolute right-0 top-[calc(100%+0.5rem)] w-64 overflow-hidden rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/95 backdrop-blur-xl shadow-lg transition-all duration-200 ease-out origin-top-right",
           open
             ? "scale-100 opacity-100 translate-y-0"
             : "pointer-events-none scale-95 opacity-0 -translate-y-2"
         )}
       >
         {/* User Header */}
-        <div className="border-b border-[#E8DED5]/50 bg-[#FBF8F5]/80 px-5 py-4 backdrop-blur-sm">
+        <div className="border-b border-[var(--color-border-soft)] dark:border-[#2a332d]/50 bg-[#FBF8F5]/80 dark:bg-[#131715]/80 px-5 py-4 backdrop-blur-sm">
           <div className="flex items-center gap-3">
             <div
               className="
@@ -173,10 +174,10 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
                 rounded-full
                 border
                 border-[#ECE2D8]
-                bg-white
+                bg-[var(--color-surface-elevated)] dark:bg-[#242b28]
                 text-sm
                 font-medium
-                text-[#5E544C]
+                text-[#5E544C] dark:text-[#a0aba5]
               "
             >
               {hasImage ? (
@@ -194,7 +195,7 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
             </div>
 
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-[#3A332D]">
+              <p className="truncate text-sm font-medium text-[var(--color-text-primary)]">
                 {userName}
               </p>
 
@@ -218,15 +219,38 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
               py-2.5
               text-sm
               font-medium
-              text-[#5E544C]
+              text-[#5E544C] dark:text-[#a0aba5]
               transition-all
-              hover:bg-[#FBF8F5]
-              hover:text-[#3A332D]
+              hover:bg-[#FBF8F5] dark:hover:bg-[#2b3330]/50
+              hover:text-[var(--color-text-primary)]
             "
           >
             <LayoutDashboard className="mr-3 h-4 w-4 text-[#8B7F74]" />
             {isAdmin ? "Author Dashboard" : "Reader Portal"}
           </Link>
+
+          {isAdmin && (
+            <Link
+              href="/dashboard/notifications"
+              onClick={() => setOpen(false)}
+              className="
+                flex
+                items-center
+                rounded-xl
+                px-3
+                py-2.5
+                text-sm
+                font-medium
+                text-[#5E544C] dark:text-[#a0aba5]
+                transition-all
+                hover:bg-[#FBF8F5] dark:hover:bg-[#2b3330]/50
+                hover:text-[var(--color-text-primary)]
+              "
+            >
+              <Bell className="mr-3 h-4 w-4 text-[#8B7F74]" />
+              Notifications
+            </Link>
+          )}
 
           {isAdmin && (
             <Link
@@ -240,10 +264,10 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
                 py-2.5
                 text-sm
                 font-medium
-                text-[#5E544C]
+                text-[#5E544C] dark:text-[#a0aba5]
                 transition-all
-                hover:bg-[#FBF8F5]
-                hover:text-[#3A332D]
+                hover:bg-[#FBF8F5] dark:hover:bg-[#2b3330]/50
+                hover:text-[var(--color-text-primary)]
               "
             >
               <Settings className="mr-3 h-4 w-4 text-[#8B7F74]" />
@@ -253,7 +277,7 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
         </div>
 
         {/* Sign Out */}
-        <div className="border-t border-[#E8DED5]/50 p-2">
+        <div className="border-t border-[var(--color-border-soft)] dark:border-[#2a332d]/50 p-2">
           <button
             onClick={() =>
               signOut({
@@ -271,7 +295,7 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
               font-medium
               text-[#C97B4C]
               transition-all
-              hover:bg-[#FFF7F1]
+              hover:bg-[#FFF7F1] dark:hover:bg-[#2b3330]/50
             "
           >
             <LogOut className="mr-3 h-4 w-4" />

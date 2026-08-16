@@ -1,6 +1,6 @@
 export function ContactForm() {
   return (
-    <section className="pb-32 bg-[var(--color-bg-ivory)] dark:bg-[#0F1211] transition-colors duration-300">
+    <section className="pb-32 bg-[var(--color-bg-ivory)] dark:bg-[#131715] dark:bg-[#0F1211] transition-colors duration-300">
       <div className="mx-auto max-w-4xl px-6">
         <div className="py-16">
           <div className="mb-16">

@@ -11,7 +11,7 @@ export function FeaturedPost() {
   return (
     <section className="pb-20">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="rounded-[2rem] border border-[var(--color-border-soft)] bg-white p-10">
+        <div className="rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-10">
           <span className="text-sm font-medium text-[var(--color-accent-peach)]">
             FEATURED ARTICLE
           </span>

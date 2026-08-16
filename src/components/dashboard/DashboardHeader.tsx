@@ -12,7 +12,7 @@ export function DashboardHeader({
   email,
 }: Props) {
   return (
-    <header className="border-b bg-white">
+    <header className="border-b bg-[var(--color-surface-elevated)] dark:bg-[#242b28]">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <div>
           <h1 className="text-2xl font-bold">

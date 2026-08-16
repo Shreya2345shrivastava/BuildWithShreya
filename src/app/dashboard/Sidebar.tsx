@@ -55,7 +55,7 @@ export function Sidebar({ profile }: { profile?: { name?: string; image?: string
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-[104px] flex h-[calc(100vh-104px)] w-72 flex-col border-r border-black/[0.04] bg-transparent pb-8 pl-8 pr-6 pt-12">
+    <aside className="sticky top-[104px] flex h-[calc(100vh-104px)] w-72 flex-col border-r border-black/[0.04] dark:border-white/5 bg-transparent pb-8 pl-8 pr-6 pt-12">
       {/* Scrollable Area */}
       <div className="no-scrollbar flex-1 overflow-y-auto">
         
@@ -73,13 +73,13 @@ export function Sidebar({ profile }: { profile?: { name?: string; image?: string
                 href={link.href}
                 className={`group flex items-center gap-3 rounded-[12px] px-3 py-2.5 transition-colors duration-200 ${
                   isActive
-                    ? "bg-black/5 font-medium text-[#3A332D]"
-                    : "text-[#8A837D] hover:bg-black/[0.02] hover:text-[#3A332D]"
+                    ? "bg-black/5 dark:bg-white/10 font-medium text-[var(--color-text-primary)]"
+                    : "text-[var(--color-text-secondary)] hover:bg-black/[0.02] dark:hover:bg-white/[0.05] hover:text-[var(--color-text-primary)]"
                 }`}
               >
                 <span
                   className={`transition-colors ${
-                    isActive ? "text-[#3A332D]" : "text-[#8A837D] group-hover:text-[#3A332D]"
+                    isActive ? "text-[var(--color-text-primary)]" : "text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-primary)]"
                   }`}
                 >
                   {link.icon}
@@ -93,9 +93,9 @@ export function Sidebar({ profile }: { profile?: { name?: string; image?: string
       </div>
 
       {/* Bottom Profile Area */}
-      <div className="mt-8 shrink-0 space-y-4 border-t border-black/[0.04] pt-6">
+      <div className="mt-8 shrink-0 space-y-4 border-t border-black/[0.04] dark:border-white/5 pt-6">
         <div className="flex items-center gap-3 px-3">
-          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-[#ECE2D8] bg-[#FBF8F5] text-sm font-medium text-[#5E544C] shadow-sm">
+          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-[#ECE2D8] dark:border-white/10 bg-[#FBF8F5] dark:bg-white/5 text-sm font-medium text-[var(--color-text-primary)] shadow-sm">
             {profile?.image ? (
               /* eslint-disable-next-line @next/next/no-img-element */
               <img src={profile.image} alt={profile?.name || "User"} className="h-full w-full object-cover" />
@@ -104,8 +104,8 @@ export function Sidebar({ profile }: { profile?: { name?: string; image?: string
             )}
           </div>
           <div className="flex flex-col min-w-0">
-            <span className="truncate text-sm font-medium text-[#3A332D]">{profile?.name || "Admin"}</span>
-            <span className="truncate text-xs text-[#8A837D]">@{profile?.username || "admin"}</span>
+            <span className="truncate text-sm font-medium text-[var(--color-text-primary)]">{profile?.name || "Admin"}</span>
+            <span className="truncate text-xs text-[var(--color-text-secondary)]">@{profile?.username || "admin"}</span>
           </div>
         </div>
         <div className="px-3">

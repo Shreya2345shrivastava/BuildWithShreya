@@ -2,10 +2,10 @@ import { Container, FadeIn } from "@/components/ui";
 
 export function TrustBar() {
   return (
-    <section className="border-b border-black/[0.04] bg-white py-10 overflow-hidden">
+    <section className="border-b border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] py-10 overflow-hidden">
       <Container width="wide">
         <FadeIn delay={0.2} duration={0.6}>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-sm font-medium tracking-widest text-[#8A837D] uppercase sm:text-[0.65rem]">
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-sm font-medium tracking-widest text-[var(--color-text-secondary)] uppercase sm:text-[0.65rem]">
             <div className="flex items-center gap-3">
               <span className="h-1 w-1 rounded-full bg-[var(--color-accent-peach)]"></span>
               5000+ Readers

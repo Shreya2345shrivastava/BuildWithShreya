@@ -24,7 +24,7 @@ export function Sidebar({ profile }: { profile: any }) {
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-[104px] w-[280px] shrink-0 border-r border-black/[0.04] bg-[#FCF8F2] p-6 min-h-[calc(100vh-104px)] flex flex-col">
+    <aside className="sticky top-[104px] w-[280px] shrink-0 border-r border-black/[0.04] bg-[var(--color-bg-ivory)] p-6 min-h-[calc(100vh-104px)] flex flex-col">
       <div className="mb-10 flex items-center gap-4">
         {profile?.image ? (
           <Image
@@ -35,15 +35,15 @@ export function Sidebar({ profile }: { profile: any }) {
             className="rounded-full border border-black/10"
           />
         ) : (
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E8DED5] text-lg font-serif text-[#3A332D]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E8DED5] text-lg font-serif text-[var(--color-text-primary)]">
             {profile?.name?.[0] || profile?.email?.[0] || "U"}
           </div>
         )}
         <div className="flex flex-col">
-          <span className="font-serif text-lg font-medium text-[#3A332D]">
+          <span className="font-serif text-lg font-medium text-[var(--color-text-primary)]">
             {profile?.name || "Reader"}
           </span>
-          <span className="text-xs text-[#8A837D]">Exclusive Member</span>
+          <span className="text-xs text-[var(--color-text-secondary)]">Exclusive Member</span>
         </div>
       </div>
 
@@ -60,8 +60,8 @@ export function Sidebar({ profile }: { profile: any }) {
               href={link.href}
               className={`group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-all ${
                 isActive
-                  ? "bg-white text-[#D9895B] shadow-sm ring-1 ring-black/[0.04]"
-                  : "text-[#8A837D] hover:bg-white/60 hover:text-[#3A332D]"
+                  ? "bg-[var(--color-surface-elevated)] text-[var(--color-accent-peach)] shadow-sm ring-1 ring-black/[0.04]"
+                  : "text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-elevated)]/60 hover:text-[var(--color-text-primary)]"
               }`}
             >
               <div className="flex items-center gap-3">
@@ -69,7 +69,7 @@ export function Sidebar({ profile }: { profile: any }) {
                 {link.label}
               </div>
               {isActive && (
-                <ChevronRight size={16} className="text-[#D9895B]" />
+                <ChevronRight size={16} className="text-[var(--color-accent-peach)]" />
               )}
             </Link>
           );
@@ -79,7 +79,7 @@ export function Sidebar({ profile }: { profile: any }) {
       <div className="mt-10 border-t border-black/[0.04] pt-6">
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
-          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#8A837D] transition-colors hover:bg-white/60 hover:text-[#3A332D]"
+          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-[var(--color-surface-elevated)]/60 hover:text-[var(--color-text-primary)]"
         >
           <LogOut size={18} strokeWidth={1.5} />
           Sign Out

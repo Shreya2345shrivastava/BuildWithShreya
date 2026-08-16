@@ -4,7 +4,7 @@ import { BookCard } from "./BookCard";
 export function BookGrid() {
   if (!books.length) {
     return (
-      <section className="border-t border-[var(--color-border-soft)] py-24">
+      <section className="border-t border-[var(--color-border-soft)] dark:border-[#2a332d] py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="font-serif text-4xl text-[var(--color-text-primary)]">
             New Books Coming Soon
@@ -22,7 +22,7 @@ export function BookGrid() {
   return (
     <section
       id="books-grid"
-      className="border-t border-[var(--color-border-soft)] py-24"
+      className="border-t border-[var(--color-border-soft)] dark:border-[#2a332d] py-24"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 text-center">

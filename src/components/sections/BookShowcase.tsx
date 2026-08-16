@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 
 export default function BookShowcase() {
   return (
-    <section id="featured-book" aria-labelledby="book-showcase-title" className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] py-20 sm:py-28 lg:py-32">
+    <section id="featured-book" aria-labelledby="book-showcase-title" className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-20 sm:py-28 lg:py-32">
       <Container width="wide">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
           
@@ -28,7 +28,7 @@ export default function BookShowcase() {
             </FadeInStaggerItem>
             
             <FadeInStaggerItem>
-              <p className="mt-4 text-xs font-semibold tracking-widest text-[#8A837D] uppercase">
+              <p className="mt-4 text-xs font-semibold tracking-widest text-[var(--color-text-secondary)] uppercase">
                 A gentle guide for creators, dreamers & doers.
               </p>
             </FadeInStaggerItem>

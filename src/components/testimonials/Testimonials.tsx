@@ -55,7 +55,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="border-t border-black/[0.04] bg-[#FCF8F2] py-24 sm:py-32 overflow-hidden"
+      className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-24 sm:py-32 overflow-hidden"
     >
       <div className="mx-auto w-full max-w-7xl px-6">
         <div className="mb-20 flex flex-col items-center text-center">

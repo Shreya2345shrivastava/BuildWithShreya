@@ -51,7 +51,7 @@ export function AmbientPlayer() {
   return (
     <div className={cn(
       "fixed bottom-8 right-8 z-50 flex items-center gap-3 p-2 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-500 backdrop-blur-xl border",
-      theme === 'midnight' ? "bg-[#181D1B]/80 border-[#2A332D]" : "bg-white/80 border-white"
+      theme === 'midnight' ? "bg-[#181D1B]/80 border-[#2A332D]" : "bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/80 border-white"
     )}>
       <audio 
         ref={audioRef} 
@@ -66,7 +66,7 @@ export function AmbientPlayer() {
           onClick={() => setIsExpanded(!isExpanded)}
           className={cn(
             "absolute inset-0 flex items-center justify-center rounded-full transition-all duration-300 z-10",
-            theme === 'midnight' ? "bg-[#242B28] text-[#A8B69D] hover:bg-[#2b3330]" : "bg-[#FCF8F2] text-[#D9895B] hover:bg-[#F5E7DB]"
+            theme === 'midnight' ? "bg-[#242B28] text-[#A8B69D] hover:bg-[#2b3330]" : "bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-accent-peach)] hover:bg-[#F5E7DB]"
           )}
           title="Reading Soundtrack"
         >
@@ -78,11 +78,11 @@ export function AmbientPlayer() {
           <>
             <div className={cn(
               "absolute inset-0 rounded-full animate-ping opacity-20",
-              theme === 'midnight' ? "bg-[#A8B69D]" : "bg-[#D9895B]"
+              theme === 'midnight' ? "bg-[#A8B69D]" : "bg-[var(--color-accent-peach)]"
             )} style={{ animationDuration: '3s' }} />
             <div className={cn(
               "absolute inset-0 rounded-full animate-ping opacity-20 delay-700",
-              theme === 'midnight' ? "bg-[#A8B69D]" : "bg-[#D9895B]"
+              theme === 'midnight' ? "bg-[#A8B69D]" : "bg-[var(--color-accent-peach)]"
             )} style={{ animationDuration: '3s' }} />
           </>
         )}
@@ -97,7 +97,7 @@ export function AmbientPlayer() {
           onClick={togglePlay}
           className={cn(
             "flex items-center justify-center w-8 h-8 rounded-full transition-colors shrink-0",
-            theme === 'midnight' ? "hover:bg-[#2A332D] text-[#E8EFE9]" : "hover:bg-[#F5E7DB] text-[#3A332D]"
+            theme === 'midnight' ? "hover:bg-[#2A332D] text-[#E8EFE9]" : "hover:bg-[#F5E7DB] text-[var(--color-text-primary)]"
           )}
         >
           {isPlaying ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" className="ml-0.5" />}
@@ -108,7 +108,7 @@ export function AmbientPlayer() {
             onClick={toggleMute}
             className={cn(
               "transition-colors shrink-0",
-              theme === 'midnight' ? "text-[#799980] hover:text-[#A8B69D]" : "text-[#8A837D] hover:text-[#D9895B]"
+              theme === 'midnight' ? "text-[#799980] hover:text-[#A8B69D]" : "text-[var(--color-text-secondary)] hover:text-[var(--color-accent-peach)]"
             )}
           >
             {isMuted || volume === 0 ? <VolumeX size={14} /> : <Volume2 size={14} />}
@@ -125,7 +125,7 @@ export function AmbientPlayer() {
             }}
             className={cn(
               "w-full h-1 rounded-full appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full cursor-pointer",
-              theme === 'midnight' ? "bg-[#2A332D] [&::-webkit-slider-thumb]:bg-[#A8B69D]" : "bg-[#EADFD2] [&::-webkit-slider-thumb]:bg-[#D9895B]"
+              theme === 'midnight' ? "bg-[#2A332D] [&::-webkit-slider-thumb]:bg-[#A8B69D]" : "bg-[#EADFD2] [&::-webkit-slider-thumb]:bg-[var(--color-accent-peach)]"
             )}
           />
         </div>

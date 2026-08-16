@@ -13,7 +13,7 @@ export function ImageFrame({ floating = false, className, style, alt, ...props }
 	return (
 		<div
 			className={cn(
-				"overflow-hidden border border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] shadow-[var(--shadow-card)]",
+				"overflow-hidden border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-primary)] shadow-[var(--shadow-card)]",
 				floating && "hover-lift",
 				className,
 			)}

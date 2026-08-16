@@ -22,15 +22,15 @@ export function ResourceCard({
   // Dynamic theming based on resource type for high contrast premium feel
   const t = type.toLowerCase();
   const theme = t.includes('tracker') 
-    ? { bg: 'from-[#D9895B] to-[#B86B42]', icon: Target, shadow: 'shadow-[#D9895B]/40', badge: 'bg-[#D9895B] text-white', accent: 'text-[#D9895B]' }
+    ? { bg: 'from-[#D9895B] to-[#B86B42]', icon: Target, shadow: 'shadow-[#D9895B]/40', badge: 'bg-[var(--color-accent-peach)] text-white', accent: 'text-[var(--color-accent-peach)]' }
     : t.includes('planner')
     ? { bg: 'from-[#6B705C] to-[#4A4E40]', icon: BookOpen, shadow: 'shadow-[#6B705C]/40', badge: 'bg-[#6B705C] text-white', accent: 'text-[#6B705C]' }
-    : { bg: 'from-[#8A837D] to-[#5A5551]', icon: FileText, shadow: 'shadow-[#8A837D]/40', badge: 'bg-[#8A837D] text-white', accent: 'text-[#8A837D]' };
+    : { bg: 'from-[#8A837D] to-[#5A5551]', icon: FileText, shadow: 'shadow-[#8A837D]/40', badge: 'bg-[#8A837D] text-white', accent: 'text-[var(--color-text-secondary)]' };
 
   const Icon = theme.icon;
 
   return (
-    <article className="group relative rounded-[2rem] border border-[#E8DED5]/60 bg-white shadow-[0_15px_40px_rgba(32,25,19,0.04)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(32,25,19,0.1)] flex flex-col h-full">
+    <article className="group relative rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d]/60 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[0_15px_40px_rgba(32,25,19,0.04)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(32,25,19,0.1)] flex flex-col h-full">
       
       {/* High Contrast Image Area */}
       <div className={`relative aspect-[4/3] w-full rounded-t-[2rem] overflow-hidden bg-gradient-to-br ${theme.bg} p-6 flex flex-col items-center justify-center`}>
@@ -42,7 +42,7 @@ export function ResourceCard({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.2)_100%)]" />
         
         {/* High Fidelity Floating Document Mockup */}
-        <div className={`relative z-10 w-36 h-48 bg-white rounded-2xl shadow-2xl ${theme.shadow} flex flex-col items-center justify-center transform group-hover:scale-[1.05] group-hover:-rotate-3 group-hover:-translate-y-2 transition-all duration-700 ease-out`}>
+        <div className={`relative z-10 w-36 h-48 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] rounded-2xl shadow-2xl ${theme.shadow} flex flex-col items-center justify-center transform group-hover:scale-[1.05] group-hover:-rotate-3 group-hover:-translate-y-2 transition-all duration-700 ease-out`}>
            {/* Document Detailing */}
            <div className="absolute top-5 left-5 right-5 h-1.5 bg-gray-100 rounded-full" />
            <div className="absolute top-9 left-5 w-1/2 h-1.5 bg-gray-100 rounded-full" />
@@ -58,7 +58,7 @@ export function ResourceCard({
         </div>
 
         {featured && (
-          <div className="absolute top-4 right-4 rounded-full bg-white/20 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold tracking-widest text-white border border-white/30 shadow-sm flex items-center gap-1.5 z-20">
+          <div className="absolute top-4 right-4 rounded-full bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/20 backdrop-blur-md px-4 py-1.5 text-[10px] font-bold tracking-widest text-white border border-white/30 shadow-sm flex items-center gap-1.5 z-20">
             <Sparkles size={10} className="animate-pulse" />
             FEATURED
           </div>
@@ -66,27 +66,27 @@ export function ResourceCard({
       </div>
 
       {/* Content Area with overlapping negative margin for premium 3D feel */}
-      <div className="px-8 pt-8 pb-8 relative z-20 bg-white rounded-b-[2rem] flex flex-col flex-grow">
+      <div className="px-8 pt-8 pb-8 relative z-20 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] rounded-b-[2rem] flex flex-col flex-grow">
         <p className={`text-[10px] font-bold uppercase tracking-[0.2em] ${theme.accent} mb-3`}>
           {type}
         </p>
 
-        <h3 className="font-serif text-3xl text-[#3A332D] mb-4 group-hover:text-[#D9895B] transition-colors duration-300">
+        <h3 className="font-serif text-3xl text-[var(--color-text-primary)] mb-4 group-hover:text-[var(--color-accent-peach)] transition-colors duration-300">
           {title}
         </h3>
 
-        <p className="leading-relaxed text-[#8A837D] text-sm mb-8 line-clamp-3 flex-grow">
+        <p className="leading-relaxed text-[var(--color-text-secondary)] text-sm mb-8 line-clamp-3 flex-grow">
           {description}
         </p>
 
-        <div className="flex items-center justify-between pt-6 border-t border-[#E8DED5]/50 mt-auto">
-          <span className="text-xl font-serif text-[#3A332D]">
+        <div className="flex items-center justify-between pt-6 border-t border-[var(--color-border-soft)] dark:border-[#2a332d]/50 mt-auto">
+          <span className="text-xl font-serif text-[var(--color-text-primary)]">
             {price}
           </span>
 
           <Link
             href={`/resources/${slug}`}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-[#FCF8F2] text-[#3A332D] group-hover:bg-[#3A332D] group-hover:text-white transition-colors duration-300"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-text-primary)] group-hover:bg-[#3A332D] group-hover:text-white transition-colors duration-300"
           >
             <ArrowUpRight size={18} strokeWidth={2} />
           </Link>

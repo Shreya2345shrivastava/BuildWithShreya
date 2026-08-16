@@ -15,7 +15,7 @@ export function RelatedPosts({
   if (related.length === 0) return null;
 
   return (
-    <section className="mt-24 border-t border-[var(--color-border-soft)] pt-16">
+    <section className="mt-24 border-t border-[var(--color-border-soft)] dark:border-[#2a332d] pt-16">
       <h2 className="font-serif text-4xl text-[var(--color-text-primary)]">
         Related Articles
       </h2>
@@ -25,7 +25,7 @@ export function RelatedPosts({
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="rounded-[1.5rem] border border-[var(--color-border-soft)] p-6"
+            className="rounded-[1.5rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] p-6"
           >
             <h3 className="font-serif text-2xl">
               {post.title}

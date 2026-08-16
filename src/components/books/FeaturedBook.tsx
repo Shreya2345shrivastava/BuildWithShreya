@@ -5,7 +5,7 @@ export function FeaturedBook() {
   return (
     <section className="py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="overflow-hidden rounded-[3rem] border border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] shadow-[0_30px_70px_rgba(32,25,19,0.08)]">
+        <div className="overflow-hidden rounded-[3rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-primary)] shadow-[0_30px_70px_rgba(32,25,19,0.08)]">
           <div className="grid items-center gap-12 p-10 lg:grid-cols-2 lg:p-16">
             <div>
               <span className="text-sm tracking-[0.2em] text-[var(--color-accent-peach)]">

@@ -24,11 +24,11 @@ export default async function BookDetailsPage({ params }: { params: Promise<{ sl
   };
 
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-[var(--color-surface-elevated)] dark:bg-[#242b28] min-h-screen">
        <section className="relative overflow-hidden pt-40 pb-24 sm:pt-48">
           {/* Ambient Background Glows */}
           <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-[#FCF8F2] to-transparent opacity-80" />
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D9895B]/10 rounded-full blur-[120px] mix-blend-multiply" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--color-accent-peach)]/10 rounded-full blur-[120px] mix-blend-multiply" />
           <div className="absolute top-40 left-0 w-[400px] h-[400px] bg-[#FDF8F3] rounded-full blur-[100px]" />
 
           <Container className="relative z-10">
@@ -63,9 +63,9 @@ export default async function BookDetailsPage({ params }: { params: Promise<{ sl
               {/* Right Column: Content (lg:col-span-7) */}
               <div className="lg:col-span-7 flex flex-col pt-8 lg:pt-0">
                 <div className="inline-flex items-center gap-3 mb-6">
-                  <div className="flex items-center gap-1.5 px-3 py-1 bg-[#FCF8F2] rounded-full border border-[#E8DED5]/50">
-                    <BookOpen size={12} className="text-[#D9895B]" />
-                    <span className="text-[10px] font-bold tracking-[0.2em] text-[#D9895B] uppercase">Digital Ebook</span>
+                  <div className="flex items-center gap-1.5 px-3 py-1 bg-[var(--color-bg-ivory)] dark:bg-[#131715] rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d]/50">
+                    <BookOpen size={12} className="text-[var(--color-accent-peach)]" />
+                    <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent-peach)] uppercase">Digital Ebook</span>
                   </div>
                   <div className="flex items-center gap-1 text-amber-500 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
                     <Star size={12} fill="currentColor" />
@@ -73,12 +73,12 @@ export default async function BookDetailsPage({ params }: { params: Promise<{ sl
                   </div>
                 </div>
 
-                <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-[#3A332D] sm:text-6xl lg:text-7xl mb-6">
+                <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-[var(--color-text-primary)] sm:text-6xl lg:text-7xl mb-6">
                   {book.title.split(',')[0]},<br className="hidden sm:block" />
-                  <span className="font-display italic text-[#D9895B] sm:pl-4">{book.title.split(',')[1]?.trim() || book.title}</span>
+                  <span className="font-display italic text-[var(--color-accent-peach)] sm:pl-4">{book.title.split(',')[1]?.trim() || book.title}</span>
                 </h1>
                 
-                <p className="text-sm font-bold tracking-[0.2em] text-[#8A837D] uppercase mb-8 pb-8 border-b border-[#E8DED5]/60 leading-relaxed">
+                <p className="text-sm font-bold tracking-[0.2em] text-[var(--color-text-secondary)] uppercase mb-8 pb-8 border-b border-[var(--color-border-soft)] dark:border-[#2a332d]/60 leading-relaxed">
                   {book.subtitle}
                 </p>
 
@@ -87,20 +87,20 @@ export default async function BookDetailsPage({ params }: { params: Promise<{ sl
                 </div>
 
                 {/* Premium "What you'll learn" Section */}
-                <div className="relative rounded-[2.5rem] border border-[#E8DED5]/60 bg-gradient-to-br from-white to-[#FDF8F3] p-8 sm:p-10 shadow-[0_20px_40px_rgba(217,137,91,0.06)] mb-12 overflow-hidden">
+                <div className="relative rounded-[2.5rem] border border-[var(--color-border-soft)] dark:border-[#2a332d]/60 bg-gradient-to-br from-white to-[#FDF8F3] p-8 sm:p-10 shadow-[0_20px_40px_rgba(217,137,91,0.06)] mb-12 overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#D9895B]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
                   
                   <div className="flex items-center gap-3 mb-8 relative z-10">
-                    <div className="w-10 h-10 rounded-full bg-[#FCF8F2] flex items-center justify-center border border-[#D9895B]/20 shadow-sm">
-                       <Sparkles size={18} className="text-[#D9895B]" />
+                    <div className="w-10 h-10 rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] flex items-center justify-center border border-[#D9895B]/20 shadow-sm">
+                       <Sparkles size={18} className="text-[var(--color-accent-peach)]" />
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#3A332D]">Inside the book:</h3>
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[var(--color-text-primary)]">Inside the book:</h3>
                   </div>
                   
                   <ul className="space-y-5 relative z-10">
                     {book.benefits.map((benefit) => (
                       <li key={benefit} className="flex items-start gap-4 text-[#5A534D]">
-                        <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white shadow-sm border border-[#E8DED5] text-[#D9895B]">
+                        <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-sm border border-[var(--color-border-soft)] dark:border-[#2a332d] text-[var(--color-accent-peach)]">
                           <Check className="h-3 w-3 stroke-[3]" />
                         </div>
                         <span className="leading-relaxed text-[1.05rem]">{benefit}</span>
@@ -110,21 +110,21 @@ export default async function BookDetailsPage({ params }: { params: Promise<{ sl
                 </div>
 
                 {/* Pricing & Checkout Area */}
-                <div className="flex flex-col sm:flex-row items-center gap-6 bg-white p-6 rounded-[2rem] shadow-[0_15px_40px_rgba(32,25,19,0.08)] border border-[#E8DED5] relative z-10">
+                <div className="flex flex-col sm:flex-row items-center gap-6 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 rounded-[2rem] shadow-[0_15px_40px_rgba(32,25,19,0.08)] border border-[var(--color-border-soft)] dark:border-[#2a332d] relative z-10">
                    <div className="flex flex-col text-center sm:text-left min-w-[120px]">
-                     <span className="text-[10px] font-bold text-[#8A837D] uppercase tracking-widest mb-1">Total Price</span>
-                     <span className="font-serif text-4xl text-[#3A332D]">${book.price}</span>
+                     <span className="text-[10px] font-bold text-[var(--color-text-secondary)] uppercase tracking-widest mb-1">Total Price</span>
+                     <span className="font-serif text-4xl text-[var(--color-text-primary)]">${book.price}</span>
                    </div>
                    <div className="hidden sm:block w-px h-16 bg-[#E8DED5]" />
                    <div className="flex-1 w-full flex flex-col justify-center">
                      <CheckoutButton bookId={book.id} price={book.price} />
                      <div className="mt-4 flex items-center justify-center sm:justify-start gap-4 opacity-70">
-                        <div className="flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-widest text-[#8A837D]">
-                          <Check size={10} strokeWidth={3} className="text-[#D9895B]" />
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-widest text-[var(--color-text-secondary)]">
+                          <Check size={10} strokeWidth={3} className="text-[var(--color-accent-peach)]" />
                           Instant Download
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-widest text-[#8A837D]">
-                          <Check size={10} strokeWidth={3} className="text-[#D9895B]" />
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-widest text-[var(--color-text-secondary)]">
+                          <Check size={10} strokeWidth={3} className="text-[var(--color-accent-peach)]" />
                           Secure Payment
                         </div>
                      </div>

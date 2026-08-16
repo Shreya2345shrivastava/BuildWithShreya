@@ -232,11 +232,11 @@ export default function FileUpload({
 
   return (
     <div className="w-full">
-      <label className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-[#3A332D]">
+      <label className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-[var(--color-text-primary)]">
         {type === "coverImage" ? (
-          <ImageIcon size={16} className="text-[#D9895B]" />
+          <ImageIcon size={16} className="text-[var(--color-accent-peach)]" />
         ) : (
-          <FileText size={16} className="text-[#D9895B]" />
+          <FileText size={16} className="text-[var(--color-accent-peach)]" />
         )}
         {displayLabel}
       </label>
@@ -266,8 +266,8 @@ export default function FileUpload({
             rounded-2xl border-2 border-dashed p-10 transition-all duration-300
             ${
               isDragging
-                ? "border-[#D9895B] bg-[#FFF7F1] shadow-lg shadow-[#D9895B]/10"
-                : "border-[#E8DED5] bg-[#FFFDFB] hover:border-[#D9895B]/60 hover:bg-[#FFF7F1]/50 hover:shadow-md"
+                ? "border-[#D9895B] bg-[#FFF7F1] dark:bg-[#2b3330] shadow-lg shadow-[#D9895B]/10"
+                : "border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] dark:bg-[#242b28] hover:border-[#D9895B]/60 hover:bg-[#FFF7F1] dark:hover:bg-[#2b3330]/50/50 dark:hover:bg-[#2b3330]/50 hover:shadow-md"
             }
           `}
           style={{ minHeight: type === "coverImage" ? "220px" : "180px" }}
@@ -277,17 +277,17 @@ export default function FileUpload({
               mb-4 rounded-2xl p-4 transition-all duration-300
               ${
                 isDragging
-                  ? "scale-110 bg-[#D9895B] text-white"
-                  : "bg-[#F7F1EC] text-[#D9895B]"
+                  ? "scale-110 bg-[var(--color-accent-peach)] text-white"
+                  : "bg-[#F7F1EC] dark:bg-[#1a2421] text-[var(--color-accent-peach)]"
               }
             `}
           >
             <UploadCloud size={32} />
           </div>
 
-          <p className="mb-1 text-center font-medium text-[#3A332D]">
+          <p className="mb-1 text-center font-medium text-[var(--color-text-primary)]">
             {isDragging ? (
-              <span className="text-[#D9895B]">Drop your file here</span>
+              <span className="text-[var(--color-accent-peach)]">Drop your file here</span>
             ) : (
               <>
                 Drag & drop your{" "}
@@ -303,8 +303,8 @@ export default function FileUpload({
               inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-200
               ${
                 isDragging
-                  ? "bg-[#D9895B] text-white"
-                  : "bg-[#F7F1EC] text-[#D9895B] hover:bg-[#D9895B] hover:text-white"
+                  ? "bg-[var(--color-accent-peach)] text-white"
+                  : "bg-[#F7F1EC] dark:bg-[#1a2421] text-[var(--color-accent-peach)] hover:bg-[var(--color-accent-peach)] hover:text-white"
               }
             `}
           >
@@ -324,10 +324,10 @@ export default function FileUpload({
 
       {/* ─── UPLOADING STATE ─── */}
       {isUploading && (
-        <div className="overflow-hidden rounded-2xl border border-[#E8DED5] bg-[#FFFDFB]">
+        <div className="overflow-hidden rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] dark:bg-[#242b28]">
           {/* Image preview during upload */}
           {type === "coverImage" && imagePreviewUrl && (
-            <div className="flex items-center justify-center bg-[#F8F4EF] p-6">
+            <div className="flex items-center justify-center bg-[var(--color-surface-secondary)] p-6">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={imagePreviewUrl}
@@ -339,11 +339,11 @@ export default function FileUpload({
 
           <div className="p-6">
             <div className="mb-3 flex items-center gap-3">
-              <div className="flex h-10 w-10 animate-pulse items-center justify-center rounded-xl bg-[#F7F1EC] text-[#D9895B]">
+              <div className="flex h-10 w-10 animate-pulse items-center justify-center rounded-xl bg-[#F7F1EC] dark:bg-[#1a2421] text-[var(--color-accent-peach)]">
                 <UploadCloud size={20} />
               </div>
               <div className="flex-1">
-                <p className="font-medium text-[#3A332D]">
+                <p className="font-medium text-[var(--color-text-primary)]">
                   Uploading{fileName ? ` ${fileName}` : "..."}
                 </p>
                 {fileSize > 0 && (
@@ -352,13 +352,13 @@ export default function FileUpload({
                   </p>
                 )}
               </div>
-              <span className="text-sm font-medium text-[#D9895B]">
+              <span className="text-sm font-medium text-[var(--color-accent-peach)]">
                 {progress}%
               </span>
             </div>
 
             {/* Progress bar */}
-            <div className="h-2 w-full overflow-hidden rounded-full bg-[#F7F1EC]">
+            <div className="h-2 w-full overflow-hidden rounded-full bg-[#F7F1EC] dark:bg-[#1a2421]">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-[#D9895B] to-[#E8A87C] transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
@@ -370,9 +370,9 @@ export default function FileUpload({
 
       {/* ─── UPLOADED STATE: Cover Image ─── */}
       {fileUrl && !isUploading && type === "coverImage" && (
-        <div className="overflow-hidden rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] transition-all duration-300 hover:shadow-md">
+        <div className="overflow-hidden rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] dark:bg-[#242b28] transition-all duration-300 hover:shadow-md">
           {/* Image preview */}
-          <div className="relative bg-[#F8F4EF] p-6">
+          <div className="relative bg-[var(--color-surface-secondary)] p-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={imagePreviewUrl || fileUrl}
@@ -385,7 +385,7 @@ export default function FileUpload({
               <button
                 type="button"
                 onClick={replaceFile}
-                className="flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-[#3A332D] shadow-lg transition-transform hover:scale-105"
+                className="flex items-center gap-2 rounded-xl bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-4 py-2.5 text-sm font-medium text-[var(--color-text-primary)] shadow-lg transition-transform hover:scale-105"
               >
                 <RefreshCw size={14} />
                 Replace
@@ -404,7 +404,7 @@ export default function FileUpload({
           {/* File info */}
           <div className="flex items-center gap-3 border-t border-[#F0E8DF] px-5 py-3.5">
             <CheckCircle2 size={16} className="flex-shrink-0 text-green-500" />
-            <p className="flex-1 truncate text-sm text-[#3A332D]">
+            <p className="flex-1 truncate text-sm text-[var(--color-text-primary)]">
               {fileName || fileUrl.split("/").pop()}
             </p>
             {fileSize > 0 && (
@@ -418,11 +418,11 @@ export default function FileUpload({
 
       {/* ─── UPLOADED STATE: PDF ─── */}
       {fileUrl && !isUploading && type === "pdf" && (
-        <div className="overflow-hidden rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] transition-all duration-300 hover:shadow-md">
+        <div className="overflow-hidden rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] dark:bg-[#242b28] transition-all duration-300 hover:shadow-md">
           <div className="flex items-center gap-4 p-5">
             {/* PDF icon */}
-            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#F7F1EC]">
-              <FileText size={28} className="text-[#D9895B]" />
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#F7F1EC] dark:bg-[#1a2421]">
+              <FileText size={28} className="text-[var(--color-accent-peach)]" />
             </div>
 
             {/* File details */}
@@ -437,7 +437,7 @@ export default function FileUpload({
                 </p>
               </div>
               <p
-                className="mt-1 truncate font-medium text-[#3A332D]"
+                className="mt-1 truncate font-medium text-[var(--color-text-primary)]"
                 title={fileName || fileUrl}
               >
                 {fileName || fileUrl.split("/").pop()}
@@ -454,7 +454,7 @@ export default function FileUpload({
               <button
                 type="button"
                 onClick={replaceFile}
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F7F1EC] text-[#D9895B] transition-all hover:bg-[#D9895B] hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F7F1EC] dark:bg-[#1a2421] text-[var(--color-accent-peach)] transition-all hover:bg-[var(--color-accent-peach)] hover:text-white"
                 title="Replace PDF"
               >
                 <RefreshCw size={16} />
@@ -462,7 +462,7 @@ export default function FileUpload({
               <button
                 type="button"
                 onClick={removeFile}
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F7F1EC] text-gray-500 transition-all hover:bg-red-100 hover:text-red-500"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F7F1EC] dark:bg-[#1a2421] text-gray-500 transition-all hover:bg-red-100 hover:text-red-500"
                 title="Remove PDF"
               >
                 <X size={16} />

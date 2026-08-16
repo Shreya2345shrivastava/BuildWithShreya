@@ -154,3 +154,51 @@ button {
   filter: none;
   transition: filter 1s ease-in-out;
 }
+
+/* ==============================
+   PERFORMANCE OPTIMIZATIONS
+============================== */
+
+/* Hardware accelerate backdrop filters to reduce main-thread lag */
+.backdrop-blur-sm,
+.backdrop-blur-md,
+.backdrop-blur-lg,
+.backdrop-blur-xl,
+.backdrop-blur-2xl,
+.backdrop-blur-3xl,
+.dashboard-card,
+.dashboard-glass {
+  transform: translateZ(0);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Disable expensive filters on mobile devices to guarantee 60fps scrolling */
+@media (max-width: 768px) {
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-3xl {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    /* Adding a slightly more opaque background to maintain readability without blur */
+    background-color: var(--color-surface-elevated) !important;
+  }
+}
+
+
+/* Dark mode overrides */
+.dark .dashboard-card {
+  background: rgba(36,43,40,0.65);
+  border: 1px solid rgba(228,190,173,0.12);
+}
+.dark .dashboard-glass {
+  background: rgba(24,29,27,0.55);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.dark .dashboard-bg {
+  background: radial-gradient(circle at top right, rgba(228,190,173,0.08), transparent 30%), var(--color-bg-ivory);
+}

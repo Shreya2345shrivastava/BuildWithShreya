@@ -23,14 +23,14 @@ const methods = [
 
 export function ContactMethods() {
   return (
-    <section className="py-24 bg-[var(--color-bg-ivory)] dark:bg-[#0F1211] transition-colors duration-300">
+    <section className="py-24 bg-[var(--color-bg-ivory)] dark:bg-[#131715] dark:bg-[#0F1211] transition-colors duration-300">
       <div className="mx-auto max-w-5xl px-6">
         <div className="flex flex-col border-t border-black/10 dark:border-white/10">
           {methods.map((method, idx) => (
             <a
               key={method.title}
               href={method.href}
-              className="group relative flex flex-col sm:flex-row sm:items-center justify-between border-b border-black/10 dark:border-white/10 py-10 transition-colors hover:bg-black/[0.02] dark:hover:bg-white/[0.02] overflow-hidden"
+              className="group relative flex flex-col sm:flex-row sm:items-center justify-between border-b border-black/10 dark:border-white/10 py-10 transition-colors hover:bg-black/[0.02] dark:hover:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/[0.02] overflow-hidden"
             >
               {/* Left Side: Number & Title */}
               <div className="flex items-center gap-6 sm:gap-12 relative z-10">

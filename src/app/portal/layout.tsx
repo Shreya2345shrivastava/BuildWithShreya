@@ -23,7 +23,7 @@ export default async function DashboardLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#FCF8F2] pt-[104px]">
+    <div className="min-h-screen bg-[var(--color-bg-ivory)] pt-[104px]">
       <div className="mx-auto flex max-w-[1600px]">
         {/* Sidebar */}
         <div className="hidden lg:block">

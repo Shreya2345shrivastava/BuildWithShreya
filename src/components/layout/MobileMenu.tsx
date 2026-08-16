@@ -104,7 +104,7 @@ export function MobileMenu({
 				aria-modal="true"
 				aria-label="Mobile navigation"
 				className={cn(
-					"absolute right-0 top-0 flex h-full w-full max-w-[28rem] flex-col border-l border-[var(--color-border-soft)] bg-[rgba(255,250,244,0.96)] backdrop-blur-2xl px-5 pb-6 pt-5 shadow-[0_20px_60px_rgba(32,25,19,0.12)] transition-all duration-500 ease-out",
+					"absolute right-0 top-0 flex h-full w-full max-w-[28rem] flex-col border-l border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[rgba(255,250,244,0.96)] backdrop-blur-2xl px-5 pb-6 pt-5 shadow-[0_20px_60px_rgba(32,25,19,0.12)] transition-all duration-500 ease-out",
 					open
 						? "translate-x-0"
 						: "translate-x-full",
@@ -118,7 +118,7 @@ export function MobileMenu({
 						type="button"
 						onClick={onClose}
 						aria-label="Close menu"
-						className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] text-[var(--color-text-primary)] transition-all duration-300 hover:-translate-y-1 hover:rotate-90 hover:shadow-[0_12px_24px_rgba(32,25,19,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-ivory)]"
+						className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-primary)] text-[var(--color-text-primary)] transition-all duration-300 hover:-translate-y-1 hover:rotate-90 hover:shadow-[0_12px_24px_rgba(32,25,19,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-ivory)]"
 					>
 						<svg
 							viewBox="0 0 24 24"

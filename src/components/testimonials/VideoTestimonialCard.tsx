@@ -96,7 +96,7 @@ export function VideoTestimonialCard({
           <button 
             onClick={toggleMute}
             className={cn(
-              "pointer-events-auto rounded-full p-2 bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300",
+              "pointer-events-auto rounded-full p-2 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10 backdrop-blur-sm border border-white/20 transition-all duration-300",
               isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
             )}
             aria-label={isMuted ? "Unmute" : "Mute"}

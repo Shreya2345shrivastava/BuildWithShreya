@@ -11,12 +11,12 @@ export function TestimonialCard({
     <div
       className="
         flex h-full flex-col items-center text-center
-        rounded-2xl border border-[var(--color-border-soft)]
-        bg-[#FCF8F2]/40
+        rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d]
+        bg-[var(--color-bg-ivory)] dark:bg-[#131715]/40
         p-8
         transition-colors
         duration-300
-        hover:bg-[#FCF8F2]
+        hover:bg-[var(--color-bg-ivory)] dark:bg-[#131715]
       "
     >
       <div className="mb-5 text-4xl leading-none text-[var(--color-accent-peach)] opacity-60">

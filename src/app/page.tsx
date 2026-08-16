@@ -10,7 +10,7 @@ import { Footer } from "@/components/footer/Footer";
 export default function Home() {
   return (
     <>
-      <main className="bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)]">
+      <main className="bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-text-primary)]">
         <Hero />
         <TrustBar />
         <Features />

@@ -5,7 +5,7 @@ export function AboutAuthor() {
   return (
     <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:items-center">
       <div className="flex justify-center lg:justify-start">
-        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-border-soft)] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
           <Image
             src="/images/authors/Author.jpeg"
             alt="Shreya portrait"

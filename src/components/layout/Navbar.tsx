@@ -60,7 +60,7 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
             "flex items-center justify-between rounded-full transition-all duration-500",
             "px-6 py-4 lg:px-8",
             scrolled
-              ? "border border-black/5 dark:border-white/10 bg-white/80 dark:bg-[#0F1211]/80 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
+              ? "border border-black/5 dark:border-white/10 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/80 dark:bg-[#0F1211]/80 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
               : "border border-transparent bg-transparent"
           )}
         >
@@ -122,8 +122,8 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
               justify-center
               rounded-full
               border
-              border-[#E8DED5]
-              bg-white/90
+              border-[var(--color-border-soft)] dark:border-[#2a332d]
+              bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/90
               backdrop-blur-sm
               transition-all
               duration-300

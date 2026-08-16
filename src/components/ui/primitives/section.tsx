@@ -34,7 +34,7 @@ const spacingMap: Record<SectionSpacing, string> = {
 const backgroundMap: Record<SectionBackground, string> = {
 	transparent: "bg-transparent",
 	cream: "bg-[var(--color-bg-cream)]",
-	ivory: "bg-[var(--color-bg-ivory)]",
+	ivory: "bg-[var(--color-bg-ivory)] dark:bg-[#131715]",
 	peach: "bg-[var(--color-bg-peach-tint)]",
 	sage: "bg-[var(--color-bg-sage-tint)]",
 };

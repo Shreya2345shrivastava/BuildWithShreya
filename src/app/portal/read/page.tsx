@@ -37,19 +37,19 @@ export default function ReadOnlinePage() {
     <div className="flex flex-col h-[calc(100vh-140px)] animate-in fade-in duration-700">
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-3xl text-[#3A332D]">Read Online</h1>
+          <h1 className="font-serif text-3xl text-[var(--color-text-primary)]">Read Online</h1>
           <p className="text-[var(--color-text-secondary)]">First Build It, Then Make It Beautiful</p>
         </div>
         
         <div className="flex items-center gap-4">
           {/* Theme Controls */}
           {mounted && (
-            <div className="flex items-center p-1 rounded-full border border-black/[0.04] bg-white shadow-sm">
+            <div className="flex items-center p-1 rounded-full border border-black/[0.04] bg-[var(--color-surface-elevated)] shadow-sm">
               <button
                 onClick={() => setTheme('light')}
                 className={cn(
                   "p-2 rounded-full transition-all duration-300",
-                  theme === 'light' ? "bg-[#FCF8F2] text-[#D9895B] shadow-sm" : "text-[#8A837D] hover:text-[#3A332D]"
+                  theme === 'light' ? "bg-[var(--color-bg-ivory)] text-[var(--color-accent-peach)] shadow-sm" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                 )}
                 title="Light Mode"
               >
@@ -59,7 +59,7 @@ export default function ReadOnlinePage() {
                 onClick={() => setTheme('midnight')}
                 className={cn(
                   "p-2 rounded-full transition-all duration-300",
-                  theme === 'midnight' ? "bg-[#181D1B] text-[#A8B69D] shadow-sm" : "text-[#8A837D] hover:text-[#3A332D]"
+                  theme === 'midnight' ? "bg-[#181D1B] text-[#A8B69D] shadow-sm" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                 )}
                 title="Midnight Mode"
               >
@@ -70,7 +70,7 @@ export default function ReadOnlinePage() {
 
           <button 
             onClick={toggleFullscreen}
-            className="flex items-center gap-2 rounded-full border border-black/[0.04] bg-white px-4 py-2.5 text-sm font-medium text-[#3A332D] shadow-sm transition-all hover:bg-[#FCF8F2]"
+            className="flex items-center gap-2 rounded-full border border-black/[0.04] bg-[var(--color-surface-elevated)] px-4 py-2.5 text-sm font-medium text-[var(--color-text-primary)] shadow-sm transition-all hover:bg-[var(--color-bg-ivory)]"
           >
             {isFullscreen ? (
               <>
@@ -86,7 +86,7 @@ export default function ReadOnlinePage() {
       </div>
 
       <div className={cn(
-        "relative flex-1 overflow-hidden rounded-2xl border bg-white shadow-sm transition-all duration-700",
+        "relative flex-1 overflow-hidden rounded-2xl border bg-[var(--color-surface-elevated)] shadow-sm transition-all duration-700",
         theme === 'midnight' ? "border-[#2A332D] bg-[#0F1211]" : "border-black/[0.04]"
       )}>
         {mounted && (

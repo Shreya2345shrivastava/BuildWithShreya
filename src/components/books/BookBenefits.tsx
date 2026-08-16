@@ -28,8 +28,8 @@ export function BookBenefits({
                 gap-4
                 rounded-[1.5rem]
                 border
-                border-[var(--color-border-soft)]
-                bg-white
+                border-[var(--color-border-soft)] dark:border-[#2a332d]
+                bg-[var(--color-surface-elevated)] dark:bg-[#242b28]
                 p-6
               "
             >

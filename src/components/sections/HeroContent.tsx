@@ -6,7 +6,7 @@ export function HeroContent() {
     <FadeInStagger className="flex flex-col items-center text-center lg:items-start lg:text-left">
       {/* Editorial Navigation Badge */}
       <FadeInStaggerItem>
-        <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-soft)] bg-white/50 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#8A837D] uppercase transition-all duration-300">
+        <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/50 px-4 py-1.5 text-xs font-semibold tracking-widest text-[var(--color-text-secondary)] uppercase transition-all duration-300">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent-peach)]"></span> Build With Shreya
         </span>
       </FadeInStaggerItem>

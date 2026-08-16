@@ -3,7 +3,7 @@ import { SocialLinks } from "./SocialLinks";
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border-soft)] bg-[var(--color-bg-ivory)]">
+    <footer className="border-t border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-bg-ivory)] dark:bg-[#131715]">
       <div className="mx-auto w-full max-w-7xl px-6 py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           <div>
@@ -25,7 +25,7 @@ export function Footer() {
           <FooterLinks />
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-[var(--color-border-soft)] pt-8 text-sm text-[var(--color-text-secondary)] md:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-[var(--color-border-soft)] dark:border-[#2a332d] pt-8 text-sm text-[var(--color-text-secondary)] md:flex-row">
           <p>© 2026 BuildWithShreya. All rights reserved.</p>
           <div className="flex items-center gap-1">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent-peach)]"></span>

@@ -25,7 +25,7 @@ export function BookCard({
         overflow-hidden
         rounded-[2rem]
         border
-        border-[var(--color-border-soft)]
+        border-[var(--color-border-soft)] dark:border-[#2a332d]
         bg-[var(--color-surface-primary)]
         shadow-sm
         transition-all

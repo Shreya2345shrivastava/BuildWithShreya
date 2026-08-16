@@ -16,7 +16,7 @@ export function ResourceBenefits({
           {benefits.map((benefit) => (
             <div
               key={benefit}
-              className="rounded-3xl border border-[var(--color-border-soft)] p-6"
+              className="rounded-3xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-6"
             >
               <div className="flex items-center gap-3">
                 <span className="text-[var(--color-accent-peach)]">

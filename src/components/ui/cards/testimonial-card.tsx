@@ -28,7 +28,7 @@ export function TestimonialCard({ quote, name, location, avatar, rating = 5, cla
 			<Stars rating={rating} />
 			<blockquote className="text-body-large text-[var(--color-text-primary)]">“{quote}”</blockquote>
 			<div className="mt-auto flex items-center gap-3">
-				{avatar ? <div className="h-12 w-12 overflow-hidden rounded-full border border-[var(--color-border-soft)]">{avatar}</div> : null}
+				{avatar ? <div className="h-12 w-12 overflow-hidden rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d]">{avatar}</div> : null}
 				<div>
 					<p className="text-button text-[var(--color-text-primary)]">{name}</p>
 					{location ? <p className="text-caption text-[var(--color-text-secondary)]">{location}</p> : null}

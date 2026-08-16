@@ -2,7 +2,7 @@ import { CheckCircle2, Star, Mail } from "lucide-react";
 
 export function NewsletterPreview() {
   return (
-    <section className="relative py-32 bg-white overflow-hidden">
+    <section className="relative py-32 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--color-accent-sage)]/10 blur-[100px] rounded-full pointer-events-none" />
 
@@ -24,7 +24,7 @@ export function NewsletterPreview() {
 
         {/* Right Side: Mock Inbox 3D UI */}
         <div className="flex-1 w-full perspective-[2000px]">
-          <div className="relative mx-auto max-w-md transform-gpu rotate-y-[-12deg] rotate-x-[5deg] rounded-3xl border border-black/5 bg-white p-2 shadow-2xl transition-transform duration-700 hover:rotate-y-0 hover:rotate-x-0 hover:scale-105">
+          <div className="relative mx-auto max-w-md transform-gpu rotate-y-[-12deg] rotate-x-[5deg] rounded-3xl border border-black/5 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-2 shadow-2xl transition-transform duration-700 hover:rotate-y-0 hover:rotate-x-0 hover:scale-105">
             {/* Browser/Email Header */}
             <div className="flex items-center gap-2 rounded-t-2xl bg-gray-50/50 px-4 py-3 border-b border-gray-100">
               <div className="flex gap-1.5">
@@ -32,7 +32,7 @@ export function NewsletterPreview() {
                 <div className="h-3 w-3 rounded-full bg-amber-400" />
                 <div className="h-3 w-3 rounded-full bg-green-400" />
               </div>
-              <div className="ml-4 flex-1 rounded-md bg-white px-3 py-1 text-xs text-gray-400 shadow-sm border border-gray-100">
+              <div className="ml-4 flex-1 rounded-md bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-3 py-1 text-xs text-gray-400 shadow-sm border border-gray-100">
                 From: Shreya &lt;hello@buildwithshreya.com&gt;
               </div>
             </div>

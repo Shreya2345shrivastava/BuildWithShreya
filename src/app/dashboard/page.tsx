@@ -1,6 +1,4 @@
-"use client";
-
-import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { 
   BookOpen, 
@@ -11,23 +9,28 @@ import {
   PlusCircle,
   Send
 } from "lucide-react";
+import { connectDB } from "@/lib/mongodb";
+import { Book } from "@/models/Book";
 
-
-export default function DashboardOverview() {
-  const { data: session } = useSession();
+export default async function DashboardOverview() {
+  const session = await getServerSession();
   const currentDate = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+
+  await connectDB();
+  const totalBooks = await Book.countDocuments();
+  const recentBooks = await Book.find().sort({ createdAt: -1 }).limit(4);
 
   return (
     <div className="space-y-12">
       {/* Hero Section */}
       <div className="flex flex-col gap-2">
-        <p className="text-sm font-medium uppercase tracking-widest text-[#D9895B]">
+        <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-accent-peach)]">
           {currentDate}
         </p>
-        <h1 className="font-serif text-4xl text-[#3A332D]">
+        <h1 className="font-serif text-4xl text-[var(--color-text-primary)]">
           Good morning, {session?.user?.name || "Shreya"}.
         </h1>
-        <p className="max-w-2xl text-lg text-[#8A837D]">
+        <p className="max-w-2xl text-lg text-[var(--color-text-secondary)]">
           Here&apos;s what&apos;s happening with your platform today.
         </p>
       </div>
@@ -35,24 +38,24 @@ export default function DashboardOverview() {
       {/* Metrics Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { label: "Total Books", value: "4", icon: BookOpen, trend: "+1 this month" },
-          { label: "Resources", value: "12", icon: FileText, trend: "+3 this month" },
-          { label: "Blog Posts", value: "28", icon: PenTool, trend: "2 drafts pending" },
-          { label: "Subscribers", value: "12,450", icon: Users, trend: "+450 this week" },
+          { label: "Total Books", value: totalBooks.toString(), icon: BookOpen, trend: "Real-time from DB" },
+          { label: "Resources", value: "0", icon: FileText, trend: "Coming soon" },
+          { label: "Blog Posts", value: "0", icon: PenTool, trend: "Coming soon" },
+          { label: "Subscribers", value: "0", icon: Users, trend: "Coming soon" },
         ].map((metric) => (
-          <div key={metric.label} className="flex flex-col justify-between rounded-2xl border border-black/[0.04] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
+          <div key={metric.label} className="flex flex-col justify-between rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
             <div className="flex items-start justify-between">
-              <div className="rounded-xl bg-[#FCF8F2] p-3 text-[#D9895B]">
+              <div className="rounded-xl bg-[var(--color-bg-ivory)] dark:bg-[#131715] p-3 text-[var(--color-accent-peach)]">
                 <metric.icon size={20} strokeWidth={1.5} />
               </div>
-              <ArrowUpRight size={16} className="text-[#8A837D]" />
+              <ArrowUpRight size={16} className="text-[var(--color-text-secondary)]" />
             </div>
             <div className="mt-4">
-              <h3 className="text-3xl font-serif text-[#3A332D]">{metric.value}</h3>
-              <p className="text-sm font-medium text-[#8A837D]">{metric.label}</p>
+              <h3 className="text-3xl font-sans font-semibold tracking-tight text-[var(--color-text-primary)]">{metric.value}</h3>
+              <p className="text-sm font-medium text-[var(--color-text-secondary)]">{metric.label}</p>
             </div>
-            <div className="mt-4 border-t border-black/[0.04] pt-4">
-              <p className="text-xs font-medium text-[#3A332D]">{metric.trend}</p>
+            <div className="mt-4 border-t border-[var(--color-border-soft)] dark:border-[#2a332d] pt-4">
+              <p className="text-xs font-medium text-[var(--color-text-primary)]">{metric.trend}</p>
             </div>
           </div>
         ))}
@@ -61,32 +64,35 @@ export default function DashboardOverview() {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_350px]">
         {/* Activity Feed */}
         <div className="space-y-6">
-          <h2 className="font-serif text-2xl text-[#3A332D]">Recent Activity</h2>
-          <div className="rounded-2xl border border-black/[0.04] bg-white shadow-sm">
+          <h2 className="font-serif text-2xl text-[var(--color-text-primary)]">Recent Activity</h2>
+          <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-sm">
             <div className="flex flex-col">
-              {[
-                { title: "Published a new blog post", time: "2 hours ago", icon: PenTool },
-                { title: "Sent newsletter 'Design Systems'", time: "Yesterday", icon: Send },
-                { title: "Added new resource 'Figma Kit'", time: "3 days ago", icon: FileText },
-                { title: "Updated book 'The Calm Creator'", time: "Last week", icon: BookOpen },
-              ].map((activity, i) => (
-                <div key={i} className="flex items-center gap-4 border-b border-black/[0.04] p-5 last:border-0">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FCF8F2] text-[#D9895B]">
-                    <activity.icon size={16} strokeWidth={1.5} />
+              {recentBooks.length > 0 ? recentBooks.map((book: any, i: number) => {
+                const days = Math.floor((new Date().getTime() - new Date(book.createdAt).getTime()) / (1000 * 60 * 60 * 24));
+                const timeAgo = days === 0 ? "Today" : days === 1 ? "Yesterday" : `${days} days ago`;
+                return (
+                  <div key={i} className="flex items-center gap-4 border-b border-[var(--color-border-soft)] dark:border-[#2a332d] p-5 last:border-0">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-accent-peach)]">
+                      <BookOpen size={16} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-[var(--color-text-primary)]">Added book &apos;{book.title}&apos;</p>
+                      <p className="text-xs text-[var(--color-text-secondary)]">{timeAgo}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-[#3A332D]">{activity.title}</p>
-                    <p className="text-xs text-[#8A837D]">{activity.time}</p>
-                  </div>
+                );
+              }) : (
+                <div className="p-8 text-center text-sm text-[var(--color-text-secondary)]">
+                  No recent activity found.
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
 
         {/* Quick Actions */}
         <div className="space-y-6">
-          <h2 className="font-serif text-2xl text-[#3A332D]">Quick Actions</h2>
+          <h2 className="font-serif text-2xl text-[var(--color-text-primary)]">Quick Actions</h2>
           <div className="flex flex-col gap-3">
             {[
               { label: "Write Blog Post", href: "/dashboard/blogs", icon: PenTool },
@@ -97,13 +103,13 @@ export default function DashboardOverview() {
               <Link
                 key={action.label}
                 href={action.href}
-                className="group flex items-center justify-between rounded-2xl border border-black/[0.04] bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]"
+                className="group flex items-center justify-between rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]"
               >
                 <div className="flex items-center gap-3">
-                  <action.icon size={18} className="text-[#8A837D] transition-colors group-hover:text-[#D9895B]" strokeWidth={1.5} />
-                  <span className="text-sm font-medium text-[#3A332D]">{action.label}</span>
+                  <action.icon size={18} className="text-[var(--color-text-secondary)] transition-colors group-hover:text-[var(--color-accent-peach)]" strokeWidth={1.5} />
+                  <span className="text-sm font-medium text-[var(--color-text-primary)]">{action.label}</span>
                 </div>
-                <ArrowUpRight size={16} className="text-[#8A837D] opacity-0 transition-all group-hover:opacity-100" />
+                <ArrowUpRight size={16} className="text-[var(--color-text-secondary)] opacity-0 transition-all group-hover:opacity-100" />
               </Link>
             ))}
           </div>

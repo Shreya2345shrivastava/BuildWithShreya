@@ -12,7 +12,7 @@ export default async function BlogsPage({
   const blogs = await getBlogs(query || "", status || "All Posts");
 
   return (
-    <Suspense fallback={<div className="flex h-64 items-center justify-center text-[#8A837D]">Loading articles...</div>}>
+    <Suspense fallback={<div className="flex h-64 items-center justify-center text-[var(--color-text-secondary)]">Loading articles...</div>}>
       <BlogClient initialBlogs={blogs} />
     </Suspense>
   );

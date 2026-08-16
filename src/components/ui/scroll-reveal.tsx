@@ -46,7 +46,8 @@ export function FadeIn({
         delay: delay,
         ease: [0.21, 0.47, 0.32, 0.98], // Custom ease for smooth cinematic feel
       }}
-      className={className}
+      className={cn("will-change-transform", className)}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </motion.div>
@@ -112,7 +113,8 @@ export function FadeInStaggerItem({
         hidden: { opacity: 0, ...directionOffset[direction] },
         visible: { opacity: 1, y: 0, x: 0, transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] } },
       }}
-      className={className}
+      className={cn("will-change-transform", className)}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </motion.div>
@@ -140,7 +142,7 @@ export function ParallaxBackground({
 
   return (
     <div ref={ref} className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
-      <motion.div style={{ y }} className="w-full h-full">
+      <motion.div style={{ y }} className="w-full h-full will-change-transform [transform:translateZ(0)]">
         {children}
       </motion.div>
     </div>

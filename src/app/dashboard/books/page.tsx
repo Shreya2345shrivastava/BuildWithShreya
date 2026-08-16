@@ -99,12 +99,12 @@ export default function AddBookPage() {
   return (
     <div className="space-y-10">
       {/* Header */}
-      <div className="rounded-[32px] border border-[#E8DED5] bg-gradient-to-r from-[#FFFDFB] to-[#F8F4EF] p-10">
-        <p className="text-sm uppercase tracking-[0.3em] text-[#D9895B]">
+      <div className="rounded-[32px] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-gradient-to-r from-[#FFFDFB] dark:from-[#242b28] to-[#F8F4EF] dark:to-[#1a2421] p-10">
+        <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-accent-peach)]">
           Publishing Studio
         </p>
 
-        <h1 className="mt-3 font-serif text-5xl text-[#3A332D]">
+        <h1 className="mt-3 font-serif text-5xl text-[var(--color-text-primary)]">
           Add New Book
         </h1>
 
@@ -118,11 +118,11 @@ export default function AddBookPage() {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="rounded-[32px] border border-[#E8DED5] bg-white p-8"
+          className="rounded-[32px] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-8"
         >
           <div className="space-y-6">
             <div>
-              <label className="mb-2 block text-sm font-medium text-[#3A332D]">
+              <label className="mb-2 block text-sm font-medium text-[var(--color-text-primary)]">
                 Book Title
               </label>
 
@@ -133,12 +133,12 @@ export default function AddBookPage() {
                 onChange={handleChange}
                 required
                 placeholder="Build Your Dream Life"
-                className="w-full rounded-2xl border border-[#E8DED5] px-5 py-4 outline-none focus:border-[#D9895B]"
+                className="w-full rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] px-5 py-4 outline-none focus:border-[#D9895B]"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-[#3A332D]">
+              <label className="mb-2 block text-sm font-medium text-[var(--color-text-primary)]">
                 Slug
               </label>
 
@@ -148,12 +148,12 @@ export default function AddBookPage() {
                 value={form.slug}
                 onChange={handleChange}
                 required
-                className="w-full rounded-2xl border border-[#E8DED5] px-5 py-4 outline-none focus:border-[#D9895B]"
+                className="w-full rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] px-5 py-4 outline-none focus:border-[#D9895B]"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-[#3A332D]">
+              <label className="mb-2 block text-sm font-medium text-[var(--color-text-primary)]">
                 Description
               </label>
 
@@ -163,7 +163,7 @@ export default function AddBookPage() {
                 value={form.description}
                 onChange={handleChange}
                 required
-                className="w-full rounded-2xl border border-[#E8DED5] px-5 py-4 outline-none focus:border-[#D9895B]"
+                className="w-full rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] px-5 py-4 outline-none focus:border-[#D9895B]"
               />
             </div>
 
@@ -193,7 +193,7 @@ export default function AddBookPage() {
               }
             />
 
-            <label className="flex items-center gap-3 rounded-2xl border border-[#E8DED5] p-4">
+            <label className="flex items-center gap-3 rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-4">
               <input
                 type="checkbox"
                 checked={form.featured}
@@ -205,7 +205,7 @@ export default function AddBookPage() {
                 }
               />
 
-              <span className="text-[#3A332D]">
+              <span className="text-[var(--color-text-primary)]">
                 Feature this book on homepage
               </span>
             </label>
@@ -213,7 +213,7 @@ export default function AddBookPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-2xl bg-[#D9895B] py-4 font-medium text-white transition hover:bg-[#C97B4C] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full rounded-2xl bg-[var(--color-accent-peach)] py-4 font-medium text-white transition hover:bg-[#C97B4C] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading
                 ? "Publishing..."
@@ -224,8 +224,8 @@ export default function AddBookPage() {
 
         {/* Live Preview */}
         <div className="sticky top-6">
-          <div className="overflow-hidden rounded-[32px] border border-[#E8DED5] bg-white">
-            <div className="bg-[#F8F4EF] p-8">
+          <div className="overflow-hidden rounded-[32px] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28]">
+            <div className="bg-[var(--color-surface-secondary)] p-8">
               {form.coverImage ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -234,18 +234,18 @@ export default function AddBookPage() {
                   className="mx-auto h-80 w-auto object-contain rounded-lg"
                 />
               ) : (
-                <div className="flex h-80 items-center justify-center rounded-2xl border border-dashed border-[#E8DED5] text-gray-400">
+                <div className="flex h-80 items-center justify-center rounded-2xl border border-dashed border-[var(--color-border-soft)] dark:border-[#2a332d] text-gray-400">
                   Cover Preview
                 </div>
               )}
             </div>
 
             <div className="p-6">
-              <h2 className="font-serif text-3xl text-[#3A332D]">
+              <h2 className="font-serif text-3xl text-[var(--color-text-primary)]">
                 {form.title || "Book Title"}
               </h2>
 
-              <p className="mt-2 text-[#D9895B]">
+              <p className="mt-2 text-[var(--color-accent-peach)]">
                 /{form.slug || "book-slug"}
               </p>
 
@@ -255,7 +255,7 @@ export default function AddBookPage() {
               </p>
 
               {form.featured && (
-                <div className="mt-5 inline-flex rounded-full bg-[#FCE8D8] px-4 py-2 text-sm text-[#D9895B]">
+                <div className="mt-5 inline-flex rounded-full bg-[#FCE8D8] px-4 py-2 text-sm text-[var(--color-accent-peach)]">
                   ✨ Featured Book
                 </div>
               )}

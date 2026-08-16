@@ -64,12 +64,12 @@ export default function CheckoutPage() {
                   </div>
                   <div className="flex space-x-2 opacity-70">
                     {/* Mock Card Icons */}
-                    <div className="w-10 h-6 bg-white border border-gray-200 rounded flex items-center justify-center text-[10px] font-bold text-blue-800">VISA</div>
-                    <div className="w-10 h-6 bg-white border border-gray-200 rounded flex items-center justify-center">
+                    <div className="w-10 h-6 bg-[var(--color-surface-elevated)] border border-gray-200 rounded flex items-center justify-center text-[10px] font-bold text-blue-800">VISA</div>
+                    <div className="w-10 h-6 bg-[var(--color-surface-elevated)] border border-gray-200 rounded flex items-center justify-center">
                       <div className="w-3 h-3 bg-red-500 rounded-full mix-blend-multiply" />
                       <div className="w-3 h-3 bg-yellow-400 rounded-full mix-blend-multiply -ml-1" />
                     </div>
-                    <div className="w-10 h-6 bg-white border border-gray-200 rounded flex items-center justify-center text-[10px] font-bold text-blue-500">UPI</div>
+                    <div className="w-10 h-6 bg-[var(--color-surface-elevated)] border border-gray-200 rounded flex items-center justify-center text-[10px] font-bold text-blue-500">UPI</div>
                   </div>
                 </div>
                 <p className="text-sm text-[var(--color-text-secondary)] mt-4 flex items-start">

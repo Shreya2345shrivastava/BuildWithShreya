@@ -7,10 +7,10 @@ export function Hero() {
     <section
       data-section="hero"
       aria-labelledby="hero-title"
-      className="relative flex min-h-[85vh] items-center bg-[var(--color-bg-ivory)] pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 border-b border-black/[0.04] overflow-hidden"
+      className="relative flex min-h-[85vh] items-center bg-[var(--color-bg-ivory)] dark:bg-[#131715] pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 border-b border-black/[0.04] overflow-hidden"
     >
-      <ParallaxBackground offset={150} className="opacity-60 mix-blend-multiply">
-        <BotanicalDecoration variant="watercolor-blob" className="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] text-[#F9E5D9]" />
+      <ParallaxBackground offset={150} className="opacity-40">
+        <BotanicalDecoration variant="watercolor-blob" className="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] text-[#E0CDBF]" />
         <BotanicalDecoration variant="watercolor-blob" className="absolute top-[20%] -right-[20%] w-[1000px] h-[1000px] text-[#E8EDEB]" />
       </ParallaxBackground>
 

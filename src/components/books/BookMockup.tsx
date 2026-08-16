@@ -27,7 +27,7 @@ export function BookMockup({ className, visible = true }: BookMockupProps) {
           <div className="relative mt-3 overflow-hidden rounded-[1.6rem] border border-[color-mix(in_srgb,var(--color-border-soft)_80%,transparent)] bg-[linear-gradient(180deg,#fffaf4_0%,#f7efe6_100%)] p-4 sm:p-5">
             <div aria-hidden="true" className="absolute left-1/2 top-0 h-20 w-2/3 -translate-x-1/2 rounded-full bg-[rgba(217,164,143,0.14)] blur-3xl" />
             <div className="relative mb-4 flex items-center justify-center"><div className="h-1.5 w-24 rounded-full bg-[rgba(32,25,19,0.09)]" /></div>
-            <div className="relative overflow-hidden rounded-[1.35rem] border border-[color-mix(in_srgb,var(--color-border-soft)_78%,transparent)] bg-[var(--color-bg-ivory)] shadow-[0_20px_40px_rgba(32,25,19,0.14)]">
+            <div className="relative overflow-hidden rounded-[1.35rem] border border-[color-mix(in_srgb,var(--color-border-soft)_78%,transparent)] bg-[var(--color-bg-ivory)] dark:bg-[#131715] shadow-[0_20px_40px_rgba(32,25,19,0.14)]">
               <Image src="/images/books/book-cover.jpeg" alt="Book cover for Build it. Then make it Beautiful." width={960} height={1440} priority sizes="(max-width: 640px) 78vw, (max-width: 1024px) 60vw, 440px" className="h-auto w-full object-contain" />
             </div>
           </div>

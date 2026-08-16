@@ -29,28 +29,31 @@ export default async function BooksPage() {
   const data = await getBooks();
 
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-[var(--color-bg-ivory)] dark:bg-[#131715] min-h-screen transition-colors duration-300">
       {/* Cinematic Hero Section */}
       <section className="relative overflow-hidden pt-40 pb-20 sm:pt-48 sm:pb-32">
-        {/* Premium Background Accents */}
-        <div className="absolute top-0 inset-x-0 h-96 bg-gradient-to-b from-[#FCF8F2] to-transparent opacity-80" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D9895B]/10 rounded-full blur-[120px] mix-blend-multiply" />
+        {/* Immersive Glowing Orbs */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[var(--color-accent-peach)]/10 dark:bg-[var(--color-accent-peach)]/20 blur-[150px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[var(--color-accent-sage)]/20 dark:bg-[#2A332D]/40 blur-[150px] rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3" />
+        
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         
         <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
           <div className="inline-flex items-center gap-4 mb-8">
-            <div className="h-px w-8 bg-[#D9895B]/60" />
-            <span className="text-sm font-bold tracking-[0.3em] text-[#D9895B] uppercase">
+            <div className="h-px w-8 bg-[var(--color-accent-peach)]/60" />
+            <span className="text-sm font-bold tracking-[0.3em] text-[var(--color-accent-peach)] uppercase">
               Digital Library
             </span>
-            <div className="h-px w-8 bg-[#D9895B]/60" />
+            <div className="h-px w-8 bg-[var(--color-accent-peach)]/60" />
           </div>
 
-          <h1 className="font-serif text-6xl sm:text-7xl lg:text-8xl text-[#3A332D] mb-8 tracking-tight leading-[1.05]">
+          <h1 className="font-serif text-6xl sm:text-7xl lg:text-8xl text-[var(--color-text-primary)] mb-8 tracking-tight leading-[1.05]">
             Ideas You Can <br className="hidden sm:block" />
-            <span className="italic text-[#D9895B]">Actually Build.</span>
+            <span className="italic text-[var(--color-accent-peach)]">Actually Build.</span>
           </h1>
 
-          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-[#8A837D] font-light">
+          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-[var(--color-text-secondary)] font-light">
             Explore premium ebooks and guides beautifully designed to help you gain clarity, build habits, and take real action.
           </p>
         </div>
@@ -63,7 +66,7 @@ export default async function BooksPage() {
             {data.books.map((book: IBook) => (
               <article
                 key={book._id}
-                className="group relative rounded-[2rem] border border-[#E8DED5]/60 bg-white shadow-[0_15px_40px_rgba(32,25,19,0.04)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(32,25,19,0.1)] flex flex-col h-full"
+                className="group relative rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d]/60 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[0_15px_40px_rgba(32,25,19,0.04)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(32,25,19,0.1)] flex flex-col h-full"
               >
                 {/* Image Area with Premium Backdrop */}
                 <div className="relative aspect-[4/5] w-full rounded-t-[2rem] overflow-hidden bg-gradient-to-br from-[#FDF8F3] to-[#F5ECE5] p-8 flex flex-col items-center justify-center">
@@ -86,29 +89,29 @@ export default async function BooksPage() {
                 </div>
 
                 {/* Content Area */}
-                <div className="px-8 pt-8 pb-8 relative z-20 bg-white rounded-b-[2rem] flex flex-col flex-grow">
+                <div className="px-8 pt-8 pb-8 relative z-20 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] rounded-b-[2rem] flex flex-col flex-grow">
                   <div className="flex items-center gap-2 mb-4">
-                    <BookOpen size={14} className="text-[#D9895B]" />
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D9895B]">
+                    <BookOpen size={14} className="text-[var(--color-accent-peach)]" />
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-accent-peach)]">
                       Ebook
                     </p>
                   </div>
 
-                  <h3 className="font-serif text-3xl text-[#3A332D] mb-4 group-hover:text-[#D9895B] transition-colors duration-300">
+                  <h3 className="font-serif text-3xl text-[var(--color-text-primary)] mb-4 group-hover:text-[var(--color-accent-peach)] transition-colors duration-300">
                     {book.title}
                   </h3>
 
-                  <p className="leading-relaxed text-[#8A837D] text-sm mb-8 line-clamp-3 flex-grow">
+                  <p className="leading-relaxed text-[var(--color-text-secondary)] text-sm mb-8 line-clamp-3 flex-grow">
                     {book.description}
                   </p>
 
-                  <div className="flex items-center justify-between pt-6 border-t border-[#E8DED5]/50 mt-auto">
+                  <div className="flex items-center justify-between pt-6 border-t border-[var(--color-border-soft)] dark:border-[#2a332d]/50 mt-auto">
                     <Link
                       href={`/books/${book.slug}`}
-                      className="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-[#D9895B] group-hover:text-[#B86B42] transition-colors"
+                      className="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-[var(--color-accent-peach)] group-hover:text-[#B86B42] transition-colors"
                     >
                       Read Details
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#FCF8F2] group-hover:bg-[#D9895B] group-hover:text-white transition-colors duration-300">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] group-hover:bg-[var(--color-accent-peach)] group-hover:text-white transition-colors duration-300">
                         <ArrowUpRight size={16} strokeWidth={2} />
                       </div>
                     </Link>

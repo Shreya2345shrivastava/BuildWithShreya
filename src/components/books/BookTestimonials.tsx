@@ -31,7 +31,7 @@ export function BookTestimonials() {
           {testimonials.map((item) => (
             <div
               key={item.name}
-              className="rounded-[2rem] border border-[var(--color-border-soft)] bg-white p-8"
+              className="rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-8"
             >
               <p className="leading-relaxed text-[var(--color-text-secondary)]">
                 &quot;{item.text}&quot;

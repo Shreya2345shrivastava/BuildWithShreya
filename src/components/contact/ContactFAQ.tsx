@@ -16,7 +16,7 @@ const faqs = [
 
 export function ContactFAQ() {
   return (
-    <section className="py-24 bg-[var(--color-bg-ivory)] dark:bg-[#0F1211] transition-colors duration-300">
+    <section className="py-24 bg-[var(--color-bg-ivory)] dark:bg-[#131715] dark:bg-[#0F1211] transition-colors duration-300">
       <div className="mx-auto max-w-4xl px-6">
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)] dark:text-white">
@@ -28,7 +28,7 @@ export function ContactFAQ() {
           {faqs.map((faq, idx) => (
             <div
               key={faq.question}
-              className="group relative overflow-hidden rounded-3xl border border-black/5 dark:border-white/10 bg-white/60 dark:bg-white/5 p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:bg-white dark:hover:bg-white/10 backdrop-blur-xl"
+              className="group relative overflow-hidden rounded-3xl border border-black/5 dark:border-white/10 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/60 dark:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/5 p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] dark:hover:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10 backdrop-blur-xl"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent-peach)]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               

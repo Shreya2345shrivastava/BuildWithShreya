@@ -16,7 +16,7 @@ const sizeMap = {
 export function IconWrapper({ icon, size = "md", className, style, ...props }: IconWrapperProps) {
 	return (
 		<span
-			className={cn("inline-flex items-center justify-center border border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]", sizeMap[size], className)}
+			className={cn("inline-flex items-center justify-center border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-primary)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]", sizeMap[size], className)}
 			style={{ borderRadius: theme.radius.full, ...style }}
 			{...props}
 		>

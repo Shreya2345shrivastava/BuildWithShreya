@@ -156,7 +156,7 @@ export function Carousel({ pages }: CarouselProps) {
             className="
               flex h-12 w-12 items-center justify-center
               rounded-full
-              border border-[var(--color-border-soft)]
+              border border-[var(--color-border-soft)] dark:border-[#2a332d]
               bg-[rgba(255,250,244,0.92)]
               text-[var(--color-text-primary)]
               shadow-[0_10px_24px_rgba(32,25,19,0.08)]
@@ -185,7 +185,7 @@ export function Carousel({ pages }: CarouselProps) {
             className="
               flex h-12 w-12 items-center justify-center
               rounded-full
-              border border-[var(--color-border-soft)]
+              border border-[var(--color-border-soft)] dark:border-[#2a332d]
               bg-[rgba(255,250,244,0.92)]
               text-[var(--color-text-primary)]
               shadow-[0_10px_24px_rgba(32,25,19,0.08)]
@@ -232,10 +232,10 @@ export function Carousel({ pages }: CarouselProps) {
                 absolute right-5 top-5
                 flex h-11 w-11 items-center justify-center
                 rounded-full
-                bg-white/10
+                bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10
                 text-white
                 transition-colors
-                hover:bg-white/20
+                hover:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/20
                 focus-visible:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-white
@@ -258,9 +258,9 @@ export function Carousel({ pages }: CarouselProps) {
                 -translate-y-1/2
                 items-center justify-center
                 rounded-full
-                bg-white/10
+                bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10
                 text-white
-                hover:bg-white/20
+                hover:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/20
                 focus-visible:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-white
@@ -282,7 +282,7 @@ export function Carousel({ pages }: CarouselProps) {
                 justify-center
                 overflow-hidden
                 rounded-[2rem]
-                bg-white
+                bg-[var(--color-surface-elevated)] dark:bg-[#242b28]
                 shadow-[0_30px_80px_rgba(0,0,0,0.35)]
               "
             >
@@ -319,9 +319,9 @@ export function Carousel({ pages }: CarouselProps) {
                 -translate-y-1/2
                 items-center justify-center
                 rounded-full
-                bg-white/10
+                bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10
                 text-white
-                hover:bg-white/20
+                hover:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/20
                 focus-visible:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-white

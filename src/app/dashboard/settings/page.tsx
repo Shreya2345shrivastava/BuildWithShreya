@@ -207,7 +207,7 @@ export default function SettingsPage() {
           ? "bg-green-600 hover:bg-green-700" 
           : saveStatus === "error"
           ? "bg-red-600 hover:bg-red-700"
-          : "bg-[#3A332D] hover:bg-[#D9895B] hover:shadow-md disabled:opacity-50 disabled:hover:bg-[#3A332D]"
+          : "bg-[#3A332D] hover:bg-[var(--color-accent-peach)] hover:shadow-md disabled:opacity-50 disabled:hover:bg-[#3A332D]"
       }`}
     >
       {saveStatus === "saving" ? (
@@ -234,8 +234,8 @@ export default function SettingsPage() {
     <div className="space-y-12 pb-20">
       {/* Header */}
       <div>
-        <h1 className="font-serif text-4xl text-[#3A332D]">Settings</h1>
-        <p className="mt-2 text-lg text-[#8A837D]">Manage your account, preferences, and brand.</p>
+        <h1 className="font-serif text-4xl text-[var(--color-text-primary)]">Settings</h1>
+        <p className="mt-2 text-lg text-[var(--color-text-secondary)]">Manage your account, preferences, and brand.</p>
       </div>
 
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[250px_1fr]">
@@ -254,11 +254,11 @@ export default function SettingsPage() {
                 onClick={() => changeTab(item.id as Tab)}
                 className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all ${
                   active 
-                    ? "bg-white text-[#3A332D] shadow-sm border border-black/[0.04]" 
-                    : "text-[#8A837D] hover:bg-black/[0.02] hover:text-[#3A332D]"
+                    ? "bg-[var(--color-surface-elevated)] dark:bg-[#242b28] text-[var(--color-text-primary)] shadow-sm border border-black/[0.04]" 
+                    : "text-[var(--color-text-secondary)] hover:bg-black/[0.02] hover:text-[var(--color-text-primary)]"
                 }`}
               >
-                <item.icon size={18} strokeWidth={1.5} className={active ? "text-[#D9895B]" : ""} />
+                <item.icon size={18} strokeWidth={1.5} className={active ? "text-[var(--color-accent-peach)]" : ""} />
                 {item.label}
               </button>
             );
@@ -268,7 +268,7 @@ export default function SettingsPage() {
         {/* Content */}
         <div className="space-y-8">
           {loading ? (
-            <div className="flex items-center justify-center py-20 text-[#D9895B]">
+            <div className="flex items-center justify-center py-20 text-[var(--color-accent-peach)]">
               <Loader2 size={32} className="animate-spin" />
             </div>
           ) : (
@@ -291,12 +291,12 @@ export default function SettingsPage() {
                             className="h-20 w-20 sm:h-24 sm:w-24 shrink-0 rounded-full border border-black/[0.04] object-cover shadow-sm"
                           />
                         ) : (
-                          <div className="flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full border border-dashed border-[#D9895B]/30 bg-[#FCF8F2] text-[#D9895B]">
+                          <div className="flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full border border-dashed border-[#D9895B]/30 bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-accent-peach)]">
                             <User size={24} />
                           </div>
                         )}
                         <div>
-                          <label className="cursor-pointer inline-block rounded-full border border-black/[0.04] bg-white px-4 py-2 text-sm font-medium text-[#3A332D] shadow-sm transition-all hover:bg-black/[0.02]">
+                          <label className="cursor-pointer inline-block rounded-full border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] shadow-sm transition-all hover:bg-black/[0.02]">
                             Upload Avatar
                             <input type="file" accept="image/*" className="hidden" onChange={handleProfileImageUpload} />
                           </label>
@@ -309,7 +309,7 @@ export default function SettingsPage() {
                               Remove
                             </button>
                           )}
-                          <p className="mt-3 text-xs text-[#8A837D]">Stored securely in database. 1MB max recommended.</p>
+                          <p className="mt-3 text-xs text-[var(--color-text-secondary)]">Stored securely in database. 1MB max recommended.</p>
                         </div>
                       </div>
                       
@@ -319,7 +319,7 @@ export default function SettingsPage() {
                            href={`/author/${profileForm.watch("username")}`}
                            target="_blank"
                            rel="noreferrer"
-                           className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#FCF8F2] px-5 py-2.5 text-sm font-medium text-[#D9895B] border border-[#D9895B]/20 transition-all hover:bg-[#F5E7DB]"
+                           className="inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-5 py-2.5 text-sm font-medium text-[var(--color-accent-peach)] border border-[#D9895B]/20 transition-all hover:bg-[#F5E7DB]"
                          >
                            View Public Profile ↗
                          </a>
@@ -357,10 +357,10 @@ export default function SettingsPage() {
                     description="Manage how you sign in to your account."
                   >
                     {/* Assuming Google OAuth by default since next-auth uses it */}
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-black/[0.04] p-4 bg-[#FCF8F2]/50">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-xl border border-black/[0.04] p-4 bg-[var(--color-bg-ivory)] dark:bg-[#131715]/50">
                       <div>
-                        <p className="text-sm font-medium text-[#3A332D]">Email Address</p>
-                        <p className="text-sm text-[#8A837D]">{session?.user?.email}</p>
+                        <p className="text-sm font-medium text-[var(--color-text-primary)]">Email Address</p>
+                        <p className="text-sm text-[var(--color-text-secondary)]">{session?.user?.email}</p>
                         <p className="mt-2 text-xs font-medium text-green-600 bg-green-50 inline-block px-2 py-0.5 rounded-full border border-green-200">
                           Managed by Google
                         </p>
@@ -369,14 +369,14 @@ export default function SettingsPage() {
                         href="https://myaccount.google.com" 
                         target="_blank" 
                         rel="noreferrer"
-                        className="rounded-full border border-black/[0.04] bg-white px-4 py-2 text-sm font-medium text-[#3A332D] shadow-sm transition-all hover:bg-black/[0.02] text-center"
+                        className="rounded-full border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] shadow-sm transition-all hover:bg-black/[0.02] text-center"
                       >
                         Manage Google Account
                       </a>
                     </div>
                   </SettingsSection>
 
-                  <section className="rounded-2xl border border-red-100 bg-white shadow-sm overflow-hidden">
+                  <section className="rounded-2xl border border-red-100 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-sm overflow-hidden">
                     <div className="border-b border-red-100 bg-red-50/50 p-6 sm:p-8">
                       <h2 className="font-serif text-2xl text-red-600 flex items-center gap-2">
                         <AlertCircle size={20} /> Danger Zone
@@ -384,12 +384,12 @@ export default function SettingsPage() {
                       <p className="mt-1 text-sm text-red-500/80">Irreversibly delete your account and all data.</p>
                     </div>
                     <div className="p-6 sm:p-8 space-y-4">
-                      <p className="text-sm text-[#3A332D]">Type <strong>DELETE</strong> below to confirm.</p>
+                      <p className="text-sm text-[var(--color-text-primary)]">Type <strong>DELETE</strong> below to confirm.</p>
                       <input 
                         type="text" 
                         value={deleteConfirm}
                         onChange={(e) => setDeleteConfirm(e.target.value)}
-                        className="w-full max-w-sm rounded-xl border border-red-200 bg-white px-4 py-2 text-sm text-red-600 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400"
+                        className="w-full max-w-sm rounded-xl border border-red-200 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-4 py-2 text-sm text-red-600 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400"
                       />
                       <div className="mt-4">
                         <button 
@@ -423,12 +423,12 @@ export default function SettingsPage() {
                           className="h-24 w-24 rounded-2xl border border-black/[0.04] object-cover shadow-sm"
                         />
                       ) : (
-                        <div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-dashed border-[#D9895B]/30 bg-[#FCF8F2] text-[#D9895B]">
+                        <div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-dashed border-[#D9895B]/30 bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-accent-peach)]">
                           <ImagePlus size={24} />
                         </div>
                       )}
                       <div>
-                        <label className="cursor-pointer rounded-full border border-black/[0.04] bg-white px-4 py-2 text-sm font-medium text-[#3A332D] shadow-sm transition-all hover:bg-black/[0.02]">
+                        <label className="cursor-pointer rounded-full border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] shadow-sm transition-all hover:bg-black/[0.02]">
                           Upload Logo
                           <input type="file" accept="image/*" className="hidden" onChange={handleLogoUpload} />
                         </label>
@@ -441,7 +441,7 @@ export default function SettingsPage() {
                             Remove
                           </button>
                         )}
-                        <p className="mt-3 text-xs text-[#8A837D]">Stored securely as base64 in database. 1MB max recommended.</p>
+                        <p className="mt-3 text-xs text-[var(--color-text-secondary)]">Stored securely as base64 in database. 1MB max recommended.</p>
                       </div>
                     </div>
 
@@ -480,17 +480,17 @@ export default function SettingsPage() {
                     
                     <div className="grid gap-6 sm:grid-cols-2 pt-4 border-t border-black/[0.04]">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-[#3A332D]">Primary Color</label>
+                        <label className="text-sm font-medium text-[var(--color-text-primary)]">Primary Color</label>
                         <div className="flex items-center gap-3">
                           <input type="color" {...brandingForm.register("colorPrimary")} className="h-10 w-10 cursor-pointer rounded border-0 p-0" />
-                          <span className="text-sm text-[#8A837D]">{brandingForm.watch("colorPrimary")}</span>
+                          <span className="text-sm text-[var(--color-text-secondary)]">{brandingForm.watch("colorPrimary")}</span>
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-[#3A332D]">Accent Color</label>
+                        <label className="text-sm font-medium text-[var(--color-text-primary)]">Accent Color</label>
                         <div className="flex items-center gap-3">
                           <input type="color" {...brandingForm.register("colorAccent")} className="h-10 w-10 cursor-pointer rounded border-0 p-0" />
-                          <span className="text-sm text-[#8A837D]">{brandingForm.watch("colorAccent")}</span>
+                          <span className="text-sm text-[var(--color-text-secondary)]">{brandingForm.watch("colorAccent")}</span>
                         </div>
                       </div>
                     </div>

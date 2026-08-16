@@ -1,6 +1,6 @@
 export function AboutMission() {
   return (
-    <section className="py-32 bg-[#FCF8F2] relative overflow-hidden">
+    <section className="py-32 bg-[var(--color-bg-ivory)] dark:bg-[#131715] relative overflow-hidden">
       <div className="absolute -left-32 top-32 h-[500px] w-[500px] rounded-full bg-[var(--color-accent-peach)]/5 blur-[80px]" />
       <div className="mx-auto max-w-4xl px-6 text-center relative z-10">
         <h2 className="font-serif text-4xl sm:text-6xl text-[var(--color-text-primary)]">

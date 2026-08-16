@@ -8,7 +8,7 @@ export function Newsletter() {
       className="relative overflow-hidden py-24 sm:py-28 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-[var(--color-border-soft)] bg-[var(--color-bg-cream)] px-8 py-16 text-center shadow-[0_20px_60px_rgba(0,0,0,0.06)] sm:px-12 lg:px-20">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-bg-cream)] px-8 py-16 text-center shadow-[0_20px_60px_rgba(0,0,0,0.06)] sm:px-12 lg:px-20">
 
           {/* Left Floral */}
           <div className="pointer-events-none absolute left-0 top-0 opacity-20">

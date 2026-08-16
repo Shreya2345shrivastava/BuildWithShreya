@@ -41,7 +41,7 @@ export function Card({
 			className={cn(
 				"transition-soft",
 				hover && "hover-lift",
-				border && "border border-[var(--color-border-soft)]",
+				border && "border border-[var(--color-border-soft)] dark:border-[#2a332d]",
 				paddingMap[padding],
 				className,
 			)}

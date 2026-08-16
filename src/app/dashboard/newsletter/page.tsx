@@ -8,7 +8,7 @@ export default async function NewsletterPage() {
   const subscribers = await getSubscribers();
 
   return (
-    <Suspense fallback={<div className="flex h-64 items-center justify-center text-[#8A837D]">Loading newsletter data...</div>}>
+    <Suspense fallback={<div className="flex h-64 items-center justify-center text-[var(--color-text-secondary)]">Loading newsletter data...</div>}>
       <NewsletterClient 
         metrics={metrics}
         initialCampaigns={campaigns}

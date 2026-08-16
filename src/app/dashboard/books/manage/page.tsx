@@ -64,13 +64,13 @@ export default async function ManageBooksPage({
     <div className="space-y-10">
 
       {/* Header */}
-      <div className="rounded-2xl border border-[#E8DED5] bg-gradient-to-r from-[#FFFDFB] to-[#F7F1EC] p-10 shadow-sm">
+      <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-gradient-to-r from-[#FFFDFB] dark:from-[#242b28] to-[#F7F1EC] dark:to-[#1a2421] dark:from-[#242b28] dark:to-[#1a2421] p-10 shadow-sm">
 
-        <p className="text-sm uppercase tracking-[5px] text-[#D9895B]">
+        <p className="text-sm uppercase tracking-[5px] text-[var(--color-accent-peach)]">
           Library Collection
         </p>
 
-        <h1 className="mt-3 font-serif text-5xl text-[#3A332D]">
+        <h1 className="mt-3 font-serif text-5xl text-[var(--color-text-primary)]">
           Manage Books
         </h1>
 
@@ -84,32 +84,32 @@ export default async function ManageBooksPage({
       {/* Stats */}
       <div className="grid gap-6 md:grid-cols-3">
 
-        <div className="rounded-3xl border border-[#E8DED5] bg-white p-6 shadow-sm">
+        <div className="rounded-3xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm">
           <p className="text-gray-500">
             Total Books
           </p>
 
-          <h2 className="mt-2 font-serif text-4xl text-[#3A332D]">
+          <h2 className="mt-2 font-sans font-semibold tracking-tight text-4xl text-[var(--color-text-primary)]">
             {totalBooks}
           </h2>
         </div>
 
-        <div className="rounded-3xl border border-[#E8DED5] bg-white p-6 shadow-sm">
+        <div className="rounded-3xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm">
           <p className="text-gray-500">
             Featured Books
           </p>
 
-          <h2 className="mt-2 font-serif text-4xl text-[#D9895B]">
+          <h2 className="mt-2 font-sans font-semibold tracking-tight text-4xl text-[var(--color-accent-peach)]">
             {featuredBooks}
           </h2>
         </div>
 
-        <div className="rounded-3xl border border-[#E8DED5] bg-white p-6 shadow-sm">
+        <div className="rounded-3xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm">
           <p className="text-gray-500">
             Library Status
           </p>
 
-          <h2 className="mt-2 font-serif text-4xl text-[#3A332D]">
+          <h2 className="mt-2 font-serif text-4xl text-[var(--color-text-primary)]">
             Active
           </h2>
         </div>
@@ -136,13 +136,13 @@ export default async function ManageBooksPage({
             name="search"
             defaultValue={search}
             placeholder="Search books..."
-            className="w-full rounded-2xl border border-[#E8DED5] bg-white py-3 pl-11 pr-24 outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
+            className="w-full rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] py-3 pl-11 pr-24 outline-none transition focus:border-[#D9895B] focus:ring-2 focus:ring-[#D9895B]/10"
           />
 
           {searchTerm && (
             <Link
               href="/dashboard/books/manage"
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-xl px-3 py-1.5 text-sm text-[#D9895B] transition hover:bg-[#FFF7F1]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-xl px-3 py-1.5 text-sm text-[var(--color-accent-peach)] transition hover:bg-[#FFF7F1] dark:hover:bg-[#2b3330]/50"
             >
               Clear
             </Link>
@@ -153,7 +153,7 @@ export default async function ManageBooksPage({
         {/* Add New Book */}
         <Link
           href="/dashboard/books"
-          className="rounded-2xl bg-[#D9895B] px-6 py-3 text-center text-white transition hover:bg-[#C97B4C]"
+          className="rounded-2xl bg-[var(--color-accent-peach)] px-6 py-3 text-center text-white transition hover:bg-[#C97B4C]"
         >
           + Add New Book
         </Link>
@@ -162,11 +162,11 @@ export default async function ManageBooksPage({
 
       {/* Search Result Information */}
       {searchTerm && (
-        <div className="rounded-2xl border border-[#E8DED5] bg-[#FFFDFB] px-5 py-4 text-gray-600">
+        <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[#FFFDFB] dark:bg-[#242b28] px-5 py-4 text-gray-600">
           {books.length === 0 ? (
             <span>
               No books found for{" "}
-              <strong className="text-[#3A332D]">
+              <strong className="text-[var(--color-text-primary)]">
                 &quot;{search}&quot;
               </strong>
               .
@@ -174,11 +174,11 @@ export default async function ManageBooksPage({
           ) : (
             <span>
               Showing{" "}
-              <strong className="text-[#3A332D]">
+              <strong className="text-[var(--color-text-primary)]">
                 {books.length}
               </strong>{" "}
               {books.length === 1 ? "book" : "books"} matching{" "}
-              <strong className="text-[#3A332D]">
+              <strong className="text-[var(--color-text-primary)]">
                 &quot;{search}&quot;
               </strong>
               .
@@ -194,14 +194,14 @@ export default async function ManageBooksPage({
           {books.map((book: IBook) => (
             <div
               key={book._id}
-              className="group overflow-hidden rounded-2xl border border-[#E8DED5] bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+              className="group overflow-hidden rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
             >
 
               {/* Cover */}
-              <div className="relative bg-[#F8F4EF] p-8">
+              <div className="relative bg-[var(--color-surface-secondary)] p-8">
 
                 {book.featured && (
-                  <div className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-[#D9895B] px-3 py-1 text-xs text-white">
+                  <div className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-[var(--color-accent-peach)] px-3 py-1 text-xs text-white">
                     <Star size={12} />
                     Featured
                   </div>
@@ -220,11 +220,11 @@ export default async function ManageBooksPage({
               {/* Content */}
               <div className="p-7">
 
-                <h2 className="line-clamp-1 font-serif text-3xl text-[#3A332D]">
+                <h2 className="line-clamp-1 font-serif text-3xl text-[var(--color-text-primary)]">
                   {book.title}
                 </h2>
 
-                <p className="mt-2 text-sm text-[#D9895B]">
+                <p className="mt-2 text-sm text-[var(--color-accent-peach)]">
                   /{book.slug}
                 </p>
 
@@ -243,7 +243,7 @@ export default async function ManageBooksPage({
                   {/* View */}
                   <Link
                     href={`/books/${book.slug}`}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#D9895B] py-3 text-white transition hover:bg-[#C97B4C]"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--color-accent-peach)] py-3 text-white transition hover:bg-[#C97B4C]"
                   >
                     <BookOpen size={18} />
                     View
@@ -287,13 +287,13 @@ export default async function ManageBooksPage({
 
       {/* No Search Results */}
       {books.length === 0 && searchTerm && (
-        <div className="rounded-2xl border border-[#E8DED5] bg-white p-16 text-center shadow-sm">
+        <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-16 text-center shadow-sm">
 
           <div className="text-7xl">
             🔍
           </div>
 
-          <h3 className="mt-6 font-serif text-4xl text-[#3A332D]">
+          <h3 className="mt-6 font-serif text-4xl text-[var(--color-text-primary)]">
             No Books Found
           </h3>
 
@@ -304,7 +304,7 @@ export default async function ManageBooksPage({
 
           <Link
             href="/dashboard/books/manage"
-            className="mt-8 inline-block rounded-2xl border border-[#D9895B] px-8 py-4 text-[#D9895B] transition hover:bg-[#FFF7F1]"
+            className="mt-8 inline-block rounded-2xl border border-[#D9895B] px-8 py-4 text-[var(--color-accent-peach)] transition hover:bg-[#FFF7F1] dark:hover:bg-[#2b3330]/50"
           >
             Clear Search
           </Link>
@@ -314,13 +314,13 @@ export default async function ManageBooksPage({
 
       {/* Empty Library */}
       {totalBooks === 0 && (
-        <div className="rounded-2xl border border-[#E8DED5] bg-white p-16 text-center">
+        <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-16 text-center">
 
           <div className="text-7xl">
             📚
           </div>
 
-          <h3 className="mt-6 font-serif text-4xl text-[#3A332D]">
+          <h3 className="mt-6 font-serif text-4xl text-[var(--color-text-primary)]">
             No Books Yet
           </h3>
 
@@ -331,7 +331,7 @@ export default async function ManageBooksPage({
 
           <Link
             href="/dashboard/books"
-            className="mt-8 inline-block rounded-2xl bg-[#D9895B] px-8 py-4 text-white transition hover:bg-[#C97B4C]"
+            className="mt-8 inline-block rounded-2xl bg-[var(--color-accent-peach)] px-8 py-4 text-white transition hover:bg-[#C97B4C]"
           >
             Add First Book
           </Link>

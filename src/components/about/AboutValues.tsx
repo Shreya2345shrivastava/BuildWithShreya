@@ -25,7 +25,7 @@ const values = [
 
 export function AboutValues() {
   return (
-    <section className="py-32 bg-[#FCF8F2]">
+    <section className="py-32 bg-[var(--color-bg-ivory)] dark:bg-[#131715]">
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center">
           <h2 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)]">
@@ -38,12 +38,12 @@ export function AboutValues() {
           {values.map((value, idx) => (
             <div
               key={value.title}
-              className="group relative overflow-hidden rounded-3xl border border-white bg-white/40 p-8 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-white/80"
+              className="group relative overflow-hidden rounded-3xl border border-white bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/40 p-8 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/80"
               style={{ transitionDelay: `${idx * 50}ms` }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent-peach)]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               
-              <div className="relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
+              <div className="relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-sm ring-1 ring-black/5">
                 {value.icon}
               </div>
 

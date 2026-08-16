@@ -59,8 +59,8 @@ export function Logo({
           "transition-all duration-300 ease-out",
           "group-hover:scale-105 group-hover:rotate-3",
           isDark
-            ? "border-white/15 bg-white/10 text-[var(--color-text-inverse)]"
-            : "border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] text-[var(--color-accent-peach)]"
+            ? "border-white/15 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10 text-[var(--color-text-inverse)]"
+            : "border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-primary)] text-[var(--color-accent-peach)]"
         )}
       >
         <BotanicalMark />

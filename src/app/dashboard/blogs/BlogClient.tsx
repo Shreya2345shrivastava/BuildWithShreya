@@ -174,7 +174,7 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
   return (
     <div className="space-y-12">
       {toast && (
-        <div className={`fixed bottom-4 right-4 z-[110] flex items-center gap-2 rounded-lg px-4 py-3 shadow-lg ${toast.type === 'success' ? 'bg-[#FCF8F2] text-[#3A332D] border border-black/[0.04]' : 'bg-red-50 text-red-800'}`}>
+        <div className={`fixed bottom-4 right-4 z-[110] flex items-center gap-2 rounded-lg px-4 py-3 shadow-lg ${toast.type === 'success' ? 'bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-text-primary)] border border-black/[0.04]' : 'bg-red-50 text-red-800'}`}>
           {toast.type === 'success' && <Check size={16} className="text-green-600" />}
           <span className="text-sm font-medium">{toast.message}</span>
         </div>
@@ -183,12 +183,12 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
       {/* Header */}
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h1 className="font-serif text-4xl text-[#3A332D]">Blogs</h1>
-          <p className="mt-2 text-lg text-[#8A837D]">Write, edit, and publish your articles.</p>
+          <h1 className="font-serif text-4xl text-[var(--color-text-primary)]">Blogs</h1>
+          <p className="mt-2 text-lg text-[var(--color-text-secondary)]">Write, edit, and publish your articles.</p>
         </div>
         <button 
           onClick={() => handleOpenModal("CREATE")}
-          className="flex items-center gap-2 rounded-full bg-[#3A332D] px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#D9895B] hover:shadow-md"
+          className="flex items-center gap-2 rounded-full bg-[#3A332D] px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[var(--color-accent-peach)] hover:shadow-md"
         >
           <PenTool size={16} />
           Write Post
@@ -197,7 +197,7 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
 
       {/* Tabs and Search */}
       <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <div className="flex space-x-1 rounded-full bg-white p-1 shadow-sm border border-black/[0.04] overflow-x-auto max-w-full">
+        <div className="flex space-x-1 rounded-full bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-1 shadow-sm border border-black/[0.04] overflow-x-auto max-w-full">
           {TABS.map((tab) => {
             const count = tab === "All Posts" 
               ? "" 
@@ -208,7 +208,7 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`whitespace-nowrap rounded-full px-5 py-2 text-sm font-medium transition-all ${
-                  activeTab === tab ? "bg-[#FCF8F2] text-[#D9895B]" : "text-[#8A837D] hover:bg-black/[0.02]"
+                  activeTab === tab ? "bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-accent-peach)]" : "text-[var(--color-text-secondary)] hover:bg-black/[0.02]"
                 }`}
               >
                 {tab}
@@ -218,13 +218,13 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
         </div>
         <div className="relative w-full max-w-xs">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-            <Search size={18} className="text-[#8A837D]" />
+            <Search size={18} className="text-[var(--color-text-secondary)]" />
           </div>
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-full border border-black/[0.04] bg-white py-2 pl-11 pr-4 text-sm text-[#3A332D] placeholder-[#8A837D] shadow-sm outline-none transition-all focus:border-[#D9895B] focus:ring-1 focus:ring-[#D9895B]"
+            className="w-full rounded-full border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] py-2 pl-11 pr-4 text-sm text-[var(--color-text-primary)] placeholder-[#8A837D] shadow-sm outline-none transition-all focus:border-[#D9895B] focus:ring-1 focus:ring-[#D9895B]"
             placeholder="Search articles..."
           />
         </div>
@@ -233,26 +233,26 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
       {/* Blog List */}
       <div className="flex flex-col gap-4">
         {isPending ? (
-          <div className="py-12 text-center text-[#8A837D]">Loading...</div>
+          <div className="py-12 text-center text-[var(--color-text-secondary)]">Loading...</div>
         ) : blogs.length === 0 ? (
-          <div className="rounded-2xl border border-black/[0.04] bg-white p-12 text-center shadow-sm">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FCF8F2] text-[#D9895B]">
+          <div className="rounded-2xl border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-12 text-center shadow-sm">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-accent-peach)]">
               <PenTool size={32} />
             </div>
-            <h3 className="mb-2 font-serif text-2xl text-[#3A332D]">No articles found.</h3>
-            <p className="mb-6 text-[#8A837D]">You haven't published any articles matching this view yet.</p>
+            <h3 className="mb-2 font-serif text-2xl text-[var(--color-text-primary)]">No articles found.</h3>
+            <p className="mb-6 text-[var(--color-text-secondary)]">You haven't published any articles matching this view yet.</p>
             <button 
               onClick={() => handleOpenModal("CREATE")}
-              className="inline-flex items-center gap-2 rounded-full bg-[#3A332D] px-6 py-2.5 text-sm font-medium text-white transition-all hover:bg-[#D9895B]"
+              className="inline-flex items-center gap-2 rounded-full bg-[#3A332D] px-6 py-2.5 text-sm font-medium text-white transition-all hover:bg-[var(--color-accent-peach)]"
             >
               Create First Blog
             </button>
           </div>
         ) : (
           blogs.map((blog) => (
-            <div key={blog._id} className="group relative flex flex-col items-start justify-between gap-4 rounded-2xl border border-black/[0.04] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:flex-row sm:items-center">
+            <div key={blog._id} className="group relative flex flex-col items-start justify-between gap-4 rounded-2xl border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:flex-row sm:items-center">
               <div className="flex items-start gap-4">
-                <div className={`mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl overflow-hidden ${blog.featuredImage ? 'bg-gray-100' : 'bg-[#FCF8F2] text-[#D9895B]'}`}>
+                <div className={`mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl overflow-hidden ${blog.featuredImage ? 'bg-gray-100' : 'bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-accent-peach)]'}`}>
                   {blog.featuredImage ? (
                     <img src={blog.featuredImage} alt="" className="h-full w-full object-cover" />
                   ) : (
@@ -260,8 +260,8 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
                   )}
                 </div>
                 <div>
-                  <h3 className="font-serif text-xl text-[#3A332D] hover:text-[#D9895B] cursor-pointer" onClick={() => handleOpenModal("VIEW", blog)}>{blog.title}</h3>
-                  <div className="mt-1 flex items-center gap-3 text-sm text-[#8A837D]">
+                  <h3 className="font-serif text-xl text-[var(--color-text-primary)] hover:text-[var(--color-accent-peach)] cursor-pointer" onClick={() => handleOpenModal("VIEW", blog)}>{blog.title}</h3>
+                  <div className="mt-1 flex items-center gap-3 text-sm text-[var(--color-text-secondary)]">
                     <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
                     <span className="h-1 w-1 rounded-full bg-black/20"></span>
                     <span>{blog.views.toLocaleString()} views</span>
@@ -273,24 +273,24 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
               <div className="flex items-center gap-3">
                 <button 
                   onClick={() => handleOpenModal("EDIT", blog)}
-                  className="rounded-full border border-black/[0.04] px-4 py-2 text-sm font-medium text-[#3A332D] transition-colors hover:bg-black/[0.02]"
+                  className="rounded-full border border-black/[0.04] px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] transition-colors hover:bg-black/[0.02]"
                 >
                   Edit
                 </button>
                 <div className="relative">
                   <button 
                     onClick={(e) => { e.stopPropagation(); setShowDropdown(showDropdown === blog._id ? null : blog._id); }}
-                    className="rounded p-2 text-[#8A837D] transition-colors hover:bg-black/[0.04] hover:text-[#3A332D]"
+                    className="rounded p-2 text-[var(--color-text-secondary)] transition-colors hover:bg-black/[0.04] hover:text-[var(--color-text-primary)]"
                   >
                     <MoreHorizontal size={20} />
                   </button>
                   {/* DROPDOWN MENU */}
                   {showDropdown === blog._id && (
-                    <div className="absolute right-0 top-12 z-10 w-48 rounded-xl border border-black/[0.04] bg-white py-1 shadow-lg flex flex-col text-left">
-                      <button onClick={() => handleOpenModal("VIEW", blog)} className="flex items-center gap-2 px-4 py-2 text-sm text-[#3A332D] hover:bg-black/[0.02]"><Eye size={14} /> View Post</button>
-                      <button onClick={() => handleOpenModal("EDIT", blog)} className="flex items-center gap-2 px-4 py-2 text-sm text-[#3A332D] hover:bg-black/[0.02]"><Edit2 size={14} /> Edit</button>
-                      <button onClick={() => handleToggleStatus(blog)} className="flex items-center gap-2 px-4 py-2 text-sm text-[#3A332D] hover:bg-black/[0.02]"><FileText size={14} /> {blog.status === "Published" ? "Unpublish" : "Publish"}</button>
-                      <button onClick={() => handleDuplicate(blog._id)} className="flex items-center gap-2 px-4 py-2 text-sm text-[#3A332D] hover:bg-black/[0.02]"><Copy size={14} /> Duplicate</button>
+                    <div className="absolute right-0 top-12 z-10 w-48 rounded-xl border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] py-1 shadow-lg flex flex-col text-left">
+                      <button onClick={() => handleOpenModal("VIEW", blog)} className="flex items-center gap-2 px-4 py-2 text-sm text-[var(--color-text-primary)] hover:bg-black/[0.02]"><Eye size={14} /> View Post</button>
+                      <button onClick={() => handleOpenModal("EDIT", blog)} className="flex items-center gap-2 px-4 py-2 text-sm text-[var(--color-text-primary)] hover:bg-black/[0.02]"><Edit2 size={14} /> Edit</button>
+                      <button onClick={() => handleToggleStatus(blog)} className="flex items-center gap-2 px-4 py-2 text-sm text-[var(--color-text-primary)] hover:bg-black/[0.02]"><FileText size={14} /> {blog.status === "Published" ? "Unpublish" : "Publish"}</button>
+                      <button onClick={() => handleDuplicate(blog._id)} className="flex items-center gap-2 px-4 py-2 text-sm text-[var(--color-text-primary)] hover:bg-black/[0.02]"><Copy size={14} /> Duplicate</button>
                       <hr className="my-1 border-black/[0.04]" />
                       <button onClick={() => handleOpenModal("DELETE", blog)} className="flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50"><Trash2 size={14} /> Delete</button>
                     </div>
@@ -305,7 +305,7 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
       {/* MODALS */}
       {modalType && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/20 p-4 backdrop-blur-sm">
-          <div className={`w-full ${modalType === "VIEW" || modalType === "CREATE" || modalType === "EDIT" ? 'max-w-4xl' : 'max-w-md'} overflow-hidden rounded-3xl bg-white shadow-2xl flex flex-col max-h-[90vh]`}>
+          <div className={`w-full ${modalType === "VIEW" || modalType === "CREATE" || modalType === "EDIT" ? 'max-w-4xl' : 'max-w-md'} overflow-hidden rounded-3xl bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-2xl flex flex-col max-h-[90vh]`}>
             
             {/* DELETE MODAL */}
             {modalType === "DELETE" && selectedBlog && (
@@ -313,10 +313,10 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600">
                   <Trash2 size={24} />
                 </div>
-                <h3 className="mb-2 font-serif text-2xl text-[#3A332D]">Delete Article?</h3>
-                <p className="mb-8 text-[#8A837D]">Are you sure you want to delete &quot;{selectedBlog.title}&quot;? This action cannot be undone.</p>
+                <h3 className="mb-2 font-serif text-2xl text-[var(--color-text-primary)]">Delete Article?</h3>
+                <p className="mb-8 text-[var(--color-text-secondary)]">Are you sure you want to delete &quot;{selectedBlog.title}&quot;? This action cannot be undone.</p>
                 <div className="flex gap-4">
-                  <button onClick={() => setModalType(null)} className="flex-1 rounded-full border border-black/[0.04] bg-[#FCF8F2] px-4 py-3 text-sm font-medium text-[#3A332D] hover:bg-black/[0.04]">Cancel</button>
+                  <button onClick={() => setModalType(null)} className="flex-1 rounded-full border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-3 text-sm font-medium text-[var(--color-text-primary)] hover:bg-black/[0.04]">Cancel</button>
                   <button onClick={handleDelete} className="flex-1 rounded-full bg-red-600 px-4 py-3 text-sm font-medium text-white hover:bg-red-700 disabled:opacity-50" disabled={isPending}>
                     {isPending ? "Deleting..." : "Delete Article"}
                   </button>
@@ -330,30 +330,30 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
                 <div className="flex items-center justify-between border-b border-black/[0.04] px-6 py-4 flex-shrink-0">
                   <div className="flex items-center gap-3">
                     <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${selectedBlog.status === 'Published' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>{selectedBlog.status}</span>
-                    <span className="text-sm text-[#8A837D]">{selectedBlog.views.toLocaleString()} views</span>
+                    <span className="text-sm text-[var(--color-text-secondary)]">{selectedBlog.views.toLocaleString()} views</span>
                   </div>
                   <div className="flex gap-2">
-                     <button onClick={() => handleOpenModal("EDIT", selectedBlog)} className="rounded-full bg-[#FCF8F2] px-4 py-2 text-sm font-medium text-[#D9895B] hover:bg-black/[0.04]">Edit</button>
-                     <button onClick={() => setModalType(null)} className="p-2 text-[#8A837D] hover:bg-black/[0.04] rounded-full"><X size={20} /></button>
+                     <button onClick={() => handleOpenModal("EDIT", selectedBlog)} className="rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-2 text-sm font-medium text-[var(--color-accent-peach)] hover:bg-black/[0.04]">Edit</button>
+                     <button onClick={() => setModalType(null)} className="p-2 text-[var(--color-text-secondary)] hover:bg-black/[0.04] rounded-full"><X size={20} /></button>
                   </div>
                 </div>
-                <div className="p-8 overflow-y-auto bg-[#FCF8F2]">
-                  <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-black/[0.04]">
+                <div className="p-8 overflow-y-auto bg-[var(--color-bg-ivory)] dark:bg-[#131715]">
+                  <div className="max-w-2xl mx-auto bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-8 rounded-2xl shadow-sm border border-black/[0.04]">
                     {selectedBlog.featuredImage && (
                       <img src={selectedBlog.featuredImage} alt={selectedBlog.title} className="w-full h-64 object-cover rounded-xl mb-8" />
                     )}
                     <div className="mb-6 flex gap-2">
-                       <span className="text-xs font-semibold uppercase tracking-wider text-[#D9895B]">{selectedBlog.category}</span>
+                       <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent-peach)]">{selectedBlog.category}</span>
                     </div>
-                    <h1 className="font-serif text-4xl text-[#3A332D] mb-4">{selectedBlog.title}</h1>
-                    <div className="flex items-center gap-3 text-sm text-[#8A837D] mb-8 pb-8 border-b border-black/[0.04]">
+                    <h1 className="font-serif text-4xl text-[var(--color-text-primary)] mb-4">{selectedBlog.title}</h1>
+                    <div className="flex items-center gap-3 text-sm text-[var(--color-text-secondary)] mb-8 pb-8 border-b border-black/[0.04]">
                       <span>{selectedBlog.author}</span>
                       <span className="h-1 w-1 rounded-full bg-black/20"></span>
                       <span>{selectedBlog.publishedAt ? new Date(selectedBlog.publishedAt).toLocaleDateString() : new Date(selectedBlog.createdAt).toLocaleDateString()}</span>
                     </div>
                     <div className="prose prose-stone max-w-none">
                       {selectedBlog.content.split('\n').map((paragraph, i) => (
-                        paragraph ? <p key={i} className="mb-4 text-[#3A332D] leading-relaxed">{paragraph}</p> : <br key={i}/>
+                        paragraph ? <p key={i} className="mb-4 text-[var(--color-text-primary)] leading-relaxed">{paragraph}</p> : <br key={i}/>
                       ))}
                     </div>
                   </div>
@@ -364,63 +364,63 @@ export default function BlogClient({ initialBlogs }: { initialBlogs: Blog[] }) {
             {/* CREATE / EDIT MODAL */}
             {(modalType === "CREATE" || modalType === "EDIT") && (
               <form className="flex flex-col h-full min-h-0 overflow-hidden" onSubmit={(e) => handleSubmit(e)}>
-                <div className="flex items-center justify-between border-b border-black/[0.04] px-6 py-4 flex-shrink-0 bg-[#FCF8F2]">
-                  <h3 className="font-serif text-xl text-[#3A332D]">{modalType === "CREATE" ? "Write Post" : "Edit Post"}</h3>
-                  <button type="button" onClick={() => setModalType(null)} className="text-[#8A837D] hover:text-[#3A332D]"><X size={20} /></button>
+                <div className="flex items-center justify-between border-b border-black/[0.04] px-6 py-4 flex-shrink-0 bg-[var(--color-bg-ivory)] dark:bg-[#131715]">
+                  <h3 className="font-serif text-xl text-[var(--color-text-primary)]">{modalType === "CREATE" ? "Write Post" : "Edit Post"}</h3>
+                  <button type="button" onClick={() => setModalType(null)} className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"><X size={20} /></button>
                 </div>
                 
-                <div className="flex-1 overflow-y-auto p-6 bg-white">
+                <div className="flex-1 overflow-y-auto p-6 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]">
                   <div className="max-w-3xl mx-auto space-y-6">
                     
                     <div>
-                      <label className="mb-1 block text-sm font-medium text-[#3A332D]">Blog Title</label>
-                      <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[#FCF8F2] px-4 py-3 text-lg font-serif outline-none focus:border-[#D9895B] focus:bg-white focus:ring-1 focus:ring-[#D9895B]" placeholder="The Art of Slow Productivity" />
+                      <label className="mb-1 block text-sm font-medium text-[var(--color-text-primary)]">Blog Title</label>
+                      <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-3 text-lg font-serif outline-none focus:border-[#D9895B] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] focus:ring-1 focus:ring-[#D9895B]" placeholder="The Art of Slow Productivity" />
                     </div>
 
                     <div className="grid grid-cols-2 gap-6">
                        <div>
-                        <label className="mb-1 block text-sm font-medium text-[#3A332D]">Slug (URL)</label>
-                        <input type="text" value={formData.slug} onChange={e => setFormData({...formData, slug: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[#FCF8F2] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-white focus:ring-1 focus:ring-[#D9895B]" placeholder="Auto-generated if left blank" />
+                        <label className="mb-1 block text-sm font-medium text-[var(--color-text-primary)]">Slug (URL)</label>
+                        <input type="text" value={formData.slug} onChange={e => setFormData({...formData, slug: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] focus:ring-1 focus:ring-[#D9895B]" placeholder="Auto-generated if left blank" />
                       </div>
                       <div>
-                        <label className="mb-1 block text-sm font-medium text-[#3A332D]">Category</label>
-                        <select required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[#FCF8F2] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-white focus:ring-1 focus:ring-[#D9895B]">
+                        <label className="mb-1 block text-sm font-medium text-[var(--color-text-primary)]">Category</label>
+                        <select required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] focus:ring-1 focus:ring-[#D9895B]">
                           {CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}
                         </select>
                       </div>
                     </div>
 
                     <div>
-                      <label className="mb-1 block text-sm font-medium text-[#3A332D]">Short Description</label>
-                      <textarea required value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} rows={2} className="w-full rounded-xl border border-black/[0.04] bg-[#FCF8F2] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-white focus:ring-1 focus:ring-[#D9895B]" placeholder="A brief summary for the blog card..."></textarea>
+                      <label className="mb-1 block text-sm font-medium text-[var(--color-text-primary)]">Short Description</label>
+                      <textarea required value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} rows={2} className="w-full rounded-xl border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] focus:ring-1 focus:ring-[#D9895B]" placeholder="A brief summary for the blog card..."></textarea>
                     </div>
 
                     <div>
-                      <label className="mb-1 block text-sm font-medium text-[#3A332D]">Content (Markdown/Text)</label>
-                      <textarea required value={formData.content} onChange={e => setFormData({...formData, content: e.target.value})} rows={12} className="w-full rounded-xl border border-black/[0.04] bg-[#FCF8F2] px-4 py-4 text-sm outline-none focus:border-[#D9895B] focus:bg-white focus:ring-1 focus:ring-[#D9895B] font-mono leading-relaxed" placeholder="Write your post here..."></textarea>
+                      <label className="mb-1 block text-sm font-medium text-[var(--color-text-primary)]">Content (Markdown/Text)</label>
+                      <textarea required value={formData.content} onChange={e => setFormData({...formData, content: e.target.value})} rows={12} className="w-full rounded-xl border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-4 text-sm outline-none focus:border-[#D9895B] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] focus:ring-1 focus:ring-[#D9895B] font-mono leading-relaxed" placeholder="Write your post here..."></textarea>
                     </div>
 
                     <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <label className="mb-1 block text-sm font-medium text-[#3A332D]">Featured Image URL</label>
-                        <input type="url" value={formData.featuredImage} onChange={e => setFormData({...formData, featuredImage: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[#FCF8F2] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-white focus:ring-1 focus:ring-[#D9895B]" placeholder="https://..." />
+                        <label className="mb-1 block text-sm font-medium text-[var(--color-text-primary)]">Featured Image URL</label>
+                        <input type="url" value={formData.featuredImage} onChange={e => setFormData({...formData, featuredImage: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] focus:ring-1 focus:ring-[#D9895B]" placeholder="https://..." />
                       </div>
                       <div>
-                        <label className="mb-1 block text-sm font-medium text-[#3A332D]">Tags (comma separated)</label>
-                        <input type="text" value={formData.tags} onChange={e => setFormData({...formData, tags: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[#FCF8F2] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-white focus:ring-1 focus:ring-[#D9895B]" placeholder="design, freelance, remote" />
+                        <label className="mb-1 block text-sm font-medium text-[var(--color-text-primary)]">Tags (comma separated)</label>
+                        <input type="text" value={formData.tags} onChange={e => setFormData({...formData, tags: e.target.value})} className="w-full rounded-xl border border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-3 text-sm outline-none focus:border-[#D9895B] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28] focus:ring-1 focus:ring-[#D9895B]" placeholder="design, freelance, remote" />
                       </div>
                     </div>
 
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between border-t border-black/[0.04] bg-[#FCF8F2] px-6 py-4 flex-shrink-0">
-                  <button type="button" onClick={() => setModalType(null)} className="rounded-full border border-black/[0.04] bg-white px-6 py-2.5 text-sm font-medium text-[#3A332D] hover:bg-black/[0.02]">Cancel</button>
+                <div className="flex items-center justify-between border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-6 py-4 flex-shrink-0">
+                  <button type="button" onClick={() => setModalType(null)} className="rounded-full border border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-6 py-2.5 text-sm font-medium text-[var(--color-text-primary)] hover:bg-black/[0.02]">Cancel</button>
                   <div className="flex gap-3">
-                    <button type="button" onClick={(e) => handleSubmit(e, "Draft")} disabled={isPending} className="rounded-full border border-[#D9895B] bg-white px-6 py-2.5 text-sm font-medium text-[#D9895B] hover:bg-[#FCF8F2] disabled:opacity-50">
+                    <button type="button" onClick={(e) => handleSubmit(e, "Draft")} disabled={isPending} className="rounded-full border border-[#D9895B] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-6 py-2.5 text-sm font-medium text-[var(--color-accent-peach)] hover:bg-[var(--color-bg-ivory)] dark:bg-[#131715] disabled:opacity-50">
                       {isPending ? "Saving..." : "Save Draft"}
                     </button>
-                    <button type="button" onClick={(e) => handleSubmit(e, "Published")} disabled={isPending} className="rounded-full bg-[#3A332D] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#D9895B] disabled:opacity-50">
+                    <button type="button" onClick={(e) => handleSubmit(e, "Published")} disabled={isPending} className="rounded-full bg-[#3A332D] px-6 py-2.5 text-sm font-medium text-white hover:bg-[var(--color-accent-peach)] disabled:opacity-50">
                       {isPending ? "Publishing..." : "Publish"}
                     </button>
                   </div>

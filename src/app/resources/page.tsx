@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ResourcesPage() {
   return (
-    <main>
+    <main className="bg-[var(--color-bg-ivory)] dark:bg-[#131715] min-h-screen transition-colors duration-300">
       <ResourceHero />
       <ResourceGrid />
     </main>

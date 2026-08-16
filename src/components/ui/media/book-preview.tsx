@@ -12,7 +12,7 @@ interface BookPreviewProps extends Pick<ImageProps, "src" | "alt" | "width" | "h
 export function BookPreview({ perspective = true, className, style, alt, ...props }: BookPreviewProps) {
 	return (
 		<div className={cn("relative", perspective && "[perspective:1400px]", className)} style={style}>
-			<div className={cn("overflow-hidden border border-[var(--color-border-soft)] bg-[var(--color-surface-primary)] shadow-[var(--shadow-floating)]", perspective && "[transform:rotateY(-10deg)_rotateX(2deg)]")} style={{ borderRadius: theme.frames.radius }}>
+			<div className={cn("overflow-hidden border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-primary)] shadow-[var(--shadow-floating)]", perspective && "[transform:rotateY(-10deg)_rotateX(2deg)]")} style={{ borderRadius: theme.frames.radius }}>
 				<Image alt={alt} className="h-full w-full object-cover" {...props} />
 			</div>
 		</div>

@@ -33,8 +33,8 @@ export function BookPreviewGallery({
                 overflow-hidden
                 rounded-[2rem]
                 border
-                border-[var(--color-border-soft)]
-                bg-white
+                border-[var(--color-border-soft)] dark:border-[#2a332d]
+                bg-[var(--color-surface-elevated)] dark:bg-[#242b28]
                 shadow-[0_15px_40px_rgba(32,25,19,0.08)]
                 transition-all
                 duration-300
@@ -51,7 +51,7 @@ export function BookPreviewGallery({
                 />
               </div>
 
-              <div className="border-t border-[var(--color-border-soft)] p-4 text-center">
+              <div className="border-t border-[var(--color-border-soft)] dark:border-[#2a332d] p-4 text-center">
                 <p className="text-sm font-medium text-[var(--color-text-secondary)]">
                   Page {index + 1}
                 </p>

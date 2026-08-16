@@ -2,7 +2,7 @@ import { NewsletterForm } from "./NewsletterForm";
 
 export function NewsletterHero() {
   return (
-    <section className="relative overflow-hidden bg-[var(--color-bg-ivory)] dark:bg-[#0F1211] py-32 sm:py-48 text-[var(--color-text-primary)] dark:text-white min-h-[85vh] flex items-center justify-center transition-colors duration-300">
+    <section className="relative overflow-hidden bg-[var(--color-bg-ivory)] dark:bg-[#131715] dark:bg-[#0F1211] py-32 sm:py-48 text-[var(--color-text-primary)] dark:text-white min-h-[85vh] flex items-center justify-center transition-colors duration-300">
       {/* Cinematic Background Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[var(--color-accent-peach)]/10 dark:bg-[var(--color-accent-peach)]/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[var(--color-accent-sage)]/20 dark:bg-[#2A332D]/40 blur-[120px] rounded-full pointer-events-none" />

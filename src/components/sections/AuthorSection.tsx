@@ -3,7 +3,7 @@ import { Container, FadeIn, FadeInStagger, FadeInStaggerItem, ParallaxBackground
 
 export function AuthorSection() {
   return (
-    <section id="author" className="relative border-t border-black/[0.04] bg-[var(--color-bg-ivory)] py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section id="author" className="relative border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-20 sm:py-28 lg:py-32 overflow-hidden">
       <ParallaxBackground offset={100} className="opacity-40 mix-blend-multiply">
         <BotanicalDecoration variant="watercolor-blob" className="absolute -bottom-[20%] -right-[10%] w-[600px] h-[600px] text-[#F9E5D9]" />
       </ParallaxBackground>
@@ -14,7 +14,7 @@ export function AuthorSection() {
           {/* Left: Author Profile */}
           <FadeInStagger className="flex flex-col sm:flex-row gap-8 sm:gap-12">
             <FadeInStaggerItem className="shrink-0">
-              <div className="relative aspect-[3/4] w-48 overflow-hidden rounded-[2rem] sm:rounded-t-full sm:w-56 shadow-sm border border-[var(--color-border-soft)]">
+              <div className="relative aspect-[3/4] w-48 overflow-hidden rounded-[2rem] sm:rounded-t-full sm:w-56 shadow-sm border border-[var(--color-border-soft)] dark:border-[#2a332d]">
                 <Image
                   src="/images/authors/Author.jpeg"
                   alt="Shreya portrait"
@@ -54,7 +54,7 @@ export function AuthorSection() {
           </FadeInStagger>
 
           {/* Right: Newsletter Card */}
-          <FadeIn delay={0.2} direction="up" className="flex flex-col justify-center rounded-[2rem] border border-[var(--color-border-soft)] bg-white p-8 shadow-sm sm:p-10">
+          <FadeIn delay={0.2} direction="up" className="flex flex-col justify-center rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-8 shadow-sm sm:p-10">
             <h3 className="font-serif text-2xl font-medium text-[var(--color-text-primary)]">
               Build with me.
             </h3>
@@ -68,7 +68,7 @@ export function AuthorSection() {
                 name="email"
                 required
                 placeholder="Your email address"
-                className="w-full rounded-full border border-[var(--color-border-soft)] bg-[#FCF8F2]/50 px-5 py-3.5 text-sm outline-none transition-colors focus:border-[var(--color-accent-peach)] focus:bg-white"
+                className="w-full rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-bg-ivory)] dark:bg-[#131715]/50 px-5 py-3.5 text-sm outline-none transition-colors focus:border-[var(--color-accent-peach)] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]"
               />
               <button
                 type="submit"

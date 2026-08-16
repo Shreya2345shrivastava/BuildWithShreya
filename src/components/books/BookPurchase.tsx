@@ -16,7 +16,7 @@ export function BookPurchase({
   return (
     <section className="py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="overflow-hidden rounded-[2rem] border border-[var(--color-border-soft)] bg-white shadow-[0_20px_60px_rgba(32,25,19,0.08)]">
+        <div className="overflow-hidden rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[0_20px_60px_rgba(32,25,19,0.08)]">
           <div className="grid gap-12 p-10 lg:grid-cols-2 lg:p-14">
 
             {/* Left */}
@@ -52,28 +52,28 @@ export function BookPurchase({
               </div>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[var(--color-border-soft)] p-4">
+                <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-4">
                   <div className="text-xl">⚡</div>
                   <div className="mt-2 font-medium">
                     Instant Download
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--color-border-soft)] p-4">
+                <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-4">
                   <div className="text-xl">🔒</div>
                   <div className="mt-2 font-medium">
                     Secure Checkout
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--color-border-soft)] p-4">
+                <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-4">
                   <div className="text-xl">♾️</div>
                   <div className="mt-2 font-medium">
                     Lifetime Access
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--color-border-soft)] p-4">
+                <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-4">
                   <div className="text-xl">📱</div>
                   <div className="mt-2 font-medium">
                     Mobile Friendly
@@ -83,7 +83,7 @@ export function BookPurchase({
             </div>
 
             {/* Right */}
-            <div className="rounded-[2rem] bg-[var(--color-bg-ivory)] p-8 text-center">
+            <div className="rounded-[2rem] bg-[var(--color-bg-ivory)] dark:bg-[#131715] p-8 text-center">
               <span className="text-sm uppercase tracking-[0.2em] text-[var(--color-accent-peach)]">
                 Special Launch Price
               </span>
@@ -122,7 +122,7 @@ export function BookPurchase({
                 </Button>
               </div>
 
-              <div className="mt-8 rounded-2xl border border-[var(--color-border-soft)] p-4 text-left">
+              <div className="mt-8 rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] p-4 text-left">
                 <div className="flex items-center gap-2">
                   🔒
                   <span className="font-medium">

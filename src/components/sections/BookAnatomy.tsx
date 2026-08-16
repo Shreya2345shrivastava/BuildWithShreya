@@ -12,12 +12,12 @@ const fadeUpVariant: Variants = {
 
 export function BookAnatomy() {
   return (
-    <section className="relative bg-[var(--color-bg-ivory)] py-16 sm:py-24 overflow-hidden">
+    <section className="relative bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-16 sm:py-24 overflow-hidden">
       
       {/* Subtle Background Accents */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-40 -right-40 w-[800px] h-[800px] bg-[var(--color-accent-peach)]/5 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] bg-[#D9895B]/5 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] bg-[var(--color-accent-peach)]/5 rounded-full blur-[100px]" />
       </div>
 
       <Container width="wide" className="relative z-10">
@@ -30,13 +30,13 @@ export function BookAnatomy() {
           variants={fadeUpVariant}
           className="text-center max-w-3xl mx-auto mb-20 sm:mb-28"
         >
-          <span className="inline-block py-1 px-3 rounded-full border border-[#D9895B]/30 bg-[#D9895B]/5 text-xs font-semibold tracking-widest text-[#D9895B] uppercase mb-6">
+          <span className="inline-block py-1 px-3 rounded-full border border-[#D9895B]/30 bg-[var(--color-accent-peach)]/5 text-xs font-semibold tracking-widest text-[var(--color-accent-peach)] uppercase mb-6">
             The Complete Bundle
           </span>
-          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-[#3A332D] mb-8 leading-[1.1]">
+          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-[var(--color-text-primary)] mb-8 leading-[1.1]">
             More than just <span className="italic text-[var(--color-accent-peach)]">a book.</span>
           </h2>
-          <p className="text-xl sm:text-2xl text-[#8A837D] font-light leading-relaxed">
+          <p className="text-xl sm:text-2xl text-[var(--color-text-secondary)] font-light leading-relaxed">
             A complete ecosystem designed to take you from overthinking to building, step by beautiful step.
           </p>
         </motion.div>
@@ -70,11 +70,11 @@ export function BookAnatomy() {
               className="w-full lg:w-1/2 text-center lg:text-left"
             >
               <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 opacity-60">
-                <span className="text-sm font-bold tracking-widest text-[#D9895B]">01</span>
-                <div className="h-px w-12 bg-[#D9895B]" />
+                <span className="text-sm font-bold tracking-widest text-[var(--color-accent-peach)]">01</span>
+                <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
               </div>
-              <h3 className="font-serif text-4xl sm:text-5xl text-[#3A332D] mb-6">The Core Philosophy</h3>
-              <p className="text-[#8A837D] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
+              <h3 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-6">The Core Philosophy</h3>
+              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
                 A beautifully designed guide for creators, dreamers & doers. Learn how to stop waiting for perfection and start building with intention. 
               </p>
             </motion.div>
@@ -90,9 +90,9 @@ export function BookAnatomy() {
               className="w-full lg:w-1/2 flex justify-center lg:justify-start relative"
             >
               {/* Decorative elements */}
-              <div className="absolute -left-10 top-10 w-32 h-32 bg-[#FCF8F2] rounded-full mix-blend-multiply opacity-50" />
+              <div className="absolute -left-10 top-10 w-32 h-32 bg-[var(--color-bg-ivory)] dark:bg-[#131715] rounded-full mix-blend-multiply opacity-50" />
               
-              <div className="relative w-full max-w-[360px] aspect-[4/5] rounded-r-3xl overflow-hidden shadow-[0_20px_50px_rgba(30,25,20,0.1)] border border-white/50 rotate-[2deg] bg-white transition-transform hover:rotate-0 hover:scale-[1.02] duration-700 z-10">
+              <div className="relative w-full max-w-[360px] aspect-[4/5] rounded-r-3xl overflow-hidden shadow-[0_20px_50px_rgba(30,25,20,0.1)] border border-white/50 rotate-[2deg] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] transition-transform hover:rotate-0 hover:scale-[1.02] duration-700 z-10">
                 <Image 
                   src="/images/previews/all/page-27.png" 
                   alt="Workbook Page" 
@@ -113,11 +113,11 @@ export function BookAnatomy() {
               className="w-full lg:w-1/2 text-center lg:text-right"
             >
               <div className="flex items-center justify-center lg:justify-end gap-4 mb-6 opacity-60">
-                <div className="h-px w-12 bg-[#D9895B]" />
-                <span className="text-sm font-bold tracking-widest text-[#D9895B]">02</span>
+                <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
+                <span className="text-sm font-bold tracking-widest text-[var(--color-accent-peach)]">02</span>
               </div>
-              <h3 className="font-serif text-4xl sm:text-5xl text-[#3A332D] mb-6">The Action Workbook</h3>
-              <p className="text-[#8A837D] text-xl leading-relaxed max-w-lg mx-auto lg:ml-auto lg:mr-0">
+              <h3 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-6">The Action Workbook</h3>
+              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:ml-auto lg:mr-0">
                 Filled with prompts, templates, and structured exercises designed to help you extract ideas from your head and turn them into tangible reality.
               </p>
             </motion.div>
@@ -147,20 +147,20 @@ export function BookAnatomy() {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-8">
                     <div>
-                      <h4 className="font-serif text-3xl sm:text-4xl text-[#3A332D] mb-1">30-Day</h4>
-                      <p className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#D9895B] uppercase">Challenge</p>
+                      <h4 className="font-serif text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-1">30-Day</h4>
+                      <p className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[var(--color-accent-peach)] uppercase">Challenge</p>
                     </div>
-                    <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(217,137,91,0.12)] border border-[#D9895B]/10 relative">
+                    <div className="w-14 h-14 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(217,137,91,0.12)] border border-[#D9895B]/10 relative">
                       <div className="absolute inset-0 rounded-full border border-[#D9895B]/20 m-1" />
-                      <Target size={24} className="text-[#D9895B]" strokeWidth={1.5} />
+                      <Target size={24} className="text-[var(--color-accent-peach)]" strokeWidth={1.5} />
                     </div>
                   </div>
 
                   {/* Progress Bar */}
-                  <div className="mb-8 bg-white/50 p-4 rounded-2xl border border-white/80 shadow-sm backdrop-blur-sm">
-                    <div className="flex justify-between items-center text-[10px] font-bold tracking-widest text-[#8A837D] uppercase mb-3">
+                  <div className="mb-8 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/50 p-4 rounded-2xl border border-white/80 shadow-sm backdrop-blur-sm">
+                    <div className="flex justify-between items-center text-[10px] font-bold tracking-widest text-[var(--color-text-secondary)] uppercase mb-3">
                       <span>Progress</span>
-                      <span className="text-[#D9895B] bg-[#D9895B]/10 px-2 py-1 rounded-full">7 / 30 Days</span>
+                      <span className="text-[var(--color-accent-peach)] bg-[var(--color-accent-peach)]/10 px-2 py-1 rounded-full">7 / 30 Days</span>
                     </div>
                     <div className="h-2 w-full bg-[#E8DED5]/40 rounded-full overflow-hidden">
                       <motion.div 
@@ -186,7 +186,7 @@ export function BookAnatomy() {
                             relative aspect-square rounded-full flex items-center justify-center transition-all duration-500
                             ${isChecked 
                               ? 'bg-gradient-to-br from-[#D9895B] to-[#B86B42] text-white shadow-[0_4px_12px_rgba(217,137,91,0.35)] scale-110 z-10 border border-[#D9895B]/50' 
-                              : 'bg-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] border border-[#E8DED5]/60 text-transparent hover:border-[#D9895B]/40 hover:bg-[#FCF8F2]/50'}
+                              : 'bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] border border-[var(--color-border-soft)] dark:border-[#2a332d]/60 text-transparent hover:border-[#D9895B]/40 hover:bg-[var(--color-bg-ivory)] dark:bg-[#131715]/50'}
                           `}
                         >
                           <CheckCircle2 size={12} strokeWidth={3} className={isChecked ? 'opacity-100' : 'opacity-0'} />
@@ -198,10 +198,10 @@ export function BookAnatomy() {
                   {/* Footer */}
                   <div className="pt-6 border-t border-[#D9895B]/15 flex items-center justify-center gap-3">
                     <div className="relative flex h-2.5 w-2.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D9895B] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#D9895B]"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent-peach)] opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--color-accent-peach)]"></span>
                     </div>
-                    <p className="text-xs text-[#3A332D] font-bold uppercase tracking-[0.15em]">
+                    <p className="text-xs text-[var(--color-text-primary)] font-bold uppercase tracking-[0.15em]">
                       Build unstoppable momentum
                     </p>
                   </div>
@@ -217,11 +217,11 @@ export function BookAnatomy() {
               className="w-full lg:w-1/2 text-center lg:text-left"
             >
               <div className="flex items-center justify-center lg:justify-start gap-4 mb-6 opacity-60">
-                <span className="text-sm font-bold tracking-widest text-[#D9895B]">03</span>
-                <div className="h-px w-12 bg-[#D9895B]" />
+                <span className="text-sm font-bold tracking-widest text-[var(--color-accent-peach)]">03</span>
+                <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
               </div>
-              <h3 className="font-serif text-4xl sm:text-5xl text-[#3A332D] mb-6">The Accountability Tracker</h3>
-              <p className="text-[#8A837D] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
+              <h3 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-6">The Accountability Tracker</h3>
+              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
                 A 30-day visual roadmap that turns reading into doing. Cross off each day to build momentum and watch your consistency compound into real results.
               </p>
             </motion.div>

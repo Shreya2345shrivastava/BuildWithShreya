@@ -30,7 +30,7 @@ export function BookInfo({ className, visible = true }: BookInfoProps) {
         <p className="mt-3 pl-1 text-caption text-[var(--color-text-muted)]">Digital PDF <span aria-hidden="true">•</span> Instant Access</p>
       </div>
 
-      <div className="mt-9 flex items-start gap-3 border-t border-[var(--color-border-soft)]/70 pt-6">
+      <div className="mt-9 flex items-start gap-3 border-t border-[var(--color-border-soft)] dark:border-[#2a332d]/70 pt-6">
         <div className="flex -space-x-1.5 pt-0.5" aria-hidden="true">
           <span className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-bg-ivory)] bg-[#d9a48f] text-[0.55rem] text-white">S</span>
           <span className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-bg-ivory)] bg-[#b8a18c] text-[0.55rem] text-white">A</span>

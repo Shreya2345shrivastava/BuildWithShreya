@@ -26,7 +26,7 @@ export function BookHeroDetail({
         
         {/* Book Cover */}
         <div className="flex justify-center">
-          <div className="group relative overflow-hidden rounded-[2rem] border border-[var(--color-border-soft)] bg-white p-4 shadow-[0_30px_80px_rgba(32,25,19,0.10)] transition duration-500 hover:-translate-y-2">
+          <div className="group relative overflow-hidden rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-4 shadow-[0_30px_80px_rgba(32,25,19,0.10)] transition duration-500 hover:-translate-y-2">
             <Image
               src={cover}
               alt={title}
@@ -64,21 +64,21 @@ export function BookHeroDetail({
               Buy Now
             </Button>
 
-            <div className="flex items-center gap-2 rounded-full border border-[var(--color-border-soft)] px-4 py-3 text-sm">
+            <div className="flex items-center gap-2 rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] px-4 py-3 text-sm">
               ⚡ Instant Download
             </div>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <span className="rounded-full border border-[var(--color-border-soft)] px-4 py-2 text-sm">
+            <span className="rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] px-4 py-2 text-sm">
               PDF Format
             </span>
 
-            <span className="rounded-full border border-[var(--color-border-soft)] px-4 py-2 text-sm">
+            <span className="rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] px-4 py-2 text-sm">
               Lifetime Access
             </span>
 
-            <span className="rounded-full border border-[var(--color-border-soft)] px-4 py-2 text-sm">
+            <span className="rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] px-4 py-2 text-sm">
               Printable
             </span>
           </div>

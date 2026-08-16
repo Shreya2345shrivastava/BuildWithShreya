@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function AboutStory() {
   return (
-    <section className="py-32 bg-white">
+    <section className="py-32 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           

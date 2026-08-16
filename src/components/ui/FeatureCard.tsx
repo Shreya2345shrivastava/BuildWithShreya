@@ -22,7 +22,7 @@ export function FeatureCard({
       tabIndex={0}
       data-visible={visible}
       className={cn(
-        "group flex h-full flex-col items-center justify-center rounded-2xl border border-[var(--color-border-soft)] bg-white px-5 py-8 text-center",
+        "group flex h-full flex-col items-center justify-center rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-5 py-8 text-center",
         "shadow-sm",
         "transition-all duration-500 ease-out",
         "hover:-translate-y-1",

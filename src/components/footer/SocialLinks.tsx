@@ -7,7 +7,7 @@ export function SocialLinks() {
         rel="noopener noreferrer"
         className="
           rounded-full
-          border border-[var(--color-border-soft)]
+          border border-[var(--color-border-soft)] dark:border-[#2a332d]
           px-4 py-2
           text-sm
           text-[var(--color-text-secondary)]
@@ -27,7 +27,7 @@ export function SocialLinks() {
         rel="noopener noreferrer"
         className="
           rounded-full
-          border border-[var(--color-border-soft)]
+          border border-[var(--color-border-soft)] dark:border-[#2a332d]
           px-4 py-2
           text-sm
           text-[var(--color-text-secondary)]
@@ -47,7 +47,7 @@ export function SocialLinks() {
         rel="noopener noreferrer"
         className="
           rounded-full
-          border border-[var(--color-border-soft)]
+          border border-[var(--color-border-soft)] dark:border-[#2a332d]
           px-4 py-2
           text-sm
           text-[var(--color-text-secondary)]
