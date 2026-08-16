@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container, FadeIn, FadeInStagger, FadeInStaggerItem, ParallaxBackground, BotanicalDecoration } from "@/components/ui";
+import { AuthorNewsletterForm } from "./AuthorNewsletterForm";
 
 export function AuthorSection() {
   return (
@@ -62,21 +63,7 @@ export function AuthorSection() {
               Receive thoughtful emails, free resources, and first access to new releases.
             </p>
 
-            <form action="https://formspree.io/f/xkjwobve" method="POST" className="mt-8 flex flex-col gap-3">
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="Your email address"
-                className="w-full rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-bg-ivory)] dark:bg-[#131715]/50 px-5 py-3.5 text-sm outline-none transition-colors focus:border-[var(--color-accent-peach)] focus:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]"
-              />
-              <button
-                type="submit"
-                className="w-full rounded-full bg-[var(--color-accent-peach)] px-5 py-3.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2"
-              >
-                Join Free 🌿
-              </button>
-            </form>
+            <AuthorNewsletterForm />
           </FadeIn>
 
         </div>

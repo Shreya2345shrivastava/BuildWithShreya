@@ -21,16 +21,13 @@ import {
 
 import DeleteBookButton from "./DeleteBookButton";
 
+import { connectDB } from "@/lib/mongodb";
+import { Book } from "@/models/Book";
+
 async function getBooks() {
-  const res = await fetch("http://localhost:3000/api/books", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch books");
-  }
-
-  return res.json();
+  await connectDB();
+  const books = await Book.find().sort({ createdAt: -1 }).lean();
+  return { books: JSON.parse(JSON.stringify(books)) };
 }
 
 export default async function ManageBooksPage({
