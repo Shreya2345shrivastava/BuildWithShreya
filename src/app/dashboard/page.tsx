@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { connectDB } from "@/lib/mongodb";
 import { Book } from "@/models/Book";
+import Subscriber from "@/lib/models/Subscriber";
 
 export default async function DashboardOverview() {
   const session = await getServerSession();
@@ -19,6 +20,7 @@ export default async function DashboardOverview() {
   await connectDB();
   const totalBooks = await Book.countDocuments();
   const recentBooks = await Book.find().sort({ createdAt: -1 }).limit(4);
+  const totalSubscribers = await Subscriber.countDocuments({ status: "Subscribed" });
 
   return (
     <div className="space-y-12">
@@ -41,7 +43,7 @@ export default async function DashboardOverview() {
           { label: "Total Books", value: totalBooks.toString(), icon: BookOpen, trend: "Real-time from DB" },
           { label: "Resources", value: "0", icon: FileText, trend: "Coming soon" },
           { label: "Blog Posts", value: "0", icon: PenTool, trend: "Coming soon" },
-          { label: "Subscribers", value: "0", icon: Users, trend: "Coming soon" },
+          { label: "Subscribers", value: totalSubscribers.toString(), icon: Users, trend: "Real-time from DB" },
         ].map((metric) => (
           <div key={metric.label} className="flex flex-col justify-between rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
             <div className="flex items-start justify-between">
