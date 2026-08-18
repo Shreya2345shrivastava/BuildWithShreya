@@ -40,17 +40,17 @@ export default async function DashboardOverview() {
       {/* Metrics Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { label: "Total Books", value: totalBooks.toString(), icon: BookOpen, trend: "Real-time from DB" },
-          { label: "Resources", value: "0", icon: FileText, trend: "Coming soon" },
-          { label: "Blog Posts", value: "0", icon: PenTool, trend: "Coming soon" },
-          { label: "Subscribers", value: totalSubscribers.toString(), icon: Users, trend: "Real-time from DB" },
+          { label: "Total Books", value: totalBooks.toString(), icon: BookOpen, trend: "Real-time from DB", href: "/dashboard/books/manage" },
+          { label: "Resources", value: "0", icon: FileText, trend: "Coming soon", href: "/dashboard/resources" },
+          { label: "Blog Posts", value: "0", icon: PenTool, trend: "Coming soon", href: "/dashboard/blogs" },
+          { label: "Subscribers", value: totalSubscribers.toString(), icon: Users, trend: "Real-time from DB", href: "/dashboard/newsletter" },
         ].map((metric) => (
-          <div key={metric.label} className="flex flex-col justify-between rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
+          <Link href={metric.href} key={metric.label} className="group flex flex-col justify-between rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
             <div className="flex items-start justify-between">
-              <div className="rounded-xl bg-[var(--color-bg-ivory)] dark:bg-[#131715] p-3 text-[var(--color-accent-peach)]">
+              <div className="rounded-xl bg-[var(--color-bg-ivory)] dark:bg-[#131715] p-3 text-[var(--color-accent-peach)] transition-colors group-hover:bg-[var(--color-accent-peach)] group-hover:text-white">
                 <metric.icon size={20} strokeWidth={1.5} />
               </div>
-              <ArrowUpRight size={16} className="text-[var(--color-text-secondary)]" />
+              <ArrowUpRight size={16} className="text-[var(--color-text-secondary)] transition-all group-hover:text-[var(--color-accent-peach)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
             <div className="mt-4">
               <h3 className="text-3xl font-sans font-semibold tracking-tight text-[var(--color-text-primary)]">{metric.value}</h3>
@@ -59,7 +59,7 @@ export default async function DashboardOverview() {
             <div className="mt-4 border-t border-[var(--color-border-soft)] dark:border-[#2a332d] pt-4">
               <p className="text-xs font-medium text-[var(--color-text-primary)]">{metric.trend}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

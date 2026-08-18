@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui";
 import { Check, Star, Sparkles, BookOpen } from "lucide-react";
 import { CheckoutButton } from "@/components/books/CheckoutButton";
+import { PurchaseSection } from "@/components/sections/PurchaseSection";
 
 export default async function BookDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -135,6 +136,9 @@ export default async function BookDetailsPage({ params }: { params: Promise<{ sl
             </div>
           </Container>
        </section>
+
+       {/* Premium Purchase Section */}
+       <PurchaseSection />
     </main>
   );
 }
