@@ -90,8 +90,8 @@ export function PurchaseSection() {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className={`relative group flex flex-col h-full rounded-3xl transition-all duration-500 ease-out ${
                   isFeatured 
-                    ? "bg-[var(--color-surface-elevated)] dark:bg-[#242b28] border border-[var(--color-accent-peach)]/40 shadow-[0_30px_60px_rgba(217,137,91,0.12)] md:-translate-y-4 md:scale-[1.02] z-10" 
-                    : "bg-[var(--color-surface-elevated)] dark:bg-[#1a201d] border border-[var(--color-border-soft)] dark:border-[#2a332d] shadow-sm hover:shadow-xl hover:-translate-y-2 z-0"
+                    ? "bg-[var(--color-surface-elevated)] dark:!bg-[#242b28] border border-[var(--color-accent-peach)]/40 shadow-[0_30px_60px_rgba(217,137,91,0.12)] md:-translate-y-4 md:scale-[1.02] z-10" 
+                    : "bg-[var(--color-surface-elevated)] dark:!bg-[#1a201d] border border-[var(--color-border-soft)] dark:!border-white/10 shadow-sm hover:shadow-xl hover:-translate-y-2 z-0"
                 }`}
               >
                 {/* Glassy overlay effect */}
@@ -132,8 +132,8 @@ export function PurchaseSection() {
                     href={option.buttonLink}
                     className={`group/btn relative overflow-hidden flex items-center justify-center gap-2 w-full py-4 rounded-xl text-sm font-semibold tracking-wide transition-all duration-300 ${
                       isFeatured
-                        ? "bg-[var(--color-text-primary)] text-[var(--color-surface-elevated)] hover:shadow-lg hover:opacity-90"
-                        : "bg-[var(--color-bg-ivory)] dark:bg-[#131715] text-[var(--color-text-primary)] border border-[var(--color-border-soft)] dark:border-[#2a332d] hover:border-[var(--color-text-primary)] dark:hover:border-white/20 hover:shadow-md"
+                        ? "!bg-[#131715] dark:!bg-white !text-white dark:!text-black hover:shadow-lg hover:opacity-90"
+                        : "bg-transparent !border border-[var(--color-border-soft)] dark:!border-white/20 !text-black dark:!text-white hover:!border-black dark:hover:!border-white hover:shadow-md"
                     }`}
                   >
                     <span className="relative z-10">{option.buttonText}</span>
@@ -167,7 +167,7 @@ export function PurchaseSection() {
           </p>
           <Link 
             href="/sample"
-            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-transparent border border-[var(--color-border-soft)] dark:border-[#2a332d] text-[var(--color-text-primary)] text-xs font-bold tracking-[0.2em] uppercase hover:border-[var(--color-text-primary)] hover:bg-[var(--color-text-primary)] hover:text-[var(--color-surface-elevated)] transition-all duration-500"
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-transparent border border-[var(--color-border-soft)] dark:!border-white/20 !text-black dark:!text-white text-xs font-bold tracking-[0.2em] uppercase hover:!bg-black dark:hover:!bg-white hover:!text-white dark:hover:!text-black transition-all duration-500"
           >
             Read Free Sample
             <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />

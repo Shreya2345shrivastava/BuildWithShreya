@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { SITE } from "@/constants/site";
 import "./globals.css";
@@ -20,6 +20,12 @@ const bodyFont = Inter({
   subsets: ["latin"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const brand = await getGlobalBrandSettings();

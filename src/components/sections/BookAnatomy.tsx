@@ -97,6 +97,7 @@ export function BookAnatomy() {
                   src="/images/previews/all/page-27.png" 
                   alt="Workbook Page" 
                   fill 
+                  sizes="(max-width: 1024px) 100vw, 360px"
                   className="object-cover object-top"
                 />
                 <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-black/20 to-transparent mix-blend-multiply" />
@@ -136,8 +137,8 @@ export function BookAnatomy() {
               <div className="w-full max-w-[420px] relative z-10 rounded-[2.5rem] p-8 sm:p-10 shadow-[0_30px_60px_rgba(217,137,91,0.12)] rotate-[-1deg] transition-all hover:rotate-0 hover:scale-[1.02] duration-700 overflow-hidden group border border-white/60">
                 
                 {/* Premium Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white via-[#FFFDFB] to-[#FDF8F3] z-0" />
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(217,137,91,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.03)_1px,transparent_1px)] bg-[size:20px_20px] z-0" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white dark:from-[#2a332d] via-[#FFFDFB] dark:via-[#242b28] to-[#FDF8F3] dark:to-[#1e2422] z-0" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(217,137,91,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(217,137,91,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.1)_1px,transparent_1px)] bg-[size:20px_20px] z-0" />
                 <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-[#D9895B]/10 to-transparent rounded-full blur-2xl z-0" />
                 <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-tr from-[#D9895B]/5 to-transparent rounded-full blur-2xl z-0" />
 

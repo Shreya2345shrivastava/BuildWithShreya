@@ -55,21 +55,21 @@ export default async function BooksPage() {
 
       {/* Books Grid */}
       <section className="pb-32 relative z-10">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex flex-col gap-12">
             {data.books.map((book: IBook) => (
               <article
                 key={book._id}
-                className="group relative rounded-[2rem] border border-[var(--color-border-soft)] dark:border-[#2a332d]/60 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[0_15px_40px_rgba(32,25,19,0.04)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(32,25,19,0.1)] flex flex-col h-full"
+                className="group relative rounded-[2.5rem] border border-[var(--color-border-soft)] dark:border-[#2a332d]/60 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[0_15px_40px_rgba(32,25,19,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(32,25,19,0.1)] flex flex-col md:flex-row overflow-hidden min-h-[400px]"
               >
                 {/* Image Area with Premium Backdrop */}
-                <div className="relative aspect-[4/5] w-full rounded-t-[2rem] overflow-hidden bg-gradient-to-br from-[#FDF8F3] to-[#F5ECE5] p-8 flex flex-col items-center justify-center">
+                <div className="relative w-full md:w-5/12 lg:w-2/5 aspect-square md:aspect-auto bg-gradient-to-br from-[#FDF8F3] to-[#F5ECE5] dark:from-[#2a332d] dark:to-[#1e2422] p-8 lg:p-12 flex flex-col items-center justify-center shrink-0">
                   {/* Subtle Texture */}
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#D9895B]/10 via-transparent to-transparent opacity-60" />
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(217,137,91,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.04)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(217,137,91,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.04)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(217,137,91,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.1)_1px,transparent_1px)] bg-[size:24px_24px]" />
                   
                   {/* The Book Mockup */}
-                  <div className="relative z-10 w-full max-w-[220px] shadow-[0_30px_60px_rgba(32,25,19,0.15)] transform group-hover:scale-[1.05] group-hover:-rotate-2 transition-all duration-700 ease-out border border-white/40 rounded-sm">
+                  <div className="relative z-10 w-full max-w-[200px] lg:max-w-[240px] shadow-[0_30px_60px_rgba(0,0,0,0.2)] transform group-hover:scale-[1.03] group-hover:-rotate-1 transition-all duration-700 ease-out border border-white/40 dark:border-white/10 rounded-sm">
                     <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-r from-black/20 to-transparent z-20" />
                     <Image
                       src={book.coverImage}
@@ -83,31 +83,29 @@ export default async function BooksPage() {
                 </div>
 
                 {/* Content Area */}
-                <div className="px-8 pt-8 pb-8 relative z-20 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] rounded-b-[2rem] flex flex-col flex-grow">
+                <div className="p-8 md:p-10 lg:p-12 relative z-20 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] flex flex-col flex-grow">
                   <div className="flex items-center gap-2 mb-4">
-                    <BookOpen size={14} className="text-[var(--color-accent-peach)]" />
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-accent-peach)]">
+                    <BookOpen size={16} className="text-[var(--color-accent-peach)]" />
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent-peach)]">
                       Ebook
                     </p>
                   </div>
 
-                  <h3 className="font-serif text-3xl text-[var(--color-text-primary)] mb-4 group-hover:text-[var(--color-accent-peach)] transition-colors duration-300">
+                  <h3 className="font-serif text-3xl md:text-4xl text-[var(--color-text-primary)] mb-5 group-hover:text-[var(--color-accent-peach)] transition-colors duration-300">
                     {book.title}
                   </h3>
 
-                  <p className="leading-relaxed text-[var(--color-text-secondary)] text-sm mb-8 line-clamp-3 flex-grow">
+                  <p className="leading-relaxed text-[var(--color-text-secondary)] text-base mb-8 flex-grow">
                     {book.description}
                   </p>
 
-                  <div className="flex items-center justify-between pt-6 border-t border-[var(--color-border-soft)] dark:border-[#2a332d]/50 mt-auto">
+                  <div className="flex items-center pt-8 border-t border-[var(--color-border-soft)] dark:border-[#2a332d] mt-auto">
                     <Link
                       href={`/books/${book.slug}`}
-                      className="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-[var(--color-accent-peach)] group-hover:text-[#B86B42] transition-colors"
+                      className="inline-flex items-center gap-3 text-sm font-bold tracking-wide !text-black dark:!text-black bg-[var(--color-accent-peach)] px-8 py-3.5 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                     >
                       Read Details
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-bg-ivory)] dark:bg-[#131715] group-hover:bg-[var(--color-accent-peach)] group-hover:text-white transition-colors duration-300">
-                        <ArrowUpRight size={16} strokeWidth={2} />
-                      </div>
+                      <ArrowUpRight size={18} strokeWidth={2.5} />
                     </Link>
                   </div>
                 </div>

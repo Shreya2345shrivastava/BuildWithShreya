@@ -120,6 +120,24 @@ export function Button(props: ButtonProps) {
 			anchorProps.onClick?.(event);
 		};
 
+		const isExternalOrAnchor = href.startsWith("http") || href.startsWith("#");
+
+		if (isExternalOrAnchor) {
+			return (
+				<a
+					href={href}
+					aria-disabled={disabled || loading}
+					tabIndex={disabled || loading ? -1 : anchorProps.tabIndex}
+					className={baseClassName}
+					style={style}
+					onClick={handleClick as any}
+					{...(anchorProps as any)}
+				>
+					{renderContent({ children, leftIcon, rightIcon, loading }, size)}
+				</a>
+			);
+		}
+
 		return (
 			<Link
 				href={href}

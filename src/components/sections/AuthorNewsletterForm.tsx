@@ -42,7 +42,7 @@ export function AuthorNewsletterForm() {
         <button
           type="submit"
           disabled={status === "loading" || status === "success"}
-          className="w-full rounded-full bg-[var(--color-accent-peach)] px-5 py-3.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2 disabled:opacity-50 disabled:hover:translate-y-0"
+          className="w-full rounded-full bg-[var(--color-accent-peach)] px-5 py-3.5 text-sm font-bold !text-black dark:!text-black transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2 disabled:opacity-50 disabled:hover:translate-y-0"
         >
           {status === "loading" ? "Joining..." : status === "success" ? "Joined 🌿" : "Join Free 🌿"}
         </button>

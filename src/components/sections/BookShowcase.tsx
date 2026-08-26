@@ -61,7 +61,7 @@ export default function BookShowcase() {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <Link 
                   href="/books" 
-                  className="inline-flex justify-center rounded-full bg-[var(--color-accent-peach)] px-8 py-3.5 text-sm font-medium text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2"
+                  className="inline-flex justify-center rounded-full bg-[var(--color-accent-peach)] px-8 py-3.5 text-sm font-bold !text-black dark:!text-black shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2"
                 >
                   Buy Now 🛒
                 </Link>

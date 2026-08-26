@@ -46,7 +46,7 @@ export function NewsletterForm() {
         <button
           type="submit"
           disabled={status === "loading" || status === "success"}
-          className="group flex items-center justify-center rounded-full bg-[var(--color-accent-peach)] px-8 py-3.5 font-medium text-white shadow-lg transition-all hover:scale-105 hover:bg-[var(--color-accent-peach)] disabled:opacity-50 disabled:hover:scale-100"
+          className="group flex items-center justify-center rounded-full bg-[var(--color-accent-peach)] px-8 py-3.5 font-bold !text-black dark:!text-black shadow-lg transition-all hover:scale-105 hover:bg-[var(--color-accent-peach)] disabled:opacity-50 disabled:hover:scale-100"
         >
           {status === "loading" ? (
             "Subscribing..."

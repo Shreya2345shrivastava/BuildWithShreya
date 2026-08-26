@@ -28,10 +28,10 @@ export const theme = {
   buttons: {
     primary: {
       background: COLORS.accent.peach,
-      foreground: COLORS.text.inverse,
+      foreground: "#131715",
       border: COLORS.accent.peach,
       hoverBackground: "#be6d56",
-      hoverForeground: COLORS.text.inverse,
+      hoverForeground: "#131715",
       disabledBackground: COLORS.border.subtle,
       disabledForeground: COLORS.text.muted,
     },
