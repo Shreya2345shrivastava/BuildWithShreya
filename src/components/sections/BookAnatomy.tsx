@@ -33,7 +33,7 @@ export function BookAnatomy() {
           <span className="inline-block py-1 px-3 rounded-full border border-[#D9895B]/30 bg-[var(--color-accent-peach)]/5 text-xs font-semibold tracking-widest text-[var(--color-accent-peach)] uppercase mb-6">
             The Complete Bundle
           </span>
-          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-[var(--color-text-primary)] mb-8 leading-[1.1]">
+          <h2 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-[var(--color-text-primary)] mb-8 leading-[1.1]">
             More than just <span className="italic text-[var(--color-accent-peach)]">a book.</span>
           </h2>
           <p className="text-xl sm:text-2xl text-[var(--color-text-secondary)] font-light leading-relaxed">
@@ -73,7 +73,7 @@ export function BookAnatomy() {
                 <span className="text-sm font-bold tracking-widest text-[var(--color-accent-peach)]">01</span>
                 <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
               </div>
-              <h3 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-6">The Core Philosophy</h3>
+              <h3 className="font-serif text-[clamp(2rem,6vw,3rem)] text-[var(--color-text-primary)] mb-6">The Core Philosophy</h3>
               <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
                 A beautifully designed guide for creators, dreamers & doers. Learn how to stop waiting for perfection and start building with intention. 
               </p>
@@ -90,9 +90,9 @@ export function BookAnatomy() {
               className="w-full lg:w-1/2 flex justify-center lg:justify-start relative"
             >
               {/* Decorative elements */}
-              <div className="absolute -left-10 top-10 w-32 h-32 bg-[var(--color-bg-ivory)] dark:bg-[#131715] rounded-full mix-blend-multiply opacity-50" />
+              <div className="hidden sm:block absolute -left-10 top-10 w-32 h-32 bg-[var(--color-bg-ivory)] dark:bg-[#131715] rounded-full mix-blend-multiply opacity-50" />
               
-              <div className="relative w-full max-w-[360px] aspect-[4/5] rounded-r-3xl overflow-hidden shadow-[0_20px_50px_rgba(30,25,20,0.1)] border border-white/50 rotate-[2deg] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] transition-transform hover:rotate-0 hover:scale-[1.02] duration-700 z-10">
+              <div className="relative w-full max-w-[360px] aspect-[4/5] sm:rounded-r-3xl rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(30,25,20,0.1)] border border-white/50 rotate-0 sm:rotate-[2deg] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] transition-transform hover:rotate-0 hover:scale-[1.02] duration-700 z-10">
                 <Image 
                   src="/images/previews/all/page-27.png" 
                   alt="Workbook Page" 
@@ -117,7 +117,7 @@ export function BookAnatomy() {
                 <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
                 <span className="text-sm font-bold tracking-widest text-[var(--color-accent-peach)]">02</span>
               </div>
-              <h3 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-6">The Action Workbook</h3>
+              <h3 className="font-serif text-[clamp(2rem,6vw,3rem)] text-[var(--color-text-primary)] mb-6">The Action Workbook</h3>
               <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:ml-auto lg:mr-0">
                 Filled with prompts, templates, and structured exercises designed to help you extract ideas from your head and turn them into tangible reality.
               </p>
@@ -139,8 +139,8 @@ export function BookAnatomy() {
                 {/* Premium Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white dark:from-[#2a332d] via-[#FFFDFB] dark:via-[#242b28] to-[#FDF8F3] dark:to-[#1e2422] z-0" />
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(217,137,91,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(217,137,91,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(217,137,91,0.1)_1px,transparent_1px)] bg-[size:20px_20px] z-0" />
-                <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-[#D9895B]/10 to-transparent rounded-full blur-2xl z-0" />
-                <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-tr from-[#D9895B]/5 to-transparent rounded-full blur-2xl z-0" />
+                <div className="hidden sm:block absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-[#D9895B]/10 to-transparent rounded-full blur-2xl z-0" />
+                <div className="hidden sm:block absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-tr from-[#D9895B]/5 to-transparent rounded-full blur-2xl z-0" />
 
                 {/* Content */}
                 <div className="relative z-10">
@@ -148,7 +148,7 @@ export function BookAnatomy() {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-8">
                     <div>
-                      <h4 className="font-serif text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-1">30-Day</h4>
+                      <h4 className="font-serif text-[clamp(1.75rem,5vw,2.25rem)] text-[var(--color-text-primary)] mb-1">30-Day</h4>
                       <p className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[var(--color-accent-peach)] uppercase">Challenge</p>
                     </div>
                     <div className="w-14 h-14 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(217,137,91,0.12)] border border-[#D9895B]/10 relative">
@@ -221,7 +221,7 @@ export function BookAnatomy() {
                 <span className="text-sm font-bold tracking-widest text-[var(--color-accent-peach)]">03</span>
                 <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
               </div>
-              <h3 className="font-serif text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-6">The Accountability Tracker</h3>
+              <h3 className="font-serif text-[clamp(2rem,6vw,3rem)] text-[var(--color-text-primary)] mb-6">The Accountability Tracker</h3>
               <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
                 A 30-day visual roadmap that turns reading into doing. Cross off each day to build momentum and watch your consistency compound into real results.
               </p>

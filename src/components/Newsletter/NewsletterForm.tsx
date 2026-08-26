@@ -33,7 +33,7 @@ export function NewsletterForm() {
     <div className="mx-auto mt-10 w-full max-w-lg">
       <form
         action={handleSubmit}
-        className="relative flex w-full items-center rounded-full bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/60 dark:bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/10 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.1)] backdrop-blur-xl border border-black/5 dark:border-white/20 focus-within:ring-2 focus-within:ring-[var(--color-accent-peach)] focus-within:ring-offset-2 focus-within:ring-offset-transparent transition-all duration-300"
+        className="relative flex flex-col sm:flex-row w-full items-center rounded-3xl sm:rounded-full bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/60 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.1)] backdrop-blur-xl border border-black/5 dark:border-white/20 focus-within:ring-2 focus-within:ring-[var(--color-accent-peach)] focus-within:ring-offset-2 focus-within:ring-offset-transparent transition-all duration-300 gap-2 sm:gap-0"
       >
         <input
           type="email"
@@ -41,12 +41,12 @@ export function NewsletterForm() {
           required
           disabled={status === "loading" || status === "success"}
           placeholder="Enter your best email..."
-          className="flex-1 bg-transparent px-6 py-3.5 text-[var(--color-text-primary)] dark:text-white placeholder-black/40 dark:placeholder-white/60 outline-none w-full disabled:opacity-50"
+          className="flex-1 bg-transparent px-6 py-3.5 min-h-[44px] text-[var(--color-text-primary)] dark:text-white placeholder-black/40 dark:placeholder-white/60 outline-none w-full disabled:opacity-50 text-center sm:text-left"
         />
         <button
           type="submit"
           disabled={status === "loading" || status === "success"}
-          className="group flex items-center justify-center rounded-full bg-[var(--color-accent-peach)] px-8 py-3.5 font-bold !text-black dark:!text-black shadow-lg transition-all hover:scale-105 hover:bg-[var(--color-accent-peach)] disabled:opacity-50 disabled:hover:scale-100"
+          className="group flex items-center justify-center w-full sm:w-auto rounded-full bg-[var(--color-accent-peach)] px-8 py-3.5 min-h-[44px] font-bold !text-black dark:!text-black shadow-lg transition-all hover:scale-105 hover:bg-[var(--color-accent-peach)] disabled:opacity-50 disabled:hover:scale-100"
         >
           {status === "loading" ? (
             "Subscribing..."

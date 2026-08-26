@@ -58,7 +58,7 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
           aria-label="Primary"
           className={cn(
             "flex items-center justify-between rounded-full transition-all duration-500",
-            "px-6 py-4 lg:px-8",
+            "px-4 sm:px-6 py-4 lg:px-8",
             scrolled
               ? "border border-black/5 dark:border-white/10 bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/80 dark:bg-[#0F1211]/80 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
               : "border border-transparent bg-transparent"

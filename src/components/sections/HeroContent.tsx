@@ -15,7 +15,7 @@ export function HeroContent() {
       <FadeInStaggerItem>
         <h1
           id="hero-title"
-          className="mt-8 font-serif text-5xl leading-[1.1] tracking-tight text-[var(--color-text-primary)] sm:text-6xl lg:text-7xl xl:text-[5rem]"
+          className="mt-8 font-serif text-[clamp(2.75rem,8vw,5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)]"
         >
           Build your dream.
           <br />

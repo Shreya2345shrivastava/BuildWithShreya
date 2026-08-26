@@ -5,9 +5,9 @@ import { Check } from "lucide-react";
 
 export default function BookShowcase() {
   return (
-    <section id="featured-book" aria-labelledby="book-showcase-title" className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-20 sm:py-28 lg:py-32">
+    <section id="featured-book" aria-labelledby="book-showcase-title" className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-16 sm:py-24 lg:py-32 overflow-hidden">
       <Container width="wide">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           
           {/* Left: Book Mockup */}
           <FadeIn direction="left" className="order-2 lg:order-1 flex justify-center lg:justify-end perspective-1000">
@@ -21,7 +21,7 @@ export default function BookShowcase() {
           {/* Right: Content */}
           <FadeInStagger className="order-1 lg:order-2 flex flex-col justify-center">
             <FadeInStaggerItem>
-              <h2 id="book-showcase-title" className="font-serif text-4xl leading-[1.1] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl">
+              <h2 id="book-showcase-title" className="font-serif text-[clamp(2rem,6vw,3.75rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)]">
                 First Build It, <br />
                 <span className="font-display italic text-[var(--color-accent-peach)]">Then Make It Beautiful</span>
               </h2>
@@ -61,13 +61,13 @@ export default function BookShowcase() {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <Link 
                   href="/books" 
-                  className="inline-flex justify-center rounded-full bg-[var(--color-accent-peach)] px-8 py-3.5 text-sm font-bold !text-black dark:!text-black shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2"
+                  className="inline-flex justify-center rounded-full bg-[var(--color-accent-peach)] px-8 py-3 min-h-[44px] w-full sm:w-auto text-sm font-bold !text-black dark:!text-black shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2"
                 >
                   Buy Now 🛒
                 </Link>
                 <Link 
                   href="/sample" 
-                  className="inline-flex justify-center rounded-full border-2 border-[var(--color-accent-peach)]/20 bg-transparent px-8 py-3.5 text-sm font-medium text-[var(--color-accent-peach)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent-peach)] hover:bg-[var(--color-accent-peach)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2"
+                  className="inline-flex justify-center items-center rounded-full border-2 border-[var(--color-accent-peach)]/20 bg-transparent px-8 py-3 min-h-[44px] w-full sm:w-auto text-sm font-medium text-[var(--color-accent-peach)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent-peach)] hover:bg-[var(--color-accent-peach)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-peach)] focus:ring-offset-2"
                 >
                   Read a Free Sample 🌿
                 </Link>

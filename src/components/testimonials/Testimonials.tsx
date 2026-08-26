@@ -55,11 +55,11 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-24 sm:py-32 overflow-hidden"
+      className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-16 sm:py-24 lg:py-32 overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-7xl px-6">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="mb-20 flex flex-col items-center text-center">
-          <h2 className="font-serif text-4xl font-medium tracking-tight text-[var(--color-text-primary)] sm:text-5xl">
+          <h2 className="font-serif text-[clamp(2rem,6vw,3.75rem)] font-medium tracking-tight text-[var(--color-text-primary)]">
             Loved by Readers
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)] max-w-2xl">

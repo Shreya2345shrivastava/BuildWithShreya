@@ -99,7 +99,7 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
-      <body className="min-h-screen bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)] transition-colors duration-300">
+      <body className="min-h-screen overflow-x-hidden bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)] transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AuthProvider>
             <BrandProvider>
