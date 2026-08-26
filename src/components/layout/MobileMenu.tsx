@@ -4,16 +4,20 @@ import { useEffect, useRef } from "react";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import { NavLinks } from "@/components/layout/NavLinks";
 import { Logo } from "@/components/layout/Logo";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { UserMenu } from "@/components/auth";
 import { cn } from "@/lib/utils";
 
 interface MobileMenuProps {
 	open: boolean;
 	onClose: () => void;
+	profile?: { name?: string; image?: string; username?: string; email?: string };
 }
 
 export function MobileMenu({
 	open,
 	onClose,
+	profile,
 }: MobileMenuProps) {
 	const panelRef = useRef<HTMLDivElement>(null);
 	const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -104,7 +108,7 @@ export function MobileMenu({
 				aria-modal="true"
 				aria-label="Mobile navigation"
 				className={cn(
-					"absolute right-0 top-0 flex h-full w-full max-w-[28rem] flex-col border-l border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[rgba(255,250,244,0.96)] backdrop-blur-2xl px-5 pb-6 pt-5 shadow-[0_20px_60px_rgba(32,25,19,0.12)] transition-all duration-500 ease-out",
+					"absolute right-0 top-0 flex h-full w-full max-w-[28rem] flex-col border-l border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[rgba(255,250,244,0.96)] dark:bg-[#131715]/96 backdrop-blur-2xl px-5 pb-6 pt-5 shadow-[0_20px_60px_rgba(32,25,19,0.12)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out",
 					open
 						? "translate-x-0"
 						: "translate-x-full",
@@ -145,6 +149,14 @@ export function MobileMenu({
 						onNavigate={onClose}
 						className="text-base"
 					/>
+
+					<div className="mt-8 flex items-center justify-between py-6 border-t border-[var(--color-border-soft)] dark:border-[#2a332d]">
+						<div className="flex items-center gap-3">
+							<ThemeToggle />
+							<span className="text-sm font-medium text-[var(--color-text-secondary)]">Theme</span>
+						</div>
+						<UserMenu profile={profile} />
+					</div>
 
 					<div className="mt-auto pt-8">
 						<PrimaryButton

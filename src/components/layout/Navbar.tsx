@@ -139,6 +139,7 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
       <MobileMenu
         open={open}
         onClose={() => setOpen(false)}
+        profile={profile}
       />
     </header>
   );
