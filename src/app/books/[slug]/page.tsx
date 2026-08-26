@@ -3,6 +3,37 @@ import { Container, BackButton } from "@/components/ui";
 import { Check, Star, Sparkles, BookOpen } from "lucide-react";
 import { CheckoutButton } from "@/components/books/CheckoutButton";
 import { PurchaseSection } from "@/components/sections/PurchaseSection";
+import type { Metadata } from "next";
+import { SITE } from "@/constants/site";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  
+  // Using the same hardcoded book data for now
+  const book = {
+    title: "First Build It, Then Make It Beautiful",
+    description: "This book will help you move from overthinking to action, from waiting to building, and from surviving to creating a life you're proud of.",
+    coverImage: "/images/books/book-cover.jpeg",
+  };
+
+  return {
+    title: book.title,
+    description: book.description,
+    openGraph: {
+      title: `${book.title} | ${SITE.title}`,
+      description: book.description,
+      url: `${SITE.url}/books/${slug}`,
+      images: [
+        {
+          url: book.coverImage,
+          width: 800,
+          height: 1200,
+          alt: book.title,
+        }
+      ]
+    }
+  };
+}
 
 export default async function BookDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -144,6 +175,19 @@ export default async function BookDetailsPage({ params }: { params: Promise<{ sl
 
        {/* Premium Purchase Section */}
        <PurchaseSection />
+
+       {/* Mobile Sticky CTA */}
+       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/80 dark:bg-[#131715]/80 backdrop-blur-xl border-t border-[var(--color-border-soft)] dark:border-[#2a332d] lg:hidden transform transition-all duration-300">
+          <div className="flex items-center justify-between gap-4 max-w-lg mx-auto">
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-widest text-[var(--color-text-secondary)] font-bold">Total</span>
+              <span className="text-lg font-serif text-[var(--color-text-primary)] leading-none">${book.price}</span>
+            </div>
+            <div className="flex-1">
+              <CheckoutButton bookId={book.id} price={book.price} />
+            </div>
+          </div>
+       </div>
     </main>
   );
 }

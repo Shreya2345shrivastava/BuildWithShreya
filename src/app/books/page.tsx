@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, BookOpen } from "lucide-react";
+import type { Metadata } from "next";
+import { SITE } from "@/constants/site";
 
 interface IBook {
   _id: string;
@@ -18,6 +20,16 @@ async function getBooks() {
   const books = await Book.find().sort({ createdAt: -1 }).lean();
   return { books: JSON.parse(JSON.stringify(books)) };
 }
+
+export const metadata: Metadata = {
+  title: "Digital Library",
+  description: "Explore premium ebooks and guides beautifully designed to help you gain clarity, build habits, and take real action.",
+  openGraph: {
+    title: `Digital Library | ${SITE.title}`,
+    description: "Explore premium ebooks and guides beautifully designed to help you gain clarity, build habits, and take real action.",
+    url: `${SITE.url}/books`,
+  },
+};
 
 export default async function BooksPage() {
   const data = await getBooks();
@@ -57,9 +69,16 @@ export default async function BooksPage() {
       <section className="pb-32 relative z-10">
         <div className="mx-auto max-w-5xl px-6">
           <div className="flex flex-col gap-12">
-            {data.books.map((book: IBook) => (
-              <article
-                key={book._id}
+            {data.books.length === 0 ? (
+              <div className="text-center py-20 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] rounded-[2.5rem] border border-[var(--color-border-soft)] dark:border-[#2a332d]">
+                <BookOpen size={48} className="mx-auto text-[var(--color-text-tertiary)] mb-6 opacity-50" />
+                <h3 className="font-serif text-3xl text-[var(--color-text-primary)] mb-4">Books Coming Soon</h3>
+                <p className="text-[var(--color-text-secondary)]">We are currently preparing our digital library. Check back later!</p>
+              </div>
+            ) : (
+              data.books.map((book: IBook) => (
+                <article
+                  key={book._id}
                 className="group relative rounded-[2.5rem] border border-[var(--color-border-soft)] dark:border-[#2a332d]/60 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-[0_15px_40px_rgba(32,25,19,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(32,25,19,0.1)] flex flex-col md:flex-row overflow-hidden min-h-[400px]"
               >
                 {/* Image Area with Premium Backdrop */}
@@ -110,7 +129,8 @@ export default async function BooksPage() {
                   </div>
                 </div>
               </article>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>

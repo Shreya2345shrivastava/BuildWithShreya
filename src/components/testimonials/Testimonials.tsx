@@ -3,48 +3,48 @@ import { VideoTestimonialCard } from "./VideoTestimonialCard";
 const testimonials = [
   {
     name: "Priya Sharma",
-    role: "UX Designer",
-    review: "This workbook helped me turn ideas into action and stay consistent every week. The frameworks are pure gold for anyone struggling with procrastination.",
+    role: "Aspiring Author",
+    review: "I was paralyzed by perfectionism for years. This book gave me the permission to start messy and the exact system I needed to finally finish my first manuscript.",
     videoUrl: "https://cdn.pixabay.com/video/2020/05/11/38600-418751515_tiny.mp4",
     posterUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop",
     heightClass: "h-[450px]"
   },
   {
     name: "Aman Verma",
-    role: "Indie Hacker",
-    review: "Beautifully designed and incredibly practical. Every page feels intentional. I've launched two projects since I started using this.",
+    role: "Digital Creator",
+    review: "Beautifully designed and incredibly practical. Every page feels intentional. I went from endlessly consuming content to actually launching my first digital product in just 30 days.",
     videoUrl: "https://cdn.pixabay.com/video/2021/08/04/83896-584777592_tiny.mp4",
     posterUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
     heightClass: "h-[380px]"
   },
   {
     name: "Neha Gupta",
-    role: "Content Creator",
-    review: "One of the most inspiring productivity workbooks I've used this year. The aesthetic alone makes me want to sit down and do deep work.",
+    role: "Designer & Illustrator",
+    review: "One of the most inspiring workbooks I've ever held. The aesthetic alone makes me want to sit down and do deep work, but the frameworks are what actually kept me going.",
     videoUrl: "https://cdn.pixabay.com/video/2023/10/22/186006-876807865_tiny.mp4",
     posterUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop",
     heightClass: "h-[500px]"
   },
   {
     name: "Rahul Mehta",
-    role: "Software Engineer",
-    review: "I was skeptical at first, but the 30-day challenge completely rewired how I approach building side projects.",
+    role: "Newsletter Writer",
+    review: "I was overwhelmed by all the 'hustle culture' advice out there. This book offered a gentle, sustainable path. It completely rewired how I approach my creative business.",
     videoUrl: "https://cdn.pixabay.com/video/2020/05/11/38598-418751433_tiny.mp4",
     posterUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop",
     heightClass: "h-[400px]"
   },
   {
     name: "Sarah Chen",
-    role: "Product Manager",
-    review: "Finally, a guide that balances aesthetics with hardcore execution. It's like having a mentor in book form.",
+    role: "Creative Entrepreneur",
+    review: "Finally, a guide that balances beautiful aesthetics with hardcore execution. Reading this felt like having a warm, yet highly strategic mentor in my living room.",
     videoUrl: "https://cdn.pixabay.com/video/2021/08/04/83895-584777553_tiny.mp4",
     posterUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
     heightClass: "h-[480px]"
   },
   {
     name: "David Kumar",
-    role: "Freelancer",
-    review: "This isn't just a book, it's an operating system for creative professionals. Highly recommend the physical copy.",
+    role: "Freelance Photographer",
+    review: "This isn't just a book, it's a lifeline for creatives who feel stuck. The reflection prompts alone are worth 10x the price of the book.",
     videoUrl: "https://cdn.pixabay.com/video/2023/04/18/159495-819196562_tiny.mp4",
     posterUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop",
     heightClass: "h-[350px]"

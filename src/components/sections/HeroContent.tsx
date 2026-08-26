@@ -15,18 +15,20 @@ export function HeroContent() {
       <FadeInStaggerItem>
         <h1
           id="hero-title"
-          className="mt-4 lg:mt-8 font-serif text-[clamp(2.75rem,8vw,5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)]"
+          className="mt-4 lg:mt-8 font-serif text-[clamp(2.75rem,8vw,5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)] max-w-[540px]"
         >
-          Build your dream.
+          Build It First.
           <br />
-          Then make it <span className="font-display italic text-[var(--color-accent-peach)]">beautiful.</span>
+          Then Make It
+          <br />
+          <span className="font-display italic text-[var(--color-accent-peach)] text-[1.15em] leading-none block mt-1 sm:mt-2">Beautiful.</span>
         </h1>
       </FadeInStaggerItem>
 
       {/* Body Copy */}
       <FadeInStaggerItem>
         <p className="mt-5 lg:mt-8 max-w-[480px] text-lg leading-[1.8] text-[var(--color-text-secondary)]">
-          Gentle books, practical tools, and thoughtful resources to help you build a meaningful life—one step at a time.
+          A gentle guide and workbook for creators, dreamers, and doers. Move from overthinking to action—one meaningful step at a time.
         </p>
       </FadeInStaggerItem>
 

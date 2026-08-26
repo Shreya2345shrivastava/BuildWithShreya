@@ -74,9 +74,19 @@ export function BookAnatomy() {
                 <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
               </div>
               <h3 className="font-serif text-[clamp(2rem,6vw,3rem)] text-[var(--color-text-primary)] mb-6">The Core Philosophy</h3>
-              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
+              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6">
                 A beautifully designed guide for creators, dreamers & doers. Learn how to stop waiting for perfection and start building with intention. 
               </p>
+              <ul className="flex flex-col gap-4 max-w-lg mx-auto lg:mx-0 text-left">
+                <li className="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <CheckCircle2 size={20} className="text-[var(--color-accent-peach)] shrink-0 mt-1" />
+                  <span>Break free from the cycle of overthinking.</span>
+                </li>
+                <li className="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <CheckCircle2 size={20} className="text-[var(--color-accent-peach)] shrink-0 mt-1" />
+                  <span>Discover the exact frameworks to build with intention.</span>
+                </li>
+              </ul>
             </motion.div>
           </div>
 
@@ -118,9 +128,19 @@ export function BookAnatomy() {
                 <span className="text-sm font-bold tracking-widest text-[var(--color-accent-peach)]">02</span>
               </div>
               <h3 className="font-serif text-[clamp(2rem,6vw,3rem)] text-[var(--color-text-primary)] mb-6">The Action Workbook</h3>
-              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:ml-auto lg:mr-0">
+              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:ml-auto lg:mr-0 mb-6">
                 Filled with prompts, templates, and structured exercises designed to help you extract ideas from your head and turn them into tangible reality.
               </p>
+              <ul className="flex flex-col gap-4 max-w-lg mx-auto lg:ml-auto lg:mr-0 text-left">
+                <li className="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <CheckCircle2 size={20} className="text-[var(--color-accent-peach)] shrink-0 mt-1" />
+                  <span>Transform abstract ideas into actionable steps.</span>
+                </li>
+                <li className="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <CheckCircle2 size={20} className="text-[var(--color-accent-peach)] shrink-0 mt-1" />
+                  <span>Bypass procrastination with guided reflection prompts.</span>
+                </li>
+              </ul>
             </motion.div>
           </div>
 
@@ -222,9 +242,19 @@ export function BookAnatomy() {
                 <div className="h-px w-12 bg-[var(--color-accent-peach)]" />
               </div>
               <h3 className="font-serif text-[clamp(2rem,6vw,3rem)] text-[var(--color-text-primary)] mb-6">The Accountability Tracker</h3>
-              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
+              <p className="text-[var(--color-text-secondary)] text-xl leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6">
                 A 30-day visual roadmap that turns reading into doing. Cross off each day to build momentum and watch your consistency compound into real results.
               </p>
+              <ul className="flex flex-col gap-4 max-w-lg mx-auto lg:mx-0 text-left">
+                <li className="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <CheckCircle2 size={20} className="text-[var(--color-accent-peach)] shrink-0 mt-1" />
+                  <span>Stay consistent with a proven 30-day challenge.</span>
+                </li>
+                <li className="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <CheckCircle2 size={20} className="text-[var(--color-accent-peach)] shrink-0 mt-1" />
+                  <span>Watch your daily progress compound into massive wins.</span>
+                </li>
+              </ul>
             </motion.div>
           </div>
 

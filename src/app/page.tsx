@@ -6,6 +6,7 @@ import BookShowcase from "@/components/sections/BookShowcase";
 import { PreviewGallery } from "@/components/preview";
 import { AuthorSection } from "@/components/sections/AuthorSection";
 import { Testimonials } from "@/components/testimonials/Testimonials";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/footer/Footer";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <PreviewGallery />
         <AuthorSection />
         <Testimonials />
+        <FinalCTA />
       </main>
 
       <Footer />

@@ -6,3 +6,4 @@ export * from "@/components/ui/primitives";
 export * from "@/components/ui/Book3D";
 export * from "@/components/ui/scroll-reveal";
 export * from "@/components/ui/BackButton";
+export * from "@/components/ui/PrimaryButton";

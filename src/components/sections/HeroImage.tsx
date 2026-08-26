@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/ui";
 
 export function HeroImage() {
   return (
-    <div className="relative flex justify-center lg:justify-end">
+    <div className="relative flex justify-center lg:justify-end z-20 -mb-16 lg:mb-0">
       <FadeIn delay={0.2} direction="up" className="relative w-full max-w-[640px]">
         <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-xl transition-transform duration-700 hover:-translate-y-1 hover:shadow-2xl">
           <Image

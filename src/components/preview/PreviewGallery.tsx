@@ -91,8 +91,17 @@ export function PreviewGallery() {
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
               key={index} 
-              className="group relative flex flex-col items-center cursor-pointer min-w-[70vw] sm:min-w-[45vw] lg:min-w-0 snap-center"
+              className="group relative flex flex-col items-center cursor-pointer min-w-[70vw] sm:min-w-[45vw] lg:min-w-0 snap-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-peach)] rounded-lg"
               onClick={() => setSelectedPage(index)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedPage(index);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${page.title} preview`}
             >
               {/* Premium Book Page Card */}
               <div className="relative w-full rounded-[4px] bg-[var(--color-bg-ivory)] dark:bg-[#131715] shadow-[0_10px_30px_rgba(32,25,19,0.08),inset_1px_1px_0px_rgba(255,255,255,0.9)] border-r border-b border-[var(--color-border-soft)] dark:border-[#2a332d]/80 transition-all duration-700 ease-[cubic-bezier(0.21,0.47,0.32,0.98)] group-hover:-translate-y-6 group-hover:scale-[1.03] group-hover:shadow-[0_30px_60px_rgba(219,150,106,0.12),inset_1px_1px_0px_rgba(255,255,255,1)] group-hover:border-[var(--color-accent-peach)]/30 group-hover:rotate-y-2">
@@ -168,12 +177,22 @@ export function PreviewGallery() {
             </motion.div>
             
             {/* Desktop Navigation overlays */}
-            <div className="hidden sm:flex absolute inset-y-0 left-0 w-1/4 items-center justify-start p-8 opacity-0 hover:opacity-100 transition-opacity cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedPage(prev => prev! > 0 ? prev! - 1 : previewPages.length - 1); }}>
+            <div 
+              className="hidden sm:flex absolute inset-y-0 left-0 w-1/4 items-center justify-start p-8 opacity-0 hover:opacity-100 transition-opacity cursor-pointer" 
+              onClick={(e) => { e.stopPropagation(); setSelectedPage(prev => prev! > 0 ? prev! - 1 : previewPages.length - 1); }}
+              role="button"
+              aria-label="Previous page"
+            >
               <div className="bg-black/20 text-white rounded-full p-3 backdrop-blur-md border border-white/10 hover:bg-black/40 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
               </div>
             </div>
-            <div className="hidden sm:flex absolute inset-y-0 right-0 w-1/4 items-center justify-end p-8 opacity-0 hover:opacity-100 transition-opacity cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedPage(prev => prev! < previewPages.length - 1 ? prev! + 1 : 0); }}>
+            <div 
+              className="hidden sm:flex absolute inset-y-0 right-0 w-1/4 items-center justify-end p-8 opacity-0 hover:opacity-100 transition-opacity cursor-pointer" 
+              onClick={(e) => { e.stopPropagation(); setSelectedPage(prev => prev! < previewPages.length - 1 ? prev! + 1 : 0); }}
+              role="button"
+              aria-label="Next page"
+            >
               <div className="bg-black/20 text-white rounded-full p-3 backdrop-blur-md border border-white/10 hover:bg-black/40 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </div>

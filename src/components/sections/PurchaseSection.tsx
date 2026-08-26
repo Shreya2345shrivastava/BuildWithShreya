@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowUpRight, BookOpen, Download, Star } from "lucide-react";
+import { Check, ArrowUpRight, BookOpen, Download, Star, Lock, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/components/ui";
 
@@ -147,6 +147,28 @@ export function PurchaseSection() {
             );
           })}
         </div>
+
+        {/* Trust Signals */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-12 relative z-10 opacity-70"
+        >
+          <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
+            <Lock size={16} className="text-[var(--color-accent-peach)]" />
+            <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase">Secure SSL Checkout</span>
+          </div>
+          <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
+            <Download size={16} className="text-[var(--color-accent-peach)]" />
+            <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase">Instant Delivery</span>
+          </div>
+          <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
+            <ShieldCheck size={16} className="text-[var(--color-accent-peach)]" />
+            <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase">Own Forever</span>
+          </div>
+        </motion.div>
 
         {/* Bonus Section */}
         <motion.div 
