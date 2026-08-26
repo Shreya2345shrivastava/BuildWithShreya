@@ -53,7 +53,7 @@ const purchaseOptions = [
 
 export function PurchaseSection() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-[var(--color-bg-ivory)] dark:bg-[#131715]">
+    <section className="relative py-10 lg:py-32 overflow-hidden bg-[var(--color-bg-ivory)] dark:bg-[#131715]">
       {/* Decorative background elements */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border-soft)] dark:via-[#2a332d] to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_center,_var(--tw-gradient-stops))] from-[var(--color-accent-peach)]/5 via-transparent to-transparent opacity-60" />

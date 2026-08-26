@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 
 export default function BookShowcase() {
   return (
-    <section id="featured-book" aria-labelledby="book-showcase-title" className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-16 sm:py-24 lg:py-32 overflow-hidden">
+    <section id="featured-book" aria-labelledby="book-showcase-title" className="border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-10 lg:py-32 overflow-hidden">
       <Container width="wide">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           

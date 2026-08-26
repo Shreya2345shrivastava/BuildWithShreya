@@ -16,9 +16,9 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const paddingMap = {
 	none: "p-0",
-	sm: "p-4",
-	md: "p-6",
-	lg: "p-8",
+	sm: "p-3 lg:p-4",
+	md: "p-5 lg:p-6",
+	lg: "p-6 lg:p-8",
 } as const;
 
 export function Card({

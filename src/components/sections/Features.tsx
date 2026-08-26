@@ -39,7 +39,7 @@ const FEATURES: FeatureItem[] = [
 
 export function Features() {
 	return (
-		<section aria-labelledby="features-title" className="relative bg-[var(--color-bg-ivory)] dark:bg-[#131715] pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24">
+		<section id="features" className="relative bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-10 lg:py-32 overflow-hidden border-t border-black/[0.04]">
 			<Container width="wide">
 				<FadeInStagger className="mx-auto flex w-full max-w-[1400px] flex-col items-center text-center">
 					<FadeIn>

@@ -15,7 +15,7 @@ export function HeroContent() {
       <FadeInStaggerItem>
         <h1
           id="hero-title"
-          className="mt-8 font-serif text-[clamp(2.75rem,8vw,5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)]"
+          className="mt-4 lg:mt-8 font-serif text-[clamp(2.75rem,8vw,5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)]"
         >
           Build your dream.
           <br />
@@ -25,7 +25,7 @@ export function HeroContent() {
 
       {/* Body Copy */}
       <FadeInStaggerItem>
-        <p className="mt-8 max-w-[480px] text-lg leading-[1.8] text-[var(--color-text-secondary)]">
+        <p className="mt-5 lg:mt-8 max-w-[480px] text-lg leading-[1.8] text-[var(--color-text-secondary)]">
           Gentle books, practical tools, and thoughtful resources to help you build a meaningful life—one step at a time.
         </p>
       </FadeInStaggerItem>

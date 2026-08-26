@@ -4,7 +4,7 @@ import { AuthorNewsletterForm } from "./AuthorNewsletterForm";
 
 export function AuthorSection() {
   return (
-    <section id="author" className="relative border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section id="author" className="relative border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-10 lg:py-32 overflow-hidden">
       <ParallaxBackground offset={100} className="opacity-40 mix-blend-multiply">
         <BotanicalDecoration variant="watercolor-blob" className="absolute -bottom-[20%] -right-[10%] w-[600px] h-[600px] text-[#F9E5D9]" />
       </ParallaxBackground>

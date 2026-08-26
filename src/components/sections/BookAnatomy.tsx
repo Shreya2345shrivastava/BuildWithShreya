@@ -12,7 +12,7 @@ const fadeUpVariant: Variants = {
 
 export function BookAnatomy() {
   return (
-    <section className="relative bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-16 sm:py-24 overflow-hidden">
+    <section className="relative bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-10 lg:py-24 overflow-hidden">
       
       {/* Subtle Background Accents */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">

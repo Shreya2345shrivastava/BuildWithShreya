@@ -43,7 +43,7 @@ export function PreviewGallery() {
   };
 
   return (
-    <section aria-labelledby="preview-gallery-title" className="relative border-t border-black/[0.04] bg-[radial-gradient(ellipse_at_top_center,var(--color-bg-ivory),transparent_70%)] py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section aria-labelledby="preview-gallery-title" className="relative border-t border-black/[0.04] bg-[radial-gradient(ellipse_at_top_center,var(--color-bg-ivory),transparent_70%)] py-16 lg:py-32 overflow-hidden">
       {/* Subtle Background Glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBF9] to-white -z-10" />
 
@@ -83,7 +83,7 @@ export function PreviewGallery() {
           </motion.p>
         </div>
 
-        <div className="mt-20 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 md:gap-x-10 lg:grid-cols-5 perspective-1000">
+        <div className="mt-10 lg:mt-20 flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-5 gap-6 lg:gap-x-10 pb-8 lg:pb-0 perspective-1000 scrollbar-hide">
           {previewPages.map((page, index) => (
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
@@ -91,7 +91,7 @@ export function PreviewGallery() {
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
               key={index} 
-              className="group relative flex flex-col items-center cursor-pointer"
+              className="group relative flex flex-col items-center cursor-pointer min-w-[70vw] sm:min-w-[45vw] lg:min-w-0 snap-center"
               onClick={() => setSelectedPage(index)}
             >
               {/* Premium Book Page Card */}
