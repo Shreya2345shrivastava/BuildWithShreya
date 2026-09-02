@@ -69,7 +69,7 @@ export default async function DashboardOverview() {
           <h2 className="font-serif text-2xl text-[var(--color-text-primary)]">Recent Activity</h2>
           <div className="rounded-2xl border border-[var(--color-border-soft)] dark:border-[#2a332d] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] shadow-sm">
             <div className="flex flex-col">
-              {recentBooks.length > 0 ? recentBooks.map((book: any, i: number) => {
+              {recentBooks.length > 0 ? recentBooks.map((book: { _id: string; title: string; category?: string; status: string; views?: number; createdAt: string | Date }, i: number) => {
                 const days = Math.floor((new Date().getTime() - new Date(book.createdAt).getTime()) / (1000 * 60 * 60 * 24));
                 const timeAgo = days === 0 ? "Today" : days === 1 ? "Yesterday" : `${days} days ago`;
                 return (

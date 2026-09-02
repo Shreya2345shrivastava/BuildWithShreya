@@ -78,8 +78,8 @@ export default async function NotificationsPage() {
             </p>
           </div>
         ) : (
-          notifications.map((notif: any) => {
-            const isUnread = !notif.isRead;
+          notifications.map((notif: { _id: string; title: string; message: string; type: string; read: boolean; createdAt: string | Date }) => {
+            const isUnread = !notif.read;
             const days = Math.floor((new Date().getTime() - new Date(notif.createdAt).getTime()) / (1000 * 60 * 60 * 24));
             const hours = Math.floor((new Date().getTime() - new Date(notif.createdAt).getTime()) / (1000 * 60 * 60));
             const mins = Math.floor((new Date().getTime() - new Date(notif.createdAt).getTime()) / (1000 * 60));

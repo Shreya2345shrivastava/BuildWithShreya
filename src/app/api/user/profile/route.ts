@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { connectDB } from "@/lib/mongodb";
 import { User } from "@/models/User";
+import { z } from "zod";
+
+const ProfileUpdateSchema = z.object({
+  name: z.string().optional(),
+  username: z.string().optional(),
+  bio: z.string().optional(),
+});
 
 export async function GET() {
   try {
@@ -50,7 +57,11 @@ export async function PUT(req: Request) {
     }
 
     const body = await req.json();
-    const { name, username, bio } = body;
+    const validated = ProfileUpdateSchema.safeParse(body);
+    if (!validated.success) {
+      return NextResponse.json({ error: "Invalid request data" }, { status: 400 });
+    }
+    const { name, username, bio } = validated.data;
 
     await connectDB();
 

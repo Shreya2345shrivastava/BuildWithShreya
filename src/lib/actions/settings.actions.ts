@@ -7,6 +7,8 @@ import { Profile } from "@/models/Profile";
 import { BrandSettings } from "@/models/BrandSettings";
 import { NotificationSettings } from "@/models/NotificationSettings";
 import { revalidatePath } from "next/cache";
+import { ProfileUpdateSchema, BrandUpdateSchema, NotificationUpdateSchema } from "@/lib/validations";
+import { z } from "zod";
 
 async function getAuthEmail() {
   const session = await getServerSession();
@@ -72,14 +74,15 @@ export async function getAuthUserProfileSafe() {
   }
 }
 
-export async function updateProfile(data: { name?: string; username?: string; bio?: string; image?: string }) {
+export async function updateProfile(data: z.infer<typeof ProfileUpdateSchema>) {
   try {
+    const validated = ProfileUpdateSchema.parse(data);
     const email = await getAuthEmail();
     
     // Check for username collision across all profiles
-    if (data.username) {
+    if (validated.username) {
       const existing = await Profile.findOne({ 
-        username: data.username, 
+        username: validated.username, 
         email: { $ne: email } 
       });
       if (existing) {
@@ -89,7 +92,7 @@ export async function updateProfile(data: { name?: string; username?: string; bi
 
     await Profile.findOneAndUpdate(
       { email },
-      { $set: data },
+      { $set: validated },
       { new: true, upsert: true }
     );
     
@@ -100,13 +103,14 @@ export async function updateProfile(data: { name?: string; username?: string; bi
   }
 }
 
-export async function updateBranding(data: { brandName?: string; brandDescription?: string; website?: string; twitter?: string; linkedin?: string; brandLogo?: string; colorPrimary?: string; colorAccent?: string }) {
+export async function updateBranding(data: z.infer<typeof BrandUpdateSchema>) {
   try {
+    const validated = BrandUpdateSchema.parse(data);
     const email = await getAuthEmail();
     
     await BrandSettings.findOneAndUpdate(
       { email },
-      { $set: data },
+      { $set: validated },
       { new: true, upsert: true }
     );
     
@@ -117,19 +121,14 @@ export async function updateBranding(data: { brandName?: string; brandDescriptio
   }
 }
 
-export async function updateNotifications(data: { 
-  newSubscriberAlerts: boolean; 
-  newsletterSignupAlerts: boolean; 
-  newBookPurchaseAlerts: boolean; 
-  blogCommentAlerts: boolean; 
-  weeklySummaryEmail: boolean; 
-}) {
+export async function updateNotifications(data: z.infer<typeof NotificationUpdateSchema>) {
   try {
+    const validated = NotificationUpdateSchema.parse(data);
     const email = await getAuthEmail();
     
     await NotificationSettings.findOneAndUpdate(
       { email },
-      { $set: data },
+      { $set: validated },
       { new: true, upsert: true }
     );
     

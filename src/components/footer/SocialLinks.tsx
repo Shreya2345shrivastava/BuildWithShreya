@@ -2,7 +2,7 @@ export function SocialLinks() {
   return (
     <div className="flex flex-wrap items-center gap-4">
       <a
-        href="#"
+        href="https://www.instagram.com/build.withshreya"
         target="_blank"
         rel="noopener noreferrer"
         className="

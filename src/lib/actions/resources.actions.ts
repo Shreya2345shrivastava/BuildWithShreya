@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { connectDB } from "@/lib/mongodb";
 import Resource from "@/lib/models/Resource";
+import { ResourceSchema, ResourceUpdateSchema } from "@/lib/validations";
+import { z } from "zod";
 
 // GET RESOURCES
 export async function getResources(query: string = "", category: string = "All Categories") {
@@ -31,17 +33,11 @@ export async function getResources(query: string = "", category: string = "All C
 }
 
 // CREATE RESOURCE
-export async function createResource(data: {
-  title: string;
-  description: string;
-  category: string;
-  fileUrl: string;
-  thumbnailUrl?: string;
-  status: "Draft" | "Published";
-}) {
+export async function createResource(data: z.infer<typeof ResourceSchema>) {
   try {
+    const validated = ResourceSchema.parse(data);
     await connectDB();
-    const resource = await Resource.create(data);
+    const resource = await Resource.create(validated);
     revalidatePath("/dashboard/resources");
     return { success: true, resource: JSON.parse(JSON.stringify(resource)) };
   } catch (error) {
@@ -51,10 +47,11 @@ export async function createResource(data: {
 }
 
 // UPDATE RESOURCE
-export async function updateResource(id: string, data: Record<string, unknown>) {
+export async function updateResource(id: string, data: z.infer<typeof ResourceUpdateSchema>) {
   try {
+    const validated = ResourceUpdateSchema.parse(data);
     await connectDB();
-    const updated = await Resource.findByIdAndUpdate(id, data, { new: true }).lean();
+    const updated = await Resource.findByIdAndUpdate(id, validated, { new: true }).lean();
     revalidatePath("/dashboard/resources");
     return { success: true, resource: JSON.parse(JSON.stringify(updated)) };
   } catch (error) {
@@ -85,12 +82,12 @@ export async function duplicateResource(id: string) {
     if (!original) throw new Error("Resource not found");
     
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { _id, createdAt, updatedAt, ...rest } = original as any;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { _id, createdAt, updatedAt, ...rest } = original as Record<string, unknown>;
     
     const duplicateData = {
       ...rest,
-      title: `${rest.title} (Copy)`,
+      title: `${rest.title as string} (Copy)`,
       status: "Draft", // Always duplicate as draft
       downloads: 0 // Reset downloads
     };

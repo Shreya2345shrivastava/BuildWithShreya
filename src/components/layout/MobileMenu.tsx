@@ -165,7 +165,7 @@ export function MobileMenu({
 							onClick={onClose}
 							className="w-full shadow-[0_12px_28px_rgba(217,164,143,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(217,164,143,0.32)]"
 						>
-							Get the Book
+							Explore More
 						</PrimaryButton>
 					</div>
 				</nav>

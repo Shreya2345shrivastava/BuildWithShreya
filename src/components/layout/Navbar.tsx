@@ -102,7 +102,7 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
                 hover:scale-105
               "
             >
-              Get the Book
+              Explore More
             </PrimaryButton>
           </div>
 

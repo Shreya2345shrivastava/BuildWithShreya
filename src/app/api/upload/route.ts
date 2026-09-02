@@ -41,12 +41,24 @@ export async function POST(request: Request) {
       );
     }
 
+    const extension = path.extname(file.name).toLowerCase();
+    const validExtensions: Record<string, string[]> = {
+      coverImage: [".jpg", ".jpeg", ".png", ".webp"],
+      pdf: [".pdf"]
+    };
+
+    if (!validExtensions[uploadType]?.includes(extension)) {
+      return NextResponse.json(
+        { success: false, message: `Invalid file extension ${extension} for ${uploadType}` },
+        { status: 400 }
+      );
+    }
+
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
     // Create unique filename
     const uniqueSuffix = crypto.randomBytes(8).toString("hex");
-    const extension = path.extname(file.name);
     // Sanitize filename
     const sanitizedName = file.name.replace(extension, "").replace(/[^a-zA-Z0-9_-]/g, "");
     const filename = `${sanitizedName}-${uniqueSuffix}${extension}`;

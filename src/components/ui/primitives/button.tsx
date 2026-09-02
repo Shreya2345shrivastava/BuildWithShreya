@@ -130,8 +130,8 @@ export function Button(props: ButtonProps) {
 					tabIndex={disabled || loading ? -1 : anchorProps.tabIndex}
 					className={baseClassName}
 					style={style}
-					onClick={handleClick as any}
-					{...(anchorProps as any)}
+					onClick={handleClick}
+					{...anchorProps}
 				>
 					{renderContent({ children, leftIcon, rightIcon, loading }, size)}
 				</a>
@@ -146,8 +146,8 @@ export function Button(props: ButtonProps) {
 				tabIndex={disabled || loading ? -1 : anchorProps.tabIndex}
 				className={baseClassName}
 				style={style}
-				onClick={handleClick as any}
-				{...(anchorProps as any)}
+				onClick={handleClick}
+				{...anchorProps}
 			>
 				{renderContent({ children, leftIcon, rightIcon, loading }, size)}
 			</Link>

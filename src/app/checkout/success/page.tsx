@@ -4,6 +4,7 @@ import { CheckCircle, Download, ShoppingBag } from "lucide-react";
 import Order from "@/lib/models/Order";
 import { connectDB } from "@/lib/mongodb";
 import Link from "next/link";
+import { env } from "@/env";
 
 export default async function CheckoutSuccessPage({
   searchParams,
@@ -32,7 +33,7 @@ export default async function CheckoutSuccessPage({
   }
 
   // If we're mocking, auto-complete it since webhooks aren't running locally
-  if (order.status === "pending" && !process.env.STRIPE_SECRET_KEY) {
+  if (order.status === "pending" && !env.STRIPE_SECRET_KEY) {
      order.status = "completed";
      await order.save();
   }

@@ -1,0 +1,23 @@
+import { z } from "zod";
+import * as schemas from "@/lib/validations/lifeos/schemas";
+
+export type IGoal = z.infer<typeof schemas.GoalSchema> & { _id: string; createdAt: Date; updatedAt: Date; estimatedHours?: number; actualHours?: number; };
+export type IVision = z.infer<typeof schemas.VisionSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IHabit = z.infer<typeof schemas.HabitSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type ITask = z.infer<typeof schemas.TaskSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type ITimelineEvent = z.infer<typeof schemas.TimelineEventSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type ILifeArea = z.infer<typeof schemas.LifeAreaSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IStreak = z.infer<typeof schemas.StreakSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IDailyMetric = z.infer<typeof schemas.DailyMetricSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IReflection = z.infer<typeof schemas.ReflectionSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IMilestone = z.infer<typeof schemas.MilestoneSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IStudySession = z.infer<typeof schemas.StudySessionSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IHealthMetric = z.infer<typeof schemas.HealthMetricSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IBeautyRoutine = z.infer<typeof schemas.BeautyRoutineSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type ICreatorTask = z.infer<typeof schemas.CreatorTaskSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IJournalEntry = z.infer<typeof schemas.JournalEntrySchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IDailyReview = z.infer<typeof schemas.DailyReviewSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IWeeklyReview = z.infer<typeof schemas.WeeklyReviewSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IMonthlyReview = z.infer<typeof schemas.MonthlyReviewSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IQuarterlyReview = z.infer<typeof schemas.QuarterlyReviewSchema> & { _id: string; createdAt: Date; updatedAt: Date };
+export type IYearlyReview = z.infer<typeof schemas.YearlyReviewSchema> & { _id: string; createdAt: Date; updatedAt: Date };

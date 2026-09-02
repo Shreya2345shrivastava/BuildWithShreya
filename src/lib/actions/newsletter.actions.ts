@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { connectDB } from "@/lib/mongodb";
 import Subscriber from "@/lib/models/Subscriber";
 import Campaign from "@/lib/models/Campaign";
+import { SubscriberSchema, CampaignSchema } from "@/lib/validations";
+import { z } from "zod";
 
 // METRICS
 export async function getDashboardMetrics() {
@@ -60,9 +62,9 @@ export async function addSubscriber(data: { email: string; name?: string }) {
     const sub = await Subscriber.create(data);
     revalidatePath("/dashboard/newsletter");
     return { success: true, subscriber: JSON.parse(JSON.stringify(sub)) };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error adding subscriber:", error);
-    if (error.code === 11000) return { success: false, error: "Email already exists" };
+    if (error && typeof error === "object" && "code" in error && error.code === 11000) return { success: false, error: "Email already exists" };
     return { success: false, error: "Failed to add subscriber" };
   }
 }
@@ -89,10 +91,11 @@ export async function getCampaigns() {
   }
 }
 
-export async function createCampaign(data: any) {
+export async function createCampaign(data: z.infer<typeof CampaignSchema>) {
   try {
+    const validated = CampaignSchema.parse(data);
     await connectDB();
-    const campaign = await Campaign.create(data);
+    const campaign = await Campaign.create(validated);
     revalidatePath("/dashboard/newsletter");
     return { success: true, campaign: JSON.parse(JSON.stringify(campaign)) };
   } catch (error) {
@@ -100,10 +103,12 @@ export async function createCampaign(data: any) {
   }
 }
 
-export async function updateCampaign(id: string, data: any) {
+export async function updateCampaign(id: string, data: Partial<z.infer<typeof CampaignSchema>>) {
   try {
+    // Validate partial data
+    const validated = CampaignSchema.partial().parse(data);
     await connectDB();
-    const updated = await Campaign.findByIdAndUpdate(id, data, { new: true }).lean();
+    const updated = await Campaign.findByIdAndUpdate(id, validated, { new: true }).lean();
     revalidatePath("/dashboard/newsletter");
     return { success: true, campaign: JSON.parse(JSON.stringify(updated)) };
   } catch (error) {
@@ -129,11 +134,11 @@ export async function duplicateCampaign(id: string) {
     if (!original) throw new Error("Not found");
     
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { _id, createdAt, updatedAt, sentAt, ...rest } = original as any;
+    const { _id, createdAt, updatedAt, sentAt, ...rest } = original as Record<string, unknown>;
     
     const duplicate = await Campaign.create({
       ...rest,
-      subject: `${rest.subject} (Copy)`,
+      subject: `${rest.subject as string} (Copy)`,
       status: "Draft",
       opens: 0,
       clicks: 0,

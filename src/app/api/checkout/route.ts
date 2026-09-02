@@ -3,20 +3,30 @@ import Stripe from "stripe";
 import Order from "@/lib/models/Order";
 import { connectDB } from "@/lib/mongodb";
 import { randomBytes } from "crypto";
+import { env } from "@/env";
+import { z } from "zod";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_mock", {
-  apiVersion: "2024-04-10" as any,
+const CheckoutSchema = z.object({
+  bookId: z.string().min(1),
+  price: z.number().optional(),
 });
+
+const stripe = new Stripe(env.STRIPE_SECRET_KEY || "sk_test_mock");
 
 export async function POST(req: Request) {
   try {
-    const { bookId, price } = await req.json();
+    const body = await req.json();
+    const validated = CheckoutSchema.safeParse(body);
+    if (!validated.success) {
+      return NextResponse.json({ error: "Invalid request data" }, { status: 400 });
+    }
+    const { bookId } = validated.data;
     
     // In a real app, fetch price from DB to prevent tampering
     const actualPrice = 29.99; 
 
     // Create a mock session if Stripe isn't configured yet
-    if (!process.env.STRIPE_SECRET_KEY) {
+    if (!env.STRIPE_SECRET_KEY) {
       console.warn("No STRIPE_SECRET_KEY found. Using mock checkout flow.");
       await connectDB();
       const mockSessionId = "mock_session_" + Date.now();
@@ -33,7 +43,7 @@ export async function POST(req: Request) {
       await newOrder.save();
 
       // Redirect directly to success page since we're mocking
-      return NextResponse.json({ url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/checkout/success?session_id=${mockSessionId}` });
+      return NextResponse.json({ url: `${env.NEXT_PUBLIC_APP_URL}/checkout/success?session_id=${mockSessionId}` });
     }
 
     // REAL STRIPE FLOW
@@ -45,7 +55,7 @@ export async function POST(req: Request) {
             currency: "usd",
             product_data: {
               name: "First Build It, Then Make It Beautiful",
-              images: [`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/images/books/book-cover.jpeg`],
+              images: [`${env.NEXT_PUBLIC_APP_URL}/images/books/book-cover.jpeg`],
             },
             unit_amount: Math.round(actualPrice * 100), // cents
           },
@@ -53,8 +63,8 @@ export async function POST(req: Request) {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/books/${bookId}`,
+      success_url: `${env.NEXT_PUBLIC_APP_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${env.NEXT_PUBLIC_APP_URL}/books/${bookId}`,
       metadata: {
         bookId,
       }

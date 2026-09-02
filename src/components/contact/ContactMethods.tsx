@@ -9,8 +9,8 @@ const methods = [
   },
   {
     title: "Instagram",
-    value: "@buildwithshreya",
-    href: "https://instagram.com/buildwithshreya",
+    value: "@build.withshreya",
+    href: "https://www.instagram.com/build.withshreya",
     icon: <AtSign size={24} />,
   },
   {

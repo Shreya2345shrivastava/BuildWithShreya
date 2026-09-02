@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { connectDB } from "@/lib/mongodb";
 import Blog from "@/lib/models/Blog";
+import { BlogSchema, BlogUpdateSchema } from "@/lib/validations";
+import { z } from "zod";
 
 // GET BLOGS
 export async function getBlogs(query: string = "", status: string = "All Posts") {
@@ -35,25 +37,17 @@ export async function getBlogs(query: string = "", status: string = "All Posts")
 }
 
 // CREATE BLOG
-export async function createBlog(data: {
-  title: string;
-  slug?: string;
-  description: string;
-  content: string;
-  featuredImage?: string;
-  category: string;
-  tags?: string;
-  status: "Draft" | "Published";
-}) {
+export async function createBlog(data: z.infer<typeof BlogSchema>) {
   try {
+    const validated = BlogSchema.parse(data);
     await connectDB();
     
     // Auto-generate slug if missing
-    if (!data.slug) {
-      data.slug = data.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
+    if (!validated.slug) {
+      validated.slug = validated.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
     }
 
-    const blog = await Blog.create(data);
+    const blog = await Blog.create(validated);
     revalidatePath("/dashboard/blogs");
     return { success: true, blog: JSON.parse(JSON.stringify(blog)) };
   } catch (error: unknown) {
@@ -66,19 +60,23 @@ export async function createBlog(data: {
 }
 
 // UPDATE BLOG
-export async function updateBlog(id: string, data: Record<string, unknown>) {
+export async function updateBlog(id: string, data: z.infer<typeof BlogUpdateSchema>) {
   try {
+    const validated = BlogUpdateSchema.parse(data);
     await connectDB();
     
+    let publishedAt;
     // If status is changed to published, set publishedAt
-    if (data.status === "Published") {
+    if (validated.status === "Published") {
       const existing = await Blog.findById(id);
       if (existing && !existing.publishedAt) {
-        data.publishedAt = new Date();
+        publishedAt = new Date();
       }
     }
 
-    const updated = await Blog.findByIdAndUpdate(id, data, { new: true }).lean();
+    const updateData = publishedAt ? { ...validated, publishedAt } : validated;
+
+    const updated = await Blog.findByIdAndUpdate(id, updateData, { new: true }).lean();
     revalidatePath("/dashboard/blogs");
     return { success: true, blog: JSON.parse(JSON.stringify(updated)) };
   } catch (error) {
@@ -109,12 +107,12 @@ export async function duplicateBlog(id: string) {
     if (!original) throw new Error("Blog not found");
     
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { _id, createdAt, updatedAt, publishedAt, slug, ...rest } = original as any;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { _id, createdAt, updatedAt, publishedAt, slug, ...rest } = original as Record<string, unknown>;
     
     const duplicateData = {
       ...rest,
-      title: `${rest.title} (Copy)`,
+      title: `${rest.title as string} (Copy)`,
       slug: `${slug}-copy-${Date.now()}`, // Ensure unique slug
       status: "Draft", // Always duplicate as draft
       views: 0 // Reset views

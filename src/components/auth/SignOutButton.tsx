@@ -1,8 +1,9 @@
 "use client";
 
 import { signOut } from "next-auth/react";
+import { LogOut } from "lucide-react";
 
-export function SignOutButton() {
+export function SignOutButton({ iconOnly = false }: { iconOnly?: boolean }) {
   return (
     <button
       onClick={() =>
@@ -10,9 +11,10 @@ export function SignOutButton() {
           callbackUrl: "/",
         })
       }
-      className="w-full rounded-2xl border border-red-200 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] px-4 py-3 font-medium text-red-500 transition hover:bg-red-50"
+      className={`rounded-2xl border border-red-200 bg-[var(--color-surface-elevated)] dark:bg-[#242b28] py-3 font-medium text-red-500 transition hover:bg-red-50 flex items-center justify-center gap-2 ${iconOnly ? 'px-3 w-auto' : 'px-4 w-full'}`}
     >
-      🚪 Sign Out
+      <LogOut size={16} />
+      {!iconOnly && <span>Sign Out</span>}
     </button>
   );
 }

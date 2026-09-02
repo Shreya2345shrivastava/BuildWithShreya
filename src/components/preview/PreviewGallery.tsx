@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { Container } from "@/components/ui";
 
 const previewPages = [
@@ -33,7 +33,7 @@ export function PreviewGallery() {
   }, [selectedPage]);
 
   // Touch Swipe Handling
-  const handleDragEnd = (e: any, { offset, velocity }: any) => {
+  const handleDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, { offset }: PanInfo) => {
     const swipeThreshold = 50; // pixels
     if (offset.x < -swipeThreshold) {
       setSelectedPage(prev => (prev! < previewPages.length - 1 ? prev! + 1 : 0));

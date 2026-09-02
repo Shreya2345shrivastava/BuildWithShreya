@@ -2,12 +2,11 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import Order from "@/lib/models/Order";
 import { connectDB } from "@/lib/mongodb";
+import { env } from "@/env";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_mock", {
-  apiVersion: "2024-04-10" as any,
-});
+const stripe = new Stripe(env.STRIPE_SECRET_KEY || "sk_test_mock");
 
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+const endpointSecret = env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -22,9 +21,9 @@ export async function POST(req: Request) {
       // For local testing without webhooks set up
       event = JSON.parse(body);
     }
-  } catch (err: any) {
-    console.error(`Webhook Error: ${err.message}`);
-    return NextResponse.json({ error: `Webhook Error: ${err.message}` }, { status: 400 });
+  } catch (err: unknown) {
+    console.error(`Webhook Error: ${err instanceof Error ? err.message : "Unknown error"}`);
+    return NextResponse.json({ success: false, error: err instanceof Error ? err.message : "Webhook Error" }, { status: 400 });
   }
 
   if (event.type === "checkout.session.completed") {

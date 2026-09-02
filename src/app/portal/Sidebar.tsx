@@ -20,7 +20,7 @@ const navLinks = [
   { label: "Downloads", href: "/portal/downloads", icon: Download },
 ];
 
-export function Sidebar({ profile }: { profile: any }) {
+export function Sidebar({ profile }: { profile: { name?: string; email?: string; image?: string } | null }) {
   const pathname = usePathname();
 
   return (

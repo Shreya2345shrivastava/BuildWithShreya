@@ -1,0 +1,30 @@
+/* src/styles/index.css */
+@import './variables.css';
+@import './animations.css';
+@import './typography.css';
+
+/* Habit Engine palette */
+:root {
+  --color-habit-primary: hsl(210, 70%, 50%);
+  --color-habit-accent: hsl(45, 85%, 60%);
+  --glass-bg-habit: rgba(255, 255, 255, 0.6);
+}
+
+.glass-habit {
+  background: var(--glass-bg-habit);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleUp {
+  from { transform: scale(0.95); }
+  to { transform: scale(1); }
+}
+.modal-enter {
+  animation: fadeIn 200ms ease-out, scaleUp 200ms ease-out;
+}
