@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
+import { authorizationErrorResponse, requireRole } from "@/lib/auth/authorization";
 
 export async function GET() {
+  try {
+    await requireRole("admin");
+  } catch (error) {
+    return authorizationErrorResponse(error);
+  }
+
   try {
     const db = await connectDB();
 

@@ -3,23 +3,37 @@
 import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { IHabit as Habit } from "@/types/lifeos";
+import { toggleHabitCompletion } from "@/lib/actions/lifeos/habits.actions";
 
 interface Props {
   habits: Habit[];
 }
 
 export function TodaysHabits({ habits }: Props) {
-  const [completedIds, setCompletedIds] = useState<string[]>([]);
+  const todayKey = new Date().toISOString().slice(0, 10);
+  const [completedIds, setCompletedIds] = useState<string[]>(() => habits
+    .filter((habit) => habit.completionHistory?.some((entry) =>
+      entry.status === "completed" && new Date(entry.date).toISOString().slice(0, 10) === todayKey
+    ))
+    .map((habit) => habit._id));
   const [celebrationId, setCelebrationId] = useState<string | null>(null);
 
-  const toggleHabit = (id: string) => {
-    if (completedIds.includes(id)) {
-      setCompletedIds(prev => prev.filter(h => h !== id));
-      setCelebrationId(null);
-    } else {
-      setCompletedIds(prev => [...prev, id]);
+  const toggleHabit = async (id: string) => {
+    const completed = !completedIds.includes(id);
+    const previousIds = completedIds;
+    setCompletedIds(completed ? [...completedIds, id] : completedIds.filter((habitId) => habitId !== id));
+
+    try {
+      await toggleHabitCompletion(id, completed);
+      if (completed) {
       setCelebrationId(id);
       setTimeout(() => setCelebrationId(null), 3000);
+      } else {
+        setCelebrationId(null);
+      }
+    } catch (error) {
+      console.error("Failed to update habit:", error);
+      setCompletedIds(previousIds);
     }
   };
 
@@ -33,7 +47,7 @@ export function TodaysHabits({ habits }: Props) {
         {habits.length > 0 ? habits.slice(0, 5).map(habit => (
           <div key={habit._id} className="relative">
             <div 
-              onClick={() => toggleHabit(habit._id)}
+              onClick={() => void toggleHabit(habit._id)}
               className={`group flex items-center justify-between p-5 rounded-2xl border transition-all cursor-pointer duration-300 ${
                 completedIds.includes(habit._id)
                   ? "bg-green-50 dark:bg-green-900/10 border-transparent"

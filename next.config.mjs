@@ -4,6 +4,25 @@ const nextConfig = {
     buildActivity: false
   },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/products',
+        destination: '/shop',
+        permanent: true,
+      },
+      {
+        source: '/order',
+        destination: '/custom-websites',
+        permanent: true,
+      },
+      {
+        source: '/mini-websites',
+        destination: '/shop#mini-websites',
+        permanent: true,
+      }
+    ]
+  },
   async headers() {
     return [
       {

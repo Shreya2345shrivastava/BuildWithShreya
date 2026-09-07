@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { connectDB } from "@/lib/mongodb";
 import { Book } from "@/models/Book";
+import { authorizationErrorResponse, requireRole } from "@/lib/auth/authorization";
 
 // GET SINGLE BOOK
 export async function GET(
@@ -47,6 +48,12 @@ export async function PUT(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  try {
+    await requireRole(["admin", "editor"]);
+  } catch (error) {
+    return authorizationErrorResponse(error);
+  }
+
   try {
     await connectDB();
 
@@ -149,6 +156,12 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  try {
+    await requireRole(["admin", "editor"]);
+  } catch (error) {
+    return authorizationErrorResponse(error);
+  }
+
   try {
     await connectDB();
 

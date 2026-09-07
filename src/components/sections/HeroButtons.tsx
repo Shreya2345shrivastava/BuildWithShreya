@@ -4,7 +4,7 @@ export function HeroButtons() {
   return (
     <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-center sm:gap-6">
       <Button
-        href="#featured-book"
+        href="/shop"
         size="lg"
         rounded={false}
         className="
@@ -18,11 +18,11 @@ export function HeroButtons() {
           sm:w-auto
         "
       >
-        Read the Book
+        Shop Products &rarr;
       </Button>
 
       <Button
-        href="/resources"
+        href="/custom-websites"
         variant="secondary"
         size="lg"
         className="
@@ -43,8 +43,13 @@ export function HeroButtons() {
           sm:w-auto
         "
       >
-        Explore Resources
+        Hire for Custom Web Design
       </Button>
+      
+      <div className="hidden sm:flex flex-col items-start ml-2">
+        <span className="text-xs font-medium text-[var(--color-text-secondary)]">⭐⭐⭐⭐⭐</span>
+        <span className="text-[10px] text-[var(--color-text-tertiary)] uppercase tracking-wider mt-0.5">Trusted by creators & dreamers</span>
+      </div>
     </div>
   );
 }

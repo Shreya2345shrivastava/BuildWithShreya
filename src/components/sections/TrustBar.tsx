@@ -2,26 +2,22 @@ import { Container, FadeIn } from "@/components/ui";
 
 export function TrustBar() {
   return (
-    <section className="border-b border-black/[0.04] bg-[var(--color-surface-elevated)] dark:bg-[#242b28] py-10 overflow-hidden">
-      <Container width="wide">
-        <FadeIn delay={0.2} duration={0.6}>
-          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-4 md:gap-x-12 md:gap-y-6 text-sm font-medium tracking-widest text-[var(--color-text-secondary)] uppercase sm:text-[0.65rem]">
-            <div className="flex items-center gap-3">
-              <span className="h-1 w-1 rounded-full bg-[var(--color-accent-peach)]"></span>
-              5000+ Readers
+    <section className="relative z-20 w-full">
+      <Container width="wide" className="flex justify-center px-0">
+        <FadeIn delay={0.3} duration={0.6}>
+          <div className="bg-[var(--color-surface-elevated)] dark:bg-[#242b28]/80 backdrop-blur-md rounded-full shadow-lg border border-[var(--color-border-soft)] dark:border-[#2a332d] px-8 py-4 flex items-center justify-center gap-4">
+            
+            {/* Optional Avatar Cluster (Simulated with simple overlapping circles) */}
+            <div className="hidden sm:flex -space-x-2 mr-2">
+              <div className="w-6 h-6 rounded-full bg-[var(--color-accent-peach)] border border-white dark:border-[#131715] flex items-center justify-center text-[10px] font-bold text-white">S</div>
+              <div className="w-6 h-6 rounded-full bg-[#E8DACB] border border-white dark:border-[#131715] flex items-center justify-center text-[10px] font-bold text-black/60">C</div>
+              <div className="w-6 h-6 rounded-full bg-[#D4C3B3] border border-white dark:border-[#131715] flex items-center justify-center text-[10px] font-bold text-black/60">F</div>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="h-1 w-1 rounded-full bg-[var(--color-accent-peach)]"></span>
-              25+ Resources
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="h-1 w-1 rounded-full bg-[var(--color-accent-peach)]"></span>
-              10+ Guides
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="h-1 w-1 rounded-full bg-[var(--color-accent-peach)]"></span>
-              Weekly Newsletter
-            </div>
+
+            <p className="text-sm font-medium text-[var(--color-text-secondary)]">
+              Helping creators, students, founders, and dreamers bring ideas to life.
+            </p>
+
           </div>
         </FadeIn>
       </Container>

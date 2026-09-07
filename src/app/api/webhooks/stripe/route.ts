@@ -4,7 +4,7 @@ import Order from "@/lib/models/Order";
 import { connectDB } from "@/lib/mongodb";
 import { env } from "@/env";
 
-const stripe = new Stripe(env.STRIPE_SECRET_KEY || "sk_test_mock");
+const stripe = env.STRIPE_SECRET_KEY ? new Stripe(env.STRIPE_SECRET_KEY) : null;
 
 const endpointSecret = env.STRIPE_WEBHOOK_SECRET;
 
@@ -15,12 +15,14 @@ export async function POST(req: Request) {
   let event;
 
   try {
-    if (endpointSecret && sig) {
-      event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
-    } else {
-      // For local testing without webhooks set up
-      event = JSON.parse(body);
+    if (!stripe || !endpointSecret || !sig) {
+      return NextResponse.json(
+        { success: false, error: "Stripe webhook configuration is incomplete" },
+        { status: 400 }
+      );
     }
+
+    event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
   } catch (err: unknown) {
     console.error(`Webhook Error: ${err instanceof Error ? err.message : "Unknown error"}`);
     return NextResponse.json({ success: false, error: err instanceof Error ? err.message : "Webhook Error" }, { status: 400 });
@@ -34,7 +36,6 @@ export async function POST(req: Request) {
     const order = await Order.findOne({ stripeSessionId: session.id });
     if (order) {
       order.status = "completed";
-      order.customerEmail = session.customer_details?.email || order.customerEmail;
       order.customerName = session.customer_details?.name || order.customerName;
       await order.save();
       

@@ -3,6 +3,9 @@ import Image from "next/image";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { SITE } from "@/constants/site";
+import { PreviewGallery } from "@/components/preview";
+import BookShowcase from "@/components/sections/BookShowcase";
+import { BookAnatomy } from "@/components/sections/BookAnatomy";
 
 interface IBook {
   _id: string;
@@ -134,6 +137,15 @@ export default async function BooksPage() {
           </div>
         </div>
       </section>
+
+      {/* First Build It Showcase */}
+      <BookShowcase />
+      
+      {/* Book Anatomy */}
+      <BookAnatomy />
+
+      {/* Preview Section */}
+      <PreviewGallery />
     </main>
   );
 }

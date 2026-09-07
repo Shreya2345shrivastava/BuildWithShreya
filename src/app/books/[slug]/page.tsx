@@ -4,17 +4,33 @@ import { Check, Star, Sparkles, BookOpen } from "lucide-react";
 import { CheckoutButton } from "@/components/books/CheckoutButton";
 import { PurchaseSection } from "@/components/sections/PurchaseSection";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { SITE } from "@/constants/site";
+import { connectDB } from "@/lib/mongodb";
+import { Book } from "@/models/Book";
+
+type BookDetails = {
+  slug: string;
+  title: string;
+  description: string;
+  coverImage: string;
+  subtitle?: string;
+  price?: number;
+  benefits?: string[];
+};
+
+async function getBook(slug: string) {
+  await connectDB();
+  return Book.findOne({ slug }).lean<BookDetails>();
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  
-  // Using the same hardcoded book data for now
-  const book = {
-    title: "First Build It, Then Make It Beautiful",
-    description: "This book will help you move from overthinking to action, from waiting to building, and from surviving to creating a life you're proud of.",
-    coverImage: "/images/books/book-cover.jpeg",
-  };
+  const book = await getBook(slug);
+
+  if (!book) {
+    return { title: "Book Not Found" };
+  }
 
   return {
     title: book.title,
@@ -37,17 +53,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BookDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  
-  // Hardcoded for the specific featured book.
+  const storedBook = await getBook(slug);
+  if (!storedBook) notFound();
+
   const book = {
-    id: "first-build-it-then-make-it-beautiful",
-    title: "First Build It, Then Make It Beautiful",
-    subtitle: "A gentle guide for creators, dreamers & doers.",
-    description: "This book will help you move from overthinking to action, from waiting to building, and from surviving to creating a life you're proud of. Inside, you'll find actionable frameworks, reflection exercises, and a system for sustainable creation without burnout.",
-    author: "Shreya Shrivastava",
-    price: 29.99,
-    coverImage: "/images/books/book-cover.jpeg",
-    benefits: [
+    id: storedBook.slug,
+    title: storedBook.title,
+    subtitle: storedBook.subtitle || "A gentle guide for creators, dreamers & doers.",
+    description: storedBook.description,
+    price: storedBook.price ?? 29.99,
+    coverImage: storedBook.coverImage,
+    benefits: storedBook.benefits?.length ? storedBook.benefits : [
       "Practical guidance on overcoming perfectionism",
       "Reflection exercises at the end of each chapter",
       "Systems for building consistent habits",

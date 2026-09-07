@@ -3,24 +3,32 @@
 import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { ITask as Task } from "@/types/lifeos";
+import { toggleTaskCompletion } from "@/lib/actions/lifeos/tasks.actions";
 
 interface Props {
   tasks: Task[];
 }
 
 export function TodaysTasks({ tasks }: Props) {
-  const [completedIds, setCompletedIds] = useState<string[]>([]);
+  const [completedIds, setCompletedIds] = useState<string[]>(() => tasks.filter((task) => task.completed).map((task) => task._id));
   const [celebrationId, setCelebrationId] = useState<string | null>(null);
 
-  const toggleTask = (id: string) => {
-    if (completedIds.includes(id)) {
-      setCompletedIds(prev => prev.filter(t => t !== id));
-      setCelebrationId(null);
-    } else {
-      setCompletedIds(prev => [...prev, id]);
+  const toggleTask = async (id: string) => {
+    const completed = !completedIds.includes(id);
+    const previousIds = completedIds;
+    setCompletedIds(completed ? [...completedIds, id] : completedIds.filter((taskId) => taskId !== id));
+
+    try {
+      await toggleTaskCompletion(id, completed);
+      if (completed) {
       setCelebrationId(id);
-      // Clear celebration message after a delay
       setTimeout(() => setCelebrationId(null), 3000);
+      } else {
+        setCelebrationId(null);
+      }
+    } catch (error) {
+      console.error("Failed to update task:", error);
+      setCompletedIds(previousIds);
     }
   };
 
@@ -35,7 +43,7 @@ export function TodaysTasks({ tasks }: Props) {
         {tasks.length > 0 ? tasks.map(task => (
           <div key={task._id} className="relative">
             <div 
-              onClick={() => toggleTask(task._id)}
+              onClick={() => void toggleTask(task._id)}
               className={`group flex items-center gap-5 p-5 rounded-2xl border transition-all cursor-pointer duration-300 ${
                 completedIds.includes(task._id)
                   ? "bg-neutral-50 dark:bg-neutral-900/30 border-transparent opacity-60"

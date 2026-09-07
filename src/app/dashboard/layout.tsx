@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Sidebar } from "./Sidebar";
 import { getAuthUserProfileSafe } from "@/lib/actions/settings.actions";
-import { env } from "@/env";
+import { requireRole } from "@/lib/auth/authorization";
 
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -12,9 +12,12 @@ export default async function DashboardLayout({
   children: ReactNode;
 }) {
   const session = await getServerSession();
+  if (!session) redirect("/sign-in");
 
-  if (!session) {
-    redirect("/sign-in");
+  try {
+    await requireRole("admin");
+  } catch {
+    redirect("/portal");
   }
 
   const profile = (await getAuthUserProfileSafe()) || {
@@ -22,13 +25,6 @@ export default async function DashboardLayout({
     email: session.user?.email,
     image: session.user?.image,
   };
-
-  // Strictly locked down to the primary admin email
-  const isAdmin = profile?.email === env.ADMIN_EMAIL || profile?.email === "shrivastavashreya071@gmail.com";
-
-  if (!isAdmin) {
-    redirect("/portal");
-  }
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-ivory)] dark:bg-[#131715] pt-[104px]">

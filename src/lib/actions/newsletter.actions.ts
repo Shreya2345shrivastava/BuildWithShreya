@@ -6,10 +6,12 @@ import Subscriber from "@/lib/models/Subscriber";
 import Campaign from "@/lib/models/Campaign";
 import { SubscriberSchema, CampaignSchema } from "@/lib/validations";
 import { z } from "zod";
+import { requireRole } from "@/lib/auth/authorization";
 
 // METRICS
 export async function getDashboardMetrics() {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     
     const totalSubscribers = await Subscriber.countDocuments({ status: "Subscribed" });
@@ -40,6 +42,7 @@ export async function getDashboardMetrics() {
 // SUBSCRIBERS
 export async function getSubscribers(query: string = "") {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     const filter = query ? {
       $or: [
@@ -71,6 +74,7 @@ export async function addSubscriber(data: { email: string; name?: string }) {
 
 export async function deleteSubscriber(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     await Subscriber.findByIdAndDelete(id);
     revalidatePath("/dashboard/newsletter");
@@ -83,6 +87,7 @@ export async function deleteSubscriber(id: string) {
 // CAMPAIGNS
 export async function getCampaigns() {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     const campaigns = await Campaign.find().sort({ createdAt: -1 }).lean();
     return JSON.parse(JSON.stringify(campaigns));
@@ -93,6 +98,7 @@ export async function getCampaigns() {
 
 export async function createCampaign(data: z.infer<typeof CampaignSchema>) {
   try {
+    await requireRole(["admin", "editor"]);
     const validated = CampaignSchema.parse(data);
     await connectDB();
     const campaign = await Campaign.create(validated);
@@ -105,6 +111,7 @@ export async function createCampaign(data: z.infer<typeof CampaignSchema>) {
 
 export async function updateCampaign(id: string, data: Partial<z.infer<typeof CampaignSchema>>) {
   try {
+    await requireRole(["admin", "editor"]);
     // Validate partial data
     const validated = CampaignSchema.partial().parse(data);
     await connectDB();
@@ -118,6 +125,7 @@ export async function updateCampaign(id: string, data: Partial<z.infer<typeof Ca
 
 export async function deleteCampaign(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     await Campaign.findByIdAndDelete(id);
     revalidatePath("/dashboard/newsletter");
@@ -129,6 +137,7 @@ export async function deleteCampaign(id: string) {
 
 export async function duplicateCampaign(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     const original = await Campaign.findById(id).lean();
     if (!original) throw new Error("Not found");
@@ -154,6 +163,7 @@ export async function duplicateCampaign(id: string) {
 
 export async function sendCampaign(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     const campaign = await Campaign.findById(id);
     if (!campaign) throw new Error("Campaign not found");

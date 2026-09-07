@@ -59,7 +59,12 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
   const userName = profile?.name || session.user?.name || "User";
   const userEmail = profile?.email || session.user?.email || "";
   
-  const isAdmin = userEmail === "shrivastavashreya071@gmail.com";
+  const sessionEmail = session.user?.email?.toLowerCase();
+  const profileEmail = profile?.email?.toLowerCase();
+  const isAdmin =
+    session.user?.role === "admin" ||
+    sessionEmail === "shrivastavashreya071@gmail.com" ||
+    profileEmail === "shrivastavashreya071@gmail.com";
 
   const firstName = userName.split(" ")[0];
 
@@ -79,8 +84,20 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
   return (
     <div
       ref={menuRef}
-      className="relative z-50"
+      className="relative z-50 flex items-center gap-2"
     >
+      {isAdmin && (
+        <Link
+          href="/dashboard"
+          onClick={() => setOpen(false)}
+          aria-label="Open admin dashboard"
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-soft)] dark:border-[#2a332d] px-3 py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-all duration-300 hover:border-[var(--color-accent-peach)] hover:text-[var(--color-accent-peach)]"
+        >
+          <LayoutDashboard size={16} />
+          <span className="hidden xl:inline">Dashboard</span>
+        </Link>
+      )}
+
       {/* Trigger */}
       <button
         onClick={() => setOpen(!open)}
@@ -226,7 +243,7 @@ export function UserMenu({ profile }: { profile?: { name?: string; image?: strin
             "
           >
             <LayoutDashboard className="mr-3 h-4 w-4 text-[#8B7F74]" />
-            {isAdmin ? "Author Dashboard" : "Reader Portal"}
+            {isAdmin ? "Admin Dashboard" : "Reader Portal"}
           </Link>
 
           {isAdmin && (

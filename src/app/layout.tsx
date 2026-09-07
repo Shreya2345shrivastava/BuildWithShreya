@@ -6,6 +6,8 @@ import AuthProvider from "@/components/auth/SessionProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { BrandProvider } from "@/components/layout/BrandProvider";
 import { getGlobalBrandSettings, getAuthUserProfileSafe } from "@/lib/actions/settings.actions";
+import { CartProvider } from "@/components/cart/CartContext";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 
 const displayFont = Cormorant_Garamond({
   variable: "--font-display",
@@ -97,14 +99,17 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased overflow-x-hidden`}
     >
       <body className="min-h-screen overflow-x-hidden bg-[var(--color-bg-ivory)] text-[var(--color-text-primary)] transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AuthProvider>
             <BrandProvider>
-              <Navbar profile={profile} />
-              {children}
+              <CartProvider>
+                <Navbar profile={profile} />
+                {children}
+                <CartDrawer />
+              </CartProvider>
             </BrandProvider>
           </AuthProvider>
         </ThemeProvider>

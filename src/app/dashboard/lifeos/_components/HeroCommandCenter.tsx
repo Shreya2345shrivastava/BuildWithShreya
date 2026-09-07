@@ -9,10 +9,12 @@ interface Props {
   totalTasks: number;
   completedTasks: number;
   mainFocus?: ITask;
+  lifeScore: number;
+  streaks: { name: string; days: number; icon: string }[];
   onStartFocus: () => void;
 }
 
-export function HeroCommandCenter({ name, totalTasks, completedTasks, mainFocus, onStartFocus }: Props) {
+export function HeroCommandCenter({ name, totalTasks, completedTasks, mainFocus, lifeScore, streaks, onStartFocus }: Props) {
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return "Good Morning";
@@ -30,13 +32,6 @@ export function HeroCommandCenter({ name, totalTasks, completedTasks, mainFocus,
     return "Perfect Day";
   };
 
-  const streaks = [
-    { name: "DSA", days: 14, icon: "🔥" },
-    { name: "Workout", days: 8, icon: "💪" },
-    { name: "Reading", days: 12, icon: "📚" },
-    { name: "Water", days: 5, icon: "💧" },
-  ];
-
   return (
     <section className="flex flex-col gap-10 w-full max-w-3xl mx-auto items-center mt-10 mb-8">
       
@@ -49,10 +44,10 @@ export function HeroCommandCenter({ name, totalTasks, completedTasks, mainFocus,
         <div className="flex flex-col items-center mt-1">
           <p className="text-xs uppercase tracking-widest text-neutral-400 font-medium">Life Score</p>
           <div className="flex items-end gap-2 mt-1">
-            <span className="text-3xl font-serif text-neutral-800 dark:text-neutral-200">82 <span className="text-lg text-neutral-400">/ 100</span></span>
+            <span className="text-3xl font-serif text-neutral-800 dark:text-neutral-200">{lifeScore} <span className="text-lg text-neutral-400">/ 100</span></span>
           </div>
           <span className="text-xs font-medium text-green-600 dark:text-green-400 flex items-center gap-1 mt-1 bg-green-50 dark:bg-green-900/20 px-2 py-0.5 rounded-full">
-            <ArrowUp className="w-3 h-3" /> +4 this week
+            <ArrowUp className="w-3 h-3" /> +{completedTasks} completed today
           </span>
         </div>
       </div>
@@ -100,9 +95,9 @@ export function HeroCommandCenter({ name, totalTasks, completedTasks, mainFocus,
                 <h3 className="text-2xl font-serif font-medium text-neutral-900 dark:text-neutral-100">{mainFocus.title}</h3>
               </div>
               <div className="flex items-center gap-3 text-sm text-neutral-500 ml-0 md:ml-12 mt-1">
-                <span>Est: 90 mins</span>
+                <span>Est: {mainFocus.estimatedMinutes || 0} mins</span>
                 <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                <span className="text-orange-600 dark:text-orange-400 font-medium">Priority: High</span>
+                <span className="text-orange-600 dark:text-orange-400 font-medium">Priority: {mainFocus.priority}</span>
               </div>
             </div>
 

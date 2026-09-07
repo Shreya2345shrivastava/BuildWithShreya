@@ -11,6 +11,7 @@ import { MobileMenu } from "@/components/layout/MobileMenu";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { UserMenu } from "@/components/auth";
 import { cn } from "@/lib/utils";
+import { CartButton } from "@/components/layout/CartButton";
 
 function MenuIcon() {
   return (
@@ -84,26 +85,7 @@ export function Navbar({ profile }: { profile?: { name?: string; image?: string;
             <UserMenu profile={profile} />
 
             {/* CTA */}
-            <PrimaryButton
-              href="/books/first-build-it-then-make-it-beautiful"
-              size="md"
-              rounded={false}
-              className="
-                rounded-full
-                px-7
-                py-2.5
-                text-[0.95rem]
-                font-medium
-                shadow-sm
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:shadow-md
-                hover:scale-105
-              "
-            >
-              Explore More
-            </PrimaryButton>
+            <CartButton />
           </div>
 
           {/* Mobile Menu */}

@@ -1,13 +1,14 @@
 import { Container, ParallaxBackground, BotanicalDecoration } from "@/components/ui";
 import { HeroContent } from "@/components/sections/HeroContent";
 import { HeroImage } from "@/components/sections/HeroImage";
+import { TrustBar } from "@/components/sections/TrustBar";
 
 export function Hero() {
   return (
     <section
       data-section="hero"
       aria-labelledby="hero-title"
-      className="relative flex min-h-[85vh] items-center bg-[var(--color-bg-ivory)] dark:bg-[#131715] pt-16 pb-0 sm:pt-28 sm:pb-8 lg:pt-40 lg:pb-24 border-b border-black/[0.04] overflow-visible"
+      className="relative flex min-h-[100dvh] items-center bg-[var(--color-bg-ivory)] dark:bg-[#131715] pt-16 pb-24 sm:pt-28 sm:pb-32 lg:pt-32 lg:pb-36 border-b border-black/[0.04] overflow-hidden"
     >
       <ParallaxBackground offset={150} className="opacity-40">
         <BotanicalDecoration variant="watercolor-blob" className="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] text-[#E0CDBF]" />
@@ -20,6 +21,11 @@ export function Hero() {
           <HeroImage />
         </div>
       </Container>
+
+      {/* TrustBar pinned near the bottom of the screen */}
+      <div className="absolute bottom-6 left-0 w-full flex justify-center">
+        <TrustBar />
+      </div>
     </section>
   );
 }

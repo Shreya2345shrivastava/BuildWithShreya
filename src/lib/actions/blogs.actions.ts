@@ -5,10 +5,12 @@ import { connectDB } from "@/lib/mongodb";
 import Blog from "@/lib/models/Blog";
 import { BlogSchema, BlogUpdateSchema } from "@/lib/validations";
 import { z } from "zod";
+import { requireRole } from "@/lib/auth/authorization";
 
 // GET BLOGS
 export async function getBlogs(query: string = "", status: string = "All Posts") {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     
     const filter: Record<string, unknown> = {};
@@ -39,6 +41,7 @@ export async function getBlogs(query: string = "", status: string = "All Posts")
 // CREATE BLOG
 export async function createBlog(data: z.infer<typeof BlogSchema>) {
   try {
+    await requireRole(["admin", "editor"]);
     const validated = BlogSchema.parse(data);
     await connectDB();
     
@@ -62,6 +65,7 @@ export async function createBlog(data: z.infer<typeof BlogSchema>) {
 // UPDATE BLOG
 export async function updateBlog(id: string, data: z.infer<typeof BlogUpdateSchema>) {
   try {
+    await requireRole(["admin", "editor"]);
     const validated = BlogUpdateSchema.parse(data);
     await connectDB();
     
@@ -88,6 +92,7 @@ export async function updateBlog(id: string, data: z.infer<typeof BlogUpdateSche
 // DELETE BLOG
 export async function deleteBlog(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     await Blog.findByIdAndDelete(id);
     revalidatePath("/dashboard/blogs");
@@ -101,6 +106,7 @@ export async function deleteBlog(id: string) {
 // DUPLICATE BLOG
 export async function duplicateBlog(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     const original = await Blog.findById(id).lean();
     

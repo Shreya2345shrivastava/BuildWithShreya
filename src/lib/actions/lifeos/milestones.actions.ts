@@ -15,7 +15,7 @@ export async function createMilestone(data: any) {
   const userId = await getLifeOSAuth();
   const validated = MilestoneSchema.parse({ ...data, userId });
   await Milestone.create(validated);
-  await recalculateGoalProgress(validated.goalId, userId);
+  await recalculateGoalProgress(validated.goalId);
   revalidatePath("/dashboard/lifeos/goals");
 }
 
@@ -23,7 +23,7 @@ export async function updateMilestone(id: string, data: any) {
   const userId = await getLifeOSAuth();
   const updated = await Milestone.findOneAndUpdate({ _id: id, userId }, { $set: data }, { new: true });
   if (updated && updated.goalId) {
-    await recalculateGoalProgress(updated.goalId, userId);
+    await recalculateGoalProgress(updated.goalId);
   }
   revalidatePath("/dashboard/lifeos/goals");
 }
@@ -32,7 +32,7 @@ export async function deleteMilestone(id: string) {
   const userId = await getLifeOSAuth();
   const deleted = await Milestone.findOneAndDelete({ _id: id, userId });
   if (deleted && deleted.goalId) {
-    await recalculateGoalProgress(deleted.goalId, userId);
+    await recalculateGoalProgress(deleted.goalId);
   }
   revalidatePath("/dashboard/lifeos/goals");
 }

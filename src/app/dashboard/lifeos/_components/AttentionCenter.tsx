@@ -1,11 +1,17 @@
 import React from "react";
 import { AlertTriangle, Clock } from "lucide-react";
+import { ITask as Task } from "@/types/lifeos";
 
-export function AttentionCenter() {
-  const issues = [
-    { type: "overdue", title: "Quarterly Review", subtitle: "2 days overdue" },
-    { type: "deadline", title: "Project Proposal", subtitle: "Due at 5:00 PM" },
-  ];
+export function AttentionCenter({ tasks }: { tasks: Task[] }) {
+  const now = new Date();
+  const issues = tasks
+    .filter((task) => !task.completed && task.dueDate && new Date(task.dueDate) < now)
+    .slice(0, 3)
+    .map((task) => ({
+      type: "overdue",
+      title: task.title,
+      subtitle: `${Math.max(1, Math.ceil((now.getTime() - new Date(task.dueDate!).getTime()) / 86400000))} day(s) overdue`,
+    }));
 
   if (issues.length === 0) return null;
 

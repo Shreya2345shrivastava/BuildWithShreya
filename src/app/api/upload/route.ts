@@ -3,8 +3,15 @@ import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import crypto from "crypto";
 import fs from "fs";
+import { authorizationErrorResponse, requireRole } from "@/lib/auth/authorization";
 
 export async function POST(request: Request) {
+  try {
+    await requireRole(["admin", "editor"]);
+  } catch (error) {
+    return authorizationErrorResponse(error);
+  }
+
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
@@ -63,7 +70,9 @@ export async function POST(request: Request) {
     const sanitizedName = file.name.replace(extension, "").replace(/[^a-zA-Z0-9_-]/g, "");
     const filename = `${sanitizedName}-${uniqueSuffix}${extension}`;
     
-    const uploadDir = path.join(process.cwd(), "public/uploads");
+    const uploadDir = uploadType === "pdf"
+      ? path.join(process.cwd(), "private-uploads")
+      : path.join(process.cwd(), "public/uploads");
     
     // Ensure directory exists
     if (!fs.existsSync(uploadDir)) {
@@ -75,7 +84,7 @@ export async function POST(request: Request) {
     // Write file
     await writeFile(filepath, buffer);
 
-    const fileUrl = `/uploads/${filename}`;
+    const fileUrl = uploadType === "pdf" ? filename : `/uploads/${filename}`;
 
     return NextResponse.json(
       { success: true, url: fileUrl },

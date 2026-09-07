@@ -6,9 +6,11 @@ import { Button } from "@/components/ui";
 
 export function CheckoutButton({ bookId, price }: { bookId: string; price: number }) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleCheckout = async () => {
     setLoading(true);
+    setError("");
     try {
       const response = await fetch("/api/checkout", {
         method: "POST",
@@ -21,26 +23,29 @@ export function CheckoutButton({ bookId, price }: { bookId: string; price: numbe
       if (data.url) {
         window.location.href = data.url; // Redirect to Stripe
       } else {
-        alert("Failed to start checkout. Please try again.");
+        setError(data.error || "Checkout is currently unavailable.");
       }
     } catch (error) {
       console.error("Checkout error:", error);
-      alert("Something went wrong.");
+      setError("Unable to start checkout. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Button
-      onClick={handleCheckout}
-      loading={loading}
-      disabled={loading}
-      size="lg"
-      leftIcon={<ShoppingCart className="h-5 w-5" />}
-      className="w-full sm:w-auto px-8 py-4 text-base bg-[#3A332D] text-white hover:bg-[var(--color-accent-peach)]"
-    >
-      {loading ? "Processing..." : `Buy Now for $${price}`}
-    </Button>
+    <div className="flex flex-col items-center gap-2">
+      <Button
+        onClick={handleCheckout}
+        loading={loading}
+        disabled={loading}
+        size="lg"
+        leftIcon={<ShoppingCart className="h-5 w-5" />}
+        className="w-full sm:w-auto px-8 py-4 text-base bg-[#3A332D] text-white hover:bg-[var(--color-accent-peach)]"
+      >
+        {loading ? "Processing..." : `Buy Now for $${price}`}
+      </Button>
+      {error && <p className="text-center text-sm text-red-500">{error}</p>}
+    </div>
   );
 }

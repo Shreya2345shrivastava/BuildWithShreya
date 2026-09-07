@@ -16,8 +16,11 @@ export async function getTasks() {
   
   const tasks = await Task.find({ 
     userId,
-    // If we only want today's scheduled tasks, we'd filter by scheduledTime. 
-    // Assuming for now it just returns all incomplete or today's tasks.
+    $or: [
+      { dueDate: { $gte: startOfDay, $lte: endOfDay } },
+      { scheduledTime: { $gte: startOfDay, $lte: endOfDay } },
+      { dueDate: { $exists: false }, scheduledTime: { $exists: false } },
+    ],
   }).sort({ scheduledTime: 1 });
   return JSON.parse(JSON.stringify(tasks));
 }
@@ -41,12 +44,12 @@ export async function toggleTaskCompletion(taskId: string, completed: boolean) {
   
   if (task) {
     if (task.linkedGoalId) {
-      await recalculateGoalProgress(task.linkedGoalId.toString(), userId);
+      await recalculateGoalProgress(task.linkedGoalId.toString());
     }
     if (task.category) {
       // Award 2 points for completing a task, deduct 2 for unchecking
       const points = completed ? 2 : -2;
-      await updateLifeAreaScore(task.category, userId, points);
+      await updateLifeAreaScore(task.category, points);
     }
   }
 

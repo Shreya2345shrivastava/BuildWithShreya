@@ -4,7 +4,7 @@ import { CheckCircle, Download, ShoppingBag } from "lucide-react";
 import Order from "@/lib/models/Order";
 import { connectDB } from "@/lib/mongodb";
 import Link from "next/link";
-import { env } from "@/env";
+import { getServerSession } from "next-auth";
 
 export default async function CheckoutSuccessPage({
   searchParams,
@@ -17,10 +17,17 @@ export default async function CheckoutSuccessPage({
     redirect("/books");
   }
 
+  const session = await getServerSession();
+  if (!session?.user?.email) {
+    redirect(`/sign-in?callbackUrl=/checkout/success?session_id=${encodeURIComponent(session_id)}`);
+  }
+
   await connectDB();
   
-  // Find order by session ID
-  const order = await Order.findOne({ stripeSessionId: session_id });
+  const order = await Order.findOne({
+    stripeSessionId: session_id,
+    customerEmail: session.user.email.toLowerCase(),
+  });
 
   if (!order) {
     return (
@@ -30,12 +37,6 @@ export default async function CheckoutSuccessPage({
         <Link href="/books" className="mt-8 text-[var(--color-accent-peach)] hover:underline">Return to Books</Link>
       </div>
     );
-  }
-
-  // If we're mocking, auto-complete it since webhooks aren't running locally
-  if (order.status === "pending" && !env.STRIPE_SECRET_KEY) {
-     order.status = "completed";
-     await order.save();
   }
 
   return (
@@ -71,21 +72,6 @@ export default async function CheckoutSuccessPage({
                 <Download className="text-[var(--color-accent-peach)]" size={20} />
               </a>
 
-              <a 
-                href={`/api/download?token=${order.downloadToken}&format=epub`} 
-                className="flex items-center justify-between rounded-xl border border-black/[0.04] bg-[var(--color-surface-elevated)] p-4 shadow-sm transition hover:border-[#D9895B]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-bg-ivory)] text-[var(--color-accent-peach)]">
-                    <ShoppingBag size={20} />
-                  </div>
-                  <div>
-                    <p className="font-medium text-[var(--color-text-primary)]">EPUB Format</p>
-                    <p className="text-xs text-[var(--color-text-secondary)]">Best for Kindle & Apple Books</p>
-                  </div>
-                </div>
-                <Download className="text-[var(--color-accent-peach)]" size={20} />
-              </a>
             </div>
 
             <p className="mt-6 text-xs text-[var(--color-text-secondary)]">

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import { Book } from "@/models/Book";
 import { z } from "zod";
+import { authorizationErrorResponse, requireRole } from "@/lib/auth/authorization";
 
 const BookCreateSchema = z.object({
   title: z.string().min(1),
@@ -42,6 +43,12 @@ export async function GET() {
 
 // CREATE BOOK
 export async function POST(request: Request) {
+  try {
+    await requireRole(["admin", "editor"]);
+  } catch (error) {
+    return authorizationErrorResponse(error);
+  }
+
   try {
     await connectDB();
 

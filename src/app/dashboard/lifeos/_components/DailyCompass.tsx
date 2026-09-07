@@ -1,13 +1,13 @@
 import React from "react";
 import { Compass, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { ILifeArea as LifeArea, ITask as Task } from "@/types/lifeos";
 
-export function DailyCompass() {
-  const trends = [
-    { name: "Health", trend: "up" },
-    { name: "Career", trend: "flat" },
-    { name: "Learning", trend: "up" },
-    { name: "Creator", trend: "down" },
-  ];
+export function DailyCompass({ areas, tasks }: { areas: LifeArea[]; tasks: Task[] }) {
+  const trends = areas.slice(0, 4).map((area) => ({
+    name: area.name,
+    trend: area.todayProgress > 0 ? "up" : area.progress > 0 ? "flat" : "down",
+  }));
+  const recommendedFocus = tasks.find((task) => !task.completed)?.category || "Rest and recovery";
 
   return (
     <div className="flex flex-col gap-6 p-8 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 shadow-sm relative overflow-hidden">
@@ -34,7 +34,7 @@ export function DailyCompass() {
 
       <div className="mt-4 pt-6 border-t border-neutral-100 dark:border-neutral-800 relative z-10">
         <p className="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-400 font-medium mb-2">Today's Recommended Focus</p>
-        <p className="text-xl font-serif text-neutral-900 dark:text-white">Learning</p>
+        <p className="text-xl font-serif text-neutral-900 dark:text-white">{recommendedFocus}</p>
       </div>
     </div>
   );

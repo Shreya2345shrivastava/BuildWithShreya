@@ -7,6 +7,7 @@ import { Logo } from "@/components/layout/Logo";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { UserMenu } from "@/components/auth";
 import { cn } from "@/lib/utils";
+import { CartButton } from "@/components/layout/CartButton";
 
 interface MobileMenuProps {
 	open: boolean;
@@ -142,31 +143,24 @@ export function MobileMenu({
 
 				<nav
 					aria-label="Mobile primary navigation"
-					className="mt-12 flex flex-1 flex-col"
+					className="mt-8 flex flex-1 flex-col"
 				>
+					<div className="mb-8">
+						<CartButton isMobile />
+					</div>
+
 					<NavLinks
 						orientation="vertical"
 						onNavigate={onClose}
 						className="text-base"
 					/>
 
-					<div className="mt-8 flex items-center justify-between py-6 border-t border-[var(--color-border-soft)] dark:border-[#2a332d]">
+					<div className="mt-auto flex items-center justify-between pt-6 border-t border-[var(--color-border-soft)] dark:border-[#2a332d]">
 						<div className="flex items-center gap-3">
 							<ThemeToggle />
 							<span className="text-sm font-medium text-[var(--color-text-secondary)]">Theme</span>
 						</div>
 						<UserMenu profile={profile} />
-					</div>
-
-					<div className="mt-auto pt-8">
-						<PrimaryButton
-							href="/books/first-build-it-then-make-it-beautiful"
-							size="lg"
-							onClick={onClose}
-							className="w-full shadow-[0_12px_28px_rgba(217,164,143,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(217,164,143,0.32)]"
-						>
-							Explore More
-						</PrimaryButton>
 					</div>
 				</nav>
 			</aside>

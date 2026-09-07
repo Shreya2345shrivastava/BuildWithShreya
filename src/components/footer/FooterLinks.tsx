@@ -31,7 +31,7 @@ export function FooterLinks() {
 
         <ul className="space-y-3 text-sm text-[var(--color-text-secondary)]">
           <li>
-            <Link href="/#newsletter" className="transition-colors hover:text-[var(--color-accent-peach)]">Newsletter</Link>
+            <Link href="/newsletter" className="transition-colors hover:text-[var(--color-accent-peach)]">Newsletter</Link>
           </li>
           <li>
             <Link href="/blog" className="transition-colors hover:text-[var(--color-accent-peach)]">Blog</Link>

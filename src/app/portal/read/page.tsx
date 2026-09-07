@@ -91,7 +91,7 @@ export default function ReadOnlinePage() {
       )}>
         {mounted && (
            <iframe
-             src="/uploads/FirstBuildEBook-18dbb855d0a07791.pdf#toolbar=0"
+             src="/api/download?format=pdf&inline=1#toolbar=0"
              className={cn(
                "absolute inset-0 h-full w-full rounded-2xl",
                getPdfClass()

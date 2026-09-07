@@ -5,7 +5,7 @@ import { Leaf, Mail, ShieldCheck, Sparkles, Heart } from "lucide-react";
 
 export function AuthorSection() {
   return (
-    <section id="author" className="relative border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] py-20 lg:py-32 overflow-hidden">
+    <section id="author" className="relative border-t border-black/[0.04] bg-[var(--color-bg-ivory)] dark:bg-[#131715] pt-32 pb-16 lg:pt-56 lg:pb-24 overflow-hidden">
       <ParallaxBackground offset={100} className="opacity-40 mix-blend-multiply">
         <BotanicalDecoration variant="watercolor-blob" className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] text-[#F9E5D9]" />
       </ParallaxBackground>
@@ -44,17 +44,17 @@ export function AuthorSection() {
 
             <FadeInStaggerItem>
               <p className="mt-8 text-[1.1rem] leading-[1.8] text-[var(--color-text-secondary)] font-light max-w-md mx-auto lg:mx-0">
-                I believe meaningful work isn't about perfect timing—it's about small, consistent steps.
+                Most people don't need more ideas—they need a way to bring them to life.
               </p>
               <p className="mt-5 text-[1.1rem] leading-[1.8] text-[var(--color-text-secondary)] font-light max-w-md mx-auto lg:mx-0">
-                Through Build With Shreya, I create books and resources that help you move from overthinking to action, and build a life that feels truly yours.
+                That's why BuildWithShreya exists. From books and creator resources to LifeOS systems, website templates, and custom websites, everything here is designed to help you create with more clarity and less overwhelm.
               </p>
             </FadeInStaggerItem>
 
             <FadeInStaggerItem>
               <div className="mt-10 relative pl-8 lg:pl-10 border-l-[3px] border-[var(--color-accent-peach)]/30 py-4 max-w-md mx-auto lg:mx-0">
                 <p className="relative z-10 font-serif italic text-2xl leading-relaxed text-[var(--color-text-primary)]">
-                  My mission is to give you the permission to start messy, and the system to keep going without burning out.
+                  My mission is to help you spend less time overthinking and more time building the things that matter.
                 </p>
               </div>
             </FadeInStaggerItem>
@@ -81,7 +81,7 @@ export function AuthorSection() {
                 Build <span className="italic text-[var(--color-accent-peach)]">with</span> me.
               </h3>
               <p className="text-[15px] leading-relaxed text-[var(--color-text-secondary)] mb-8 font-light">
-                Join my newsletter for thoughtful emails, free resources, and early access to new releases.
+                Get free resources, creator insights, productivity tips, and early access to new books, websites, templates, and tools from BuildWithShreya.
               </p>
 
               <AuthorNewsletterForm />
@@ -89,15 +89,15 @@ export function AuthorSection() {
               <div className="mt-8 pt-6 border-t border-[var(--color-border-soft)] dark:border-[#2a332d] grid grid-cols-3 gap-2">
                 <div className="flex flex-col items-center text-center gap-2">
                    <ShieldCheck size={16} className="text-[var(--color-accent-peach)] opacity-80" strokeWidth={1.5} />
-                   <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-secondary)] opacity-70">No spam</span>
+                   <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-secondary)] opacity-70">NO SPAM</span>
                 </div>
                 <div className="flex flex-col items-center text-center gap-2 border-l border-[var(--color-border-soft)] dark:border-[#2a332d]">
                    <Sparkles size={16} className="text-[var(--color-accent-peach)] opacity-80" strokeWidth={1.5} />
-                   <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-secondary)] opacity-70">Helpful<br/>resources</span>
+                   <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-secondary)] opacity-70">FREE<br/>RESOURCES</span>
                 </div>
                 <div className="flex flex-col items-center text-center gap-2 border-l border-[var(--color-border-soft)] dark:border-[#2a332d]">
                    <Heart size={16} className="text-[var(--color-accent-peach)] opacity-80" strokeWidth={1.5} />
-                   <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-secondary)] opacity-70">Early<br/>updates</span>
+                   <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-secondary)] opacity-70">EARLY<br/>ACCESS</span>
                 </div>
               </div>
             </div>

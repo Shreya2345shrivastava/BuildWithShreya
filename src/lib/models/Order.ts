@@ -15,7 +15,7 @@ export interface IOrder extends Document {
 const OrderSchema = new Schema(
   {
     stripeSessionId: { type: String, required: true, unique: true },
-    customerEmail: { type: String, required: true },
+    customerEmail: { type: String, required: true, lowercase: true, trim: true },
     customerName: { type: String },
     bookId: { type: String, required: true },
     amount: { type: Number, required: true },

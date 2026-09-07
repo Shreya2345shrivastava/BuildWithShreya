@@ -8,6 +8,7 @@ import {
   AboutStats,
   AboutCTA,
 } from "@/components/about";
+import { TheJourney } from "@/components/sections/TheJourney";
 
 export const metadata: Metadata = {
   title: "About | BuildWithShreya",
@@ -23,6 +24,7 @@ export default function AboutPage() {
       <AboutStory />
       <AboutValues />
       <AboutStats />
+      <TheJourney />
       <AboutCTA />
     </main>
   );

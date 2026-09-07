@@ -35,7 +35,8 @@ export async function deleteGoal(id: string) {
   revalidatePath("/dashboard/lifeos/goals");
 }
 
-export async function recalculateGoalProgress(goalId: string, userId: string) {
+export async function recalculateGoalProgress(goalId: string) {
+  const userId = await getLifeOSAuth();
   // 1. Fetch the goal
   const goal = await Goal.findOne({ _id: goalId, userId });
   if (!goal) return;
@@ -98,6 +99,6 @@ export async function recalculateGoalProgress(goalId: string, userId: string) {
 
   // 4. Recursively update parent
   if (goal.parentGoalId) {
-    await recalculateGoalProgress(goal.parentGoalId, userId);
+    await recalculateGoalProgress(goal.parentGoalId);
   }
 }

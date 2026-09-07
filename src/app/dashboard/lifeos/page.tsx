@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { X, CheckCircle2, Play, Square } from "lucide-react";
 
 import { MotionPageWrapper } from "@/components/dashboard/lifeos/MotionPageWrapper";
@@ -15,26 +16,47 @@ import { WeeklyReflectionCard } from "./_components/WeeklyReflectionCard";
 import { FloatingQuickAdd } from "./_components/FloatingQuickAdd";
 
 import { ITask, IHabit, ILifeArea } from "@/types/lifeos";
+import { getTasks, toggleTaskCompletion } from "@/lib/actions/lifeos/tasks.actions";
+import { getHabits } from "@/lib/actions/lifeos/habits.actions";
+import { getLifeAreas } from "@/lib/actions/lifeos/areas.actions";
 
 export default function LifeOSDashboard() {
+  const { data: session } = useSession();
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [focusTime, setFocusTime] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  
-  const profile = { name: "Shreya" };
-  
-  const tasks = [
-    { _id: '1', title: 'Complete DSA Session', status: 'not_started', userId: '1', createdAt: new Date(), updatedAt: new Date() },
-    { _id: '2', title: 'Publish Instagram Reel', status: 'not_started', userId: '1', createdAt: new Date(), updatedAt: new Date() },
-  ] as unknown as ITask[];
-  
-  const habits = [
-    { _id: 'h1', title: 'Water', userId: '1', frequency: 'daily', createdAt: new Date(), updatedAt: new Date() },
-    { _id: 'h2', title: 'Workout', userId: '1', frequency: 'daily', createdAt: new Date(), updatedAt: new Date() },
-  ] as unknown as IHabit[];
-  
-  const areas: ILifeArea[] = [];
-  const mainFocus = tasks[0];
+  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [habits, setHabits] = useState<IHabit[]>([]);
+  const [areas, setAreas] = useState<ILifeArea[]>([]);
+
+  useEffect(() => {
+    let active = true;
+
+    Promise.all([getTasks(), getHabits(), getLifeAreas()]).then(([loadedTasks, loadedHabits, loadedAreas]) => {
+      if (!active) return;
+      setTasks(loadedTasks as ITask[]);
+      setHabits(loadedHabits as IHabit[]);
+      setAreas(loadedAreas as ILifeArea[]);
+    }).catch((error) => {
+      console.error("Failed to load LifeOS data:", error);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const profile = { name: session?.user?.name?.split(" ")[0] || "there" };
+  const mainFocus = tasks.find((task) => !task.completed);
+  const completedTasks = tasks.filter((task) => task.completed).length;
+  const lifeScore = areas.length
+    ? Math.round(areas.reduce((total, area) => total + (area.score ?? area.progress ?? 0), 0) / areas.length)
+    : 0;
+  const streaks = habits.slice(0, 4).map((habit, index) => ({
+    name: habit.title,
+    days: habit.currentStreak || 0,
+    icon: ["🔥", "💪", "📚", "💧"][index] || "✨",
+  }));
 
   // Timer Logic
   useEffect(() => {
@@ -62,6 +84,16 @@ export default function LifeOSDashboard() {
     setIsFocusMode(false);
     setIsTimerRunning(false);
     setFocusTime(0);
+  };
+
+  const handleCompleteFocus = async () => {
+    if (mainFocus) {
+      await toggleTaskCompletion(mainFocus._id, true);
+      setTasks((currentTasks) => currentTasks.map((task) =>
+        task._id === mainFocus._id ? { ...task, completed: true } : task
+      ));
+    }
+    handleEndFocus();
   };
 
   if (isFocusMode) {
@@ -109,7 +141,7 @@ export default function LifeOSDashboard() {
             />
             
             <button 
-              onClick={handleEndFocus}
+              onClick={handleCompleteFocus}
               className="w-full flex items-center justify-center gap-3 p-5 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium text-lg hover:-translate-y-0.5 transition-transform shadow-lg shadow-neutral-900/20 dark:shadow-white/10"
             >
               <CheckCircle2 className="w-6 h-6" />
@@ -129,9 +161,11 @@ export default function LifeOSDashboard() {
           {/* Level 1: Hero Command Center */}
           <HeroCommandCenter 
             name={profile.name} 
-            totalTasks={5} 
-            completedTasks={3} 
+            totalTasks={tasks.length} 
+            completedTasks={completedTasks} 
             mainFocus={mainFocus}
+            lifeScore={lifeScore}
+            streaks={streaks}
             onStartFocus={handleStartFocus}
           />
 
@@ -149,8 +183,8 @@ export default function LifeOSDashboard() {
 
             {/* Right 40%: Context & Direction */}
             <div className="lg:col-span-5 flex flex-col gap-10">
-              <DailyCompass />
-              <AttentionCenter />
+              <DailyCompass areas={areas} tasks={tasks} />
+              <AttentionCenter tasks={tasks} />
             </div>
             
           </div>
@@ -162,7 +196,7 @@ export default function LifeOSDashboard() {
 
           {/* Weekly Reflection (Bottom) */}
           <div className="w-full max-w-3xl">
-            <WeeklyReflectionCard />
+            <WeeklyReflectionCard tasks={tasks} habits={habits} />
           </div>
 
         </div>

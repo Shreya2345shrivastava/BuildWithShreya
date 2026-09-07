@@ -22,7 +22,7 @@ export function SocialLinks() {
       </a>
 
       <a
-        href="#"
+        href="https://www.youtube.com"
         target="_blank"
         rel="noopener noreferrer"
         className="
@@ -42,7 +42,7 @@ export function SocialLinks() {
       </a>
 
       <a
-        href="#"
+        href="https://www.pinterest.com"
         target="_blank"
         rel="noopener noreferrer"
         className="

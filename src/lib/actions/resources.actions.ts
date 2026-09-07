@@ -5,10 +5,12 @@ import { connectDB } from "@/lib/mongodb";
 import Resource from "@/lib/models/Resource";
 import { ResourceSchema, ResourceUpdateSchema } from "@/lib/validations";
 import { z } from "zod";
+import { requireRole } from "@/lib/auth/authorization";
 
 // GET RESOURCES
 export async function getResources(query: string = "", category: string = "All Categories") {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     
     const filter: Record<string, unknown> = {};
@@ -35,6 +37,7 @@ export async function getResources(query: string = "", category: string = "All C
 // CREATE RESOURCE
 export async function createResource(data: z.infer<typeof ResourceSchema>) {
   try {
+    await requireRole(["admin", "editor"]);
     const validated = ResourceSchema.parse(data);
     await connectDB();
     const resource = await Resource.create(validated);
@@ -49,6 +52,7 @@ export async function createResource(data: z.infer<typeof ResourceSchema>) {
 // UPDATE RESOURCE
 export async function updateResource(id: string, data: z.infer<typeof ResourceUpdateSchema>) {
   try {
+    await requireRole(["admin", "editor"]);
     const validated = ResourceUpdateSchema.parse(data);
     await connectDB();
     const updated = await Resource.findByIdAndUpdate(id, validated, { new: true }).lean();
@@ -63,6 +67,7 @@ export async function updateResource(id: string, data: z.infer<typeof ResourceUp
 // DELETE RESOURCE
 export async function deleteResource(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     await Resource.findByIdAndDelete(id);
     revalidatePath("/dashboard/resources");
@@ -76,6 +81,7 @@ export async function deleteResource(id: string) {
 // DUPLICATE RESOURCE
 export async function duplicateResource(id: string) {
   try {
+    await requireRole(["admin", "editor"]);
     await connectDB();
     const original = await Resource.findById(id).lean();
     

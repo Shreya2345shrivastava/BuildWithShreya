@@ -15,20 +15,16 @@ export function HeroContent() {
       <FadeInStaggerItem>
         <h1
           id="hero-title"
-          className="mt-4 lg:mt-8 font-serif text-[clamp(2.75rem,8vw,5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)] max-w-[540px]"
+          className="mt-4 lg:mt-8 font-serif text-[clamp(2.75rem,8vw,4.5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)] w-full lg:max-w-[600px]"
         >
-          Build It First.
-          <br />
-          Then Make It
-          <br />
-          <span className="font-display italic text-[var(--color-accent-peach)] text-[1.15em] leading-none block mt-1 sm:mt-2">Beautiful.</span>
+          Everything you need, <br className="hidden sm:block" /> in one place.
         </h1>
       </FadeInStaggerItem>
 
       {/* Body Copy */}
       <FadeInStaggerItem>
         <p className="mt-5 lg:mt-8 max-w-[480px] text-lg leading-[1.8] text-[var(--color-text-secondary)]">
-          A gentle guide and workbook for creators, dreamers, and doers. Move from overthinking to action—one meaningful step at a time.
+          Explore books, creator resources, productivity systems, website templates, and custom websites—all designed to help you turn ideas into reality.
         </p>
       </FadeInStaggerItem>
 

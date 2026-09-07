@@ -8,7 +8,8 @@ export async function getLifeAreas() {
   return JSON.parse(JSON.stringify(areas));
 }
 
-export async function updateLifeAreaScore(areaName: string, userId: string, points: number) {
+export async function updateLifeAreaScore(areaName: string, points: number) {
+  const userId = await getLifeOSAuth();
   // Try to find the area
   let area = await LifeArea.findOne({ name: areaName, userId });
   

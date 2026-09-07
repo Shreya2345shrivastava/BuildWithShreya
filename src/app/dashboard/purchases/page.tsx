@@ -6,15 +6,7 @@ import Image from "next/image";
 export default async function PurchasesPage() {
   await connectDB();
   
-  // In a real app with authentication, you would filter by the logged-in user's email or ID.
-  // We'll mock the user email here for demonstration.
-  const userEmail = "mock@example.com"; 
-  
-  // Fetch only completed orders
-  const purchases = await Order.find({ 
-    customerEmail: userEmail,
-    status: "completed"
-  }).sort({ createdAt: -1 });
+  const purchases = await Order.find({ status: "completed" }).sort({ createdAt: -1 });
 
   return (
     <div className="space-y-12">
@@ -47,9 +39,6 @@ export default async function PurchasesPage() {
                 <div className="mt-6 flex flex-col gap-3">
                   <a href={`/api/download?token=${purchase.downloadToken}&format=pdf`} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-2.5 text-sm font-medium text-[var(--color-accent-peach)] transition-colors hover:bg-[#F2EAE1]">
                     <Download size={16} /> Download PDF
-                  </a>
-                  <a href={`/api/download?token=${purchase.downloadToken}&format=epub`} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-bg-ivory)] dark:bg-[#131715] px-4 py-2.5 text-sm font-medium text-[var(--color-accent-peach)] transition-colors hover:bg-[#F2EAE1]">
-                    <Download size={16} /> Download EPUB
                   </a>
                 </div>
              </div>

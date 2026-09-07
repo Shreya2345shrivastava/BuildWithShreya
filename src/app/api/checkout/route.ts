@@ -5,16 +5,23 @@ import { connectDB } from "@/lib/mongodb";
 import { randomBytes } from "crypto";
 import { env } from "@/env";
 import { z } from "zod";
+import { getServerSession } from "next-auth";
 
 const CheckoutSchema = z.object({
   bookId: z.string().min(1),
   price: z.number().optional(),
 });
 
-const stripe = new Stripe(env.STRIPE_SECRET_KEY || "sk_test_mock");
+const stripe = env.STRIPE_SECRET_KEY ? new Stripe(env.STRIPE_SECRET_KEY) : null;
 
 export async function POST(req: Request) {
   try {
+    const authSession = await getServerSession();
+    if (!authSession?.user?.email) {
+      return NextResponse.json({ error: "Please sign in before purchasing" }, { status: 401 });
+    }
+
+    const customerEmail = authSession.user.email.toLowerCase();
     const body = await req.json();
     const validated = CheckoutSchema.safeParse(body);
     if (!validated.success) {
@@ -22,32 +29,16 @@ export async function POST(req: Request) {
     }
     const { bookId } = validated.data;
     
-    // In a real app, fetch price from DB to prevent tampering
-    const actualPrice = 29.99; 
-
-    // Create a mock session if Stripe isn't configured yet
-    if (!env.STRIPE_SECRET_KEY) {
-      console.warn("No STRIPE_SECRET_KEY found. Using mock checkout flow.");
-      await connectDB();
-      const mockSessionId = "mock_session_" + Date.now();
-      
-      const newOrder = new Order({
-        stripeSessionId: mockSessionId,
-        customerEmail: "mock@example.com",
-        customerName: "Mock User",
-        bookId,
-        amount: actualPrice,
-        status: "pending",
-        downloadToken: randomBytes(32).toString('hex')
-      });
-      await newOrder.save();
-
-      // Redirect directly to success page since we're mocking
-      return NextResponse.json({ url: `${env.NEXT_PUBLIC_APP_URL}/checkout/success?session_id=${mockSessionId}` });
+    if (!stripe) {
+      return NextResponse.json(
+        { error: "Checkout is unavailable until Stripe is configured" },
+        { status: 503 }
+      );
     }
 
-    // REAL STRIPE FLOW
-    const session = await stripe.checkout.sessions.create({
+    const actualPrice = 29.99;
+
+    const stripeSession = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
         {
@@ -67,15 +58,16 @@ export async function POST(req: Request) {
       cancel_url: `${env.NEXT_PUBLIC_APP_URL}/books/${bookId}`,
       metadata: {
         bookId,
+        customerEmail,
       }
     });
 
     await connectDB();
     
-    // Create pending order
     const newOrder = new Order({
-      stripeSessionId: session.id,
-      customerEmail: "pending@checkout.com", // Will be updated via webhook
+      stripeSessionId: stripeSession.id,
+      customerEmail,
+      customerName: authSession.user.name || undefined,
       bookId,
       amount: actualPrice,
       status: "pending",
@@ -84,7 +76,7 @@ export async function POST(req: Request) {
     
     await newOrder.save();
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: stripeSession.url });
   } catch (error) {
     console.error("Checkout Error:", error);
     return NextResponse.json({ error: "Failed to create checkout session" }, { status: 500 });
