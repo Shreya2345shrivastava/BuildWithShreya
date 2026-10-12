@@ -18,7 +18,7 @@ export function HeroButtons() {
           sm:w-auto
         "
       >
-        Shop Products &rarr;
+        Explore the Ecosystem
       </Button>
 
       <Button
@@ -43,7 +43,7 @@ export function HeroButtons() {
           sm:w-auto
         "
       >
-        Hire for Custom Web Design
+        Work with Shreya
       </Button>
       
       <div className="hidden sm:flex flex-col items-start ml-2">

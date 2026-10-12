@@ -15,16 +15,17 @@ export function HeroContent() {
       <FadeInStaggerItem>
         <h1
           id="hero-title"
-          className="mt-4 lg:mt-8 font-serif text-[clamp(2.75rem,8vw,4.5rem)] leading-[1.1] tracking-tight text-[var(--color-text-primary)] w-full lg:max-w-[600px]"
+          className="mt-5 lg:mt-8 w-full max-w-[650px] font-serif text-[clamp(2.6rem,7vw,4.75rem)] leading-[1.02] tracking-tight text-[var(--color-text-primary)]"
         >
-          Everything you need, <br className="hidden sm:block" /> in one place.
+          <span className="block">Build It First.</span>
+          <span className="block text-[var(--color-accent-peach)] italic">Then Make It Beautiful.</span>
         </h1>
       </FadeInStaggerItem>
 
       {/* Body Copy */}
       <FadeInStaggerItem>
-        <p className="mt-5 lg:mt-8 max-w-[480px] text-lg leading-[1.8] text-[var(--color-text-secondary)]">
-          Explore books, creator resources, productivity systems, website templates, and custom websites—all designed to help you turn ideas into reality.
+        <p className="mt-6 max-w-[480px] text-lg leading-[1.8] text-[var(--color-text-secondary)] lg:mt-8">
+          Books, creator systems, templates, and custom websites to help you turn a clear idea into something real.
         </p>
       </FadeInStaggerItem>
 
